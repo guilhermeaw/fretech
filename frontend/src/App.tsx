@@ -1,7 +1,7 @@
-import { Heading } from '@chakra-ui/react';
+import Login from './pages/Login';
 
 const App = () => {
-  return <Heading>App</Heading>;
+  return <Login />;
 };
 
 export default App;

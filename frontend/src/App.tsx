@@ -1,7 +1,7 @@
-import Login from './pages/Login';
+import { Header } from './components/Header';
 
 const App = () => {
-  return <Login />;
+  return <Header />;
 };
 
 export default App;

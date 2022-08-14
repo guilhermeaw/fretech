@@ -20,7 +20,7 @@ export const Header = () => {
     >
       <HStack>
         <img
-          src="/assets/images/logo.png"
+          src="/assets/images/logo.svg"
           alt=""
           style={{ marginRight: '1rem' }}
         />
@@ -38,17 +38,22 @@ export const Header = () => {
             </ListItem>
             <ListItem listStyleType="none">
               <Link mr="1rem" href="/">
-                <Text as="strong">Encomendas</Text>
+                <Text as="strong">Entregadores</Text>
               </Link>
             </ListItem>
             <ListItem listStyleType="none">
               <Link mr="1rem" href="/">
-                <Text as="strong">Encomendas</Text>
+                <Text as="strong">Destinatários</Text>
               </Link>
             </ListItem>
             <ListItem listStyleType="none">
               <Link mr="1rem" href="/">
-                <Text as="strong">Encomendas</Text>
+                <Text as="strong">Ocorrências</Text>
+              </Link>
+            </ListItem>
+            <ListItem listStyleType="none">
+              <Link mr="1rem" href="/">
+                <Text as="strong">Veículos</Text>
               </Link>
             </ListItem>
           </UnorderedList>

@@ -1,7 +1,13 @@
-import { Header } from './components/Header';
+import { ChakraProvider } from '@chakra-ui/react';
+
+import { Routes } from './routes';
 
 const App = () => {
-  return <Header />;
+  return (
+    <ChakraProvider>
+      <Routes />
+    </ChakraProvider>
+  );
 };
 
 export default App;

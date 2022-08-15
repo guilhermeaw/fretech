@@ -15,7 +15,12 @@ export const Navbar = ({ navitems }: NavbarProps) => {
     <Box as="nav">
       <UnorderedList display="flex">
         {navitems.map(({ title, to }) => (
-          <Navitem title={title} to={to} isActive={to === pathname} />
+          <Navitem
+            key={title}
+            title={title}
+            to={to}
+            isActive={to === pathname}
+          />
         ))}
       </UnorderedList>
     </Box>

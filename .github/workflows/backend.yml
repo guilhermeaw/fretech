@@ -34,5 +34,7 @@ jobs:
       - name: Build application
         run: yarn build
 
-      - name: Start server application
-        run: yarn start
+      - name: Restart server application
+        run: |
+          docker-compose down
+          docker-compose up --build -d

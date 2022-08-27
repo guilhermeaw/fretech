@@ -1,30 +1,26 @@
-import {
-  Box,
-  Button,
-  Center,
-  FormControl,
-  FormLabel,
-  Heading,
-  Input,
-} from '@chakra-ui/react';
+import { Box, Button, Center } from '@chakra-ui/react';
+
+import { FormInput } from '../components/Form/FormInput';
 
 const Login = () => {
   return (
-    <Center h="100vh" w="100vw" bg="#7D40E7">
+    <Center h="100vh" w="100vw" bg="brand">
       <Box as="form" w="400px" bg="white" p="2rem" borderRadius={4}>
-        <Heading textAlign="center" my="2rem">
-          Fretech
-        </Heading>
+        <Center mb="2rem">
+          <img
+            src="/assets/images/big-logo.svg"
+            alt="Logotipo do produto Fretech na cor roxa"
+          />
+        </Center>
 
-        <FormControl mb="1rem">
-          <FormLabel>Seu e-mail</FormLabel>
-          <Input type="email" placeholder="E-mail" />
-        </FormControl>
+        <FormInput
+          type="email"
+          placeholder="E-mail"
+          label="Seu e-mail"
+          wrapperProps={{ mb: '1rem' }}
+        />
 
-        <FormControl>
-          <FormLabel>Sua senha</FormLabel>
-          <Input type="password" placeholder="Senha" />
-        </FormControl>
+        <FormInput type="password" placeholder="Senha" label="Sua senha" />
 
         <Button type="submit" w="100%" my="1rem">
           Entrar

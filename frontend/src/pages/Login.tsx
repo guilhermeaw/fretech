@@ -4,7 +4,7 @@ import { FormInput } from '../components/Form/FormInput';
 
 const Login = () => {
   return (
-    <Center h="100vh" w="100vw" bg="brand">
+    <Center h="100vh" w="100vw" bg="brand.500">
       <Box as="form" w="400px" bg="white" p="2rem" borderRadius={4}>
         <Center mb="2rem">
           <img
@@ -22,7 +22,7 @@ const Login = () => {
 
         <FormInput type="password" placeholder="Senha" label="Sua senha" />
 
-        <Button type="submit" w="100%" my="1rem">
+        <Button type="submit" w="100%" my="1rem" variant="primary">
           Entrar
         </Button>
       </Box>

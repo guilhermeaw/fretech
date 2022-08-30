@@ -5,7 +5,7 @@ import { FormInput } from '../components/Form/FormInput';
 const Login = () => {
   return (
     <Center h="100vh" w="100vw" bg="brand.500">
-      <Box as="form" w="400px" bg="white" p="2rem" borderRadius={4}>
+      <Box mx="1.2rem" as="form" w="400px" bg="white" p="2rem" borderRadius={4}>
         <Center mb="2rem">
           <img
             src="/assets/images/big-logo.svg"

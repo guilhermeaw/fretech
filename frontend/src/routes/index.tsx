@@ -1,12 +1,15 @@
 import { BrowserRouter, Route, Routes as DOMRoutes } from 'react-router-dom';
+
 import { Header } from '../components/Header';
+
+import DeliveryMansList from '../pages/deliverymans/List';
 import Login from '../pages/Login';
 
 const AppRoutes = () => (
   <>
     <Header />
     <DOMRoutes>
-      <Route path="/encomendas" element={<h1>encomendas</h1>} />
+      <Route path="/entregadores" element={<DeliveryMansList />} />
     </DOMRoutes>
   </>
 );

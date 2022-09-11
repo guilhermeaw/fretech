@@ -9,7 +9,8 @@ export const Header = () => {
       bgColor="white"
       justify="space-between"
       borderBottom="1px solid #ddd"
-      p="1rem"
+      px="1rem"
+      h="4rem"
     >
       <HStack>
         <img

@@ -6,6 +6,7 @@ export const customTheme = extendTheme({
       500: '#7D40E7',
       600: '#6b25e3',
     },
+    contentBg: '#F5F5F5',
   },
   fonts: {
     body: '"Roboto", sans-serif',
@@ -20,6 +21,13 @@ export const customTheme = extendTheme({
           _hover: {
             bg: 'brand.600',
           },
+        },
+      },
+    },
+    Container: {
+      sizes: {
+        xl: {
+          maxW: '1500px',
         },
       },
     },

@@ -6,8 +6,14 @@ import {
   HStack,
   IconButton,
   Input,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
   Text,
 } from '@chakra-ui/react';
+
+import { FiEdit, FiMoreVertical, FiTrash, FiPlus } from 'react-icons/fi';
 
 import { ContentContainer } from '../../components/ContentContainer';
 import { useFetchDeliverymans } from '../../services/queries';
@@ -22,7 +28,9 @@ const DeliveryMansList = () => {
 
       <HStack my="1rem" justifyContent="space-between">
         <Input placeholder="Busca por entregadores" width="sm" bg="#fff" />
-        <Button variant="primary">CADASTRAR</Button>
+        <Button variant="primary" leftIcon={<FiPlus />}>
+          CADASTRAR
+        </Button>
       </HStack>
 
       {deliverymans?.map(({ id, name, email }) => (
@@ -32,7 +40,18 @@ const DeliveryMansList = () => {
             <Avatar name={name} />
             <Text>{name}</Text>
             <Text>{email}</Text>
-            <IconButton aria-label="Ações" variant="ghost" />
+            <Menu>
+              <MenuButton
+                as={IconButton}
+                aria-label="Ações"
+                variant="ghost"
+                icon={<FiMoreVertical />}
+              />
+              <MenuList>
+                <MenuItem icon={<FiEdit color="blue" />}>Editar</MenuItem>
+                <MenuItem icon={<FiTrash color="red" />}>Excluir</MenuItem>
+              </MenuList>
+            </Menu>
           </HStack>
         </Box>
       ))}

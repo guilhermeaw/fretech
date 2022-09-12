@@ -10,22 +10,10 @@ import {
 } from '@chakra-ui/react';
 
 import { ContentContainer } from '../../components/ContentContainer';
+import { useFetchDeliverymans } from '../../services/queries';
 
 const DeliveryMansList = () => {
-  const deliverymans = [
-    {
-      id: 1,
-      name: 'João da Silva',
-      email: 'joao@gmail.com',
-      avatar_url: '',
-    },
-    {
-      id: 2,
-      name: 'Maria da Silva',
-      email: 'maria@gmail.com',
-      avatar_url: '',
-    },
-  ];
+  const { data: deliverymans } = useFetchDeliverymans();
 
   return (
     <ContentContainer>
@@ -37,7 +25,7 @@ const DeliveryMansList = () => {
         <Button variant="primary">CADASTRAR</Button>
       </HStack>
 
-      {deliverymans.map(({ id, name, email }) => (
+      {deliverymans?.map(({ id, name, email }) => (
         <Box key={id} bg="#fff" borderRadius="4px" p="1rem" my="1rem">
           <HStack spacing="2rem" justifyContent="space-between">
             <Text>{`#${id}`}</Text>

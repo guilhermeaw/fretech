@@ -1,3 +1,4 @@
+import { forwardRef, LegacyRef } from 'react';
 import {
   FormControl,
   FormControlProps,
@@ -13,17 +14,17 @@ export type FormInputProps = {
   wrapperProps?: FormControlProps;
 } & InputProps;
 
-export const FormInput = ({
-  label,
-  helpMessage,
-  wrapperProps,
-  ...props
-}: FormInputProps) => {
-  return (
-    <FormControl my="1rem" {...wrapperProps}>
-      <FormLabel>{label}</FormLabel>
-      <Input {...props} />
-      {helpMessage && <FormHelperText>{helpMessage}</FormHelperText>}
-    </FormControl>
-  );
-};
+export const FormInput = forwardRef(
+  (
+    { label, helpMessage, wrapperProps, ...props }: FormInputProps,
+    ref: LegacyRef<HTMLInputElement>,
+  ) => {
+    return (
+      <FormControl my="1rem" {...wrapperProps}>
+        <FormLabel>{label}</FormLabel>
+        <Input ref={ref} {...props} />
+        {helpMessage && <FormHelperText>{helpMessage}</FormHelperText>}
+      </FormControl>
+    );
+  },
+);

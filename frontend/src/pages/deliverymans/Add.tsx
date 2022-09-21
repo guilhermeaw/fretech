@@ -1,3 +1,4 @@
+import { useForm } from 'react-hook-form';
 import {
   Avatar,
   Button,
@@ -10,6 +11,10 @@ import {
 import { FormInput } from '../../components/Form/FormInput';
 
 const AddDeliveryman = () => {
+  const { register, watch, handleSubmit } = useForm();
+
+  const name = watch('name');
+
   return (
     <>
       <Heading fontSize="3xl">Cadastro de entregadores</Heading>
@@ -22,19 +27,16 @@ const AddDeliveryman = () => {
           padding: '1rem',
           margin: '1rem 0',
         }}
+        onSubmit={handleSubmit(data => console.log(data))}
       >
         <Center>
-          <Avatar name="" size="2xl" />
+          <Avatar name={name} size="2xl" />
         </Center>
 
-        <FormInput label="Nome" />
-        <FormInput label="E-mail" type="email" />
-        <FormInput label="Senha" type="password" />
-        <FormInput
-          label="Telefone"
-          type="tel"
-          pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
-        />
+        <FormInput label="Nome" {...register('name')} />
+        <FormInput label="E-mail" type="email" {...register('email')} />
+        <FormInput label="Senha" type="password" {...register('password')} />
+        <FormInput label="Telefone" type="tel" {...register('phone')} />
 
         <HStack justify="flex-end" py="1rem">
           <Button>Cancelar</Button>

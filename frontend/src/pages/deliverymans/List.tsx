@@ -14,23 +14,25 @@ import {
 } from '@chakra-ui/react';
 
 import { FiEdit, FiMoreVertical, FiTrash, FiPlus } from 'react-icons/fi';
+import { Link } from 'react-router-dom';
 
-import { ContentContainer } from '../../components/ContentContainer';
 import { useFetchDeliverymans } from '../../services/queries';
 
 const DeliveryMansList = () => {
   const { data: deliverymans } = useFetchDeliverymans();
 
   return (
-    <ContentContainer>
+    <>
       <Heading size="lg">Gerenciando entregadores</Heading>
       <Text>Cadastre, edite e visualize os entregadores</Text>
 
       <HStack my="1rem" justifyContent="space-between">
         <Input placeholder="Busca por entregadores" width="sm" bg="#fff" />
-        <Button variant="primary" leftIcon={<FiPlus />}>
-          CADASTRAR
-        </Button>
+        <Link to="/entregadores/novo">
+          <Button variant="primary" leftIcon={<FiPlus />}>
+            CADASTRAR
+          </Button>
+        </Link>
       </HStack>
 
       {deliverymans?.map(({ id, name, email }) => (
@@ -55,7 +57,7 @@ const DeliveryMansList = () => {
           </HStack>
         </Box>
       ))}
-    </ContentContainer>
+    </>
   );
 };
 

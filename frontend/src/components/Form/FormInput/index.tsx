@@ -20,7 +20,7 @@ export const FormInput = ({
   ...props
 }: FormInputProps) => {
   return (
-    <FormControl {...wrapperProps}>
+    <FormControl my="1rem" {...wrapperProps}>
       <FormLabel>{label}</FormLabel>
       <Input {...props} />
       {helpMessage && <FormHelperText>{helpMessage}</FormHelperText>}

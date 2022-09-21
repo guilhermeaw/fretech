@@ -13,13 +13,7 @@ const Login = () => {
           />
         </Center>
 
-        <FormInput
-          type="email"
-          placeholder="E-mail"
-          label="Seu e-mail"
-          wrapperProps={{ mb: '1rem' }}
-        />
-
+        <FormInput type="email" placeholder="E-mail" label="Seu e-mail" />
         <FormInput type="password" placeholder="Senha" label="Sua senha" />
 
         <Button type="submit" w="100%" my="1rem" variant="primary">

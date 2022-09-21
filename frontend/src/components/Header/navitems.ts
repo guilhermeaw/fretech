@@ -5,16 +5,16 @@ export type NavitemProp = {
 
 export const navitems = [
   {
-    title: 'Encomendas',
-    to: '/encomendas',
+    title: 'Entregas',
+    to: '/entregas',
   },
   {
     title: 'Entregadores',
     to: '/entregadores',
   },
   {
-    title: 'Destinatários',
-    to: '/destinatarios',
+    title: 'Pedidos',
+    to: '/pedidos',
   },
   {
     title: 'Ocorrências',

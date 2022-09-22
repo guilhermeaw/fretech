@@ -2,6 +2,7 @@ import { forwardRef, LegacyRef } from 'react';
 import {
   FormControl,
   FormControlProps,
+  FormErrorMessage,
   FormHelperText,
   FormLabel,
   Input,
@@ -11,12 +12,19 @@ import {
 export type FormInputProps = {
   label: string;
   helpMessage?: string;
+  errorMessage?: string;
   wrapperProps?: FormControlProps;
 } & InputProps;
 
 export const FormInput = forwardRef(
   (
-    { label, helpMessage, wrapperProps, ...props }: FormInputProps,
+    {
+      label,
+      helpMessage,
+      errorMessage,
+      wrapperProps,
+      ...props
+    }: FormInputProps,
     ref: LegacyRef<HTMLInputElement>,
   ) => {
     return (
@@ -24,6 +32,7 @@ export const FormInput = forwardRef(
         <FormLabel>{label}</FormLabel>
         <Input ref={ref} {...props} />
         {helpMessage && <FormHelperText>{helpMessage}</FormHelperText>}
+        {errorMessage && <FormErrorMessage>{errorMessage}</FormErrorMessage>}
       </FormControl>
     );
   },

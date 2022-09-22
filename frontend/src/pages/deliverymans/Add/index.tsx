@@ -1,4 +1,6 @@
 import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+
 import {
   Avatar,
   Button,
@@ -8,12 +10,22 @@ import {
   Text,
 } from '@chakra-ui/react';
 
-import { FormInput } from '../../components/Form/FormInput';
+import { FormInput } from '../../../components/Form/FormInput';
+import {
+  NewDeliverymanFormData,
+  newDeliverymanValidationSchema,
+} from './formSchema';
 
 const AddDeliveryman = () => {
-  const { register, watch, handleSubmit } = useForm();
+  const { register, watch, handleSubmit } = useForm<NewDeliverymanFormData>({
+    resolver: zodResolver(newDeliverymanValidationSchema),
+  });
 
   const name = watch('name');
+
+  const handleCreateNewDeliveryman = (data: NewDeliverymanFormData) => {
+    console.log(data);
+  };
 
   return (
     <>
@@ -27,7 +39,7 @@ const AddDeliveryman = () => {
           padding: '1rem',
           margin: '1rem 0',
         }}
-        onSubmit={handleSubmit(data => console.log(data))}
+        onSubmit={handleSubmit(handleCreateNewDeliveryman)}
       >
         <Center>
           <Avatar name={name} size="2xl" />

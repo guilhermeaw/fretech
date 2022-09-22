@@ -28,11 +28,11 @@ export const FormInput = forwardRef(
     ref: LegacyRef<HTMLInputElement>,
   ) => {
     return (
-      <FormControl my="1rem" {...wrapperProps}>
+      <FormControl my="1rem" isInvalid={!!errorMessage} {...wrapperProps}>
         <FormLabel>{label}</FormLabel>
         <Input ref={ref} {...props} />
-        {helpMessage && <FormHelperText>{helpMessage}</FormHelperText>}
-        {errorMessage && <FormErrorMessage>{errorMessage}</FormErrorMessage>}
+        {!!helpMessage && <FormHelperText>{helpMessage}</FormHelperText>}
+        {!!errorMessage && <FormErrorMessage>{errorMessage}</FormErrorMessage>}
       </FormControl>
     );
   },

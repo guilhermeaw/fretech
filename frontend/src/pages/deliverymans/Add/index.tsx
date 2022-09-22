@@ -14,10 +14,15 @@ import { FormInput } from '../../../components/Form/FormInput';
 import {
   NewDeliverymanFormData,
   newDeliverymanValidationSchema,
-} from './formSchema';
+} from './addDeliverymanSchema';
 
 const AddDeliveryman = () => {
-  const { register, watch, handleSubmit } = useForm<NewDeliverymanFormData>({
+  const {
+    register,
+    watch,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<NewDeliverymanFormData>({
     resolver: zodResolver(newDeliverymanValidationSchema),
   });
 
@@ -45,10 +50,32 @@ const AddDeliveryman = () => {
           <Avatar name={name} size="2xl" />
         </Center>
 
-        <FormInput label="Nome" {...register('name')} />
-        <FormInput label="E-mail" type="email" {...register('email')} />
-        <FormInput label="Senha" type="password" {...register('password')} />
-        <FormInput label="Telefone" type="tel" {...register('phone')} />
+        <FormInput
+          label="Nome"
+          errorMessage={errors?.name?.message}
+          {...register('name')}
+        />
+
+        <FormInput
+          label="E-mail"
+          type="email"
+          errorMessage={errors?.email?.message}
+          {...register('email')}
+        />
+
+        <FormInput
+          label="Senha"
+          type="password"
+          errorMessage={errors?.password?.message}
+          {...register('password')}
+        />
+
+        <FormInput
+          label="Telefone"
+          type="tel"
+          errorMessage={errors?.phone?.message}
+          {...register('phone')}
+        />
 
         <HStack justify="flex-end" py="1rem">
           <Button>Cancelar</Button>

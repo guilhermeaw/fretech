@@ -14,6 +14,7 @@ export type FormInputProps = {
   helpMessage?: string;
   errorMessage?: string;
   wrapperProps?: FormControlProps;
+  mask?: string | Array<string | RegExp>;
 } & InputProps;
 
 export const FormInput = forwardRef(

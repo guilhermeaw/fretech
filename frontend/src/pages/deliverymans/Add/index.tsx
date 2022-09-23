@@ -1,4 +1,5 @@
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 import { zodResolver } from '@hookform/resolvers/zod';
 
 import {
@@ -15,6 +16,7 @@ import {
   NewDeliverymanFormData,
   newDeliverymanValidationSchema,
 } from './addDeliverymanSchema';
+import { useCreateDeliveryman } from '../../../services/mutations';
 
 const AddDeliveryman = () => {
   const {
@@ -25,11 +27,16 @@ const AddDeliveryman = () => {
   } = useForm<NewDeliverymanFormData>({
     resolver: zodResolver(newDeliverymanValidationSchema),
   });
+  const navigate = useNavigate();
+
+  const { mutate: createDeliveryman } = useCreateDeliveryman({
+    afterSuccess: () => navigate(-1),
+  });
 
   const name = watch('name');
 
-  const handleCreateNewDeliveryman = (data: NewDeliverymanFormData) => {
-    console.log(data);
+  const handleCreateNewDeliveryman = async (data: NewDeliverymanFormData) => {
+    createDeliveryman(data);
   };
 
   return (

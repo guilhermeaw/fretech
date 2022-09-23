@@ -11,21 +11,31 @@ export const handlers = [
           id: 1,
           name: 'João da Silva',
           email: 'joao@gmail.com',
-          avatar_url: '',
         },
         {
           id: 2,
           name: 'Maria da Silva',
           email: 'maria@gmail.com',
-          avatar_url: '',
         },
         {
           id: 3,
           name: 'Alfredo Costa',
           email: 'alfredo@gmail.com',
-          avatar_url: '',
         },
       ]),
+    );
+  }),
+
+  rest.post(`${basePath}/deliverymans`, async (req, res, ctx) => {
+    const { name, email, phone } = await req.json();
+
+    return res(
+      ctx.json({
+        id: Math.floor(Math.random() * (10 - 4 + 1) + 4),
+        name,
+        email,
+        phone,
+      }),
     );
   }),
 ];

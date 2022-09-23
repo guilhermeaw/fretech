@@ -2,13 +2,7 @@ import { useToast } from '@chakra-ui/react';
 import { useQuery } from '@tanstack/react-query';
 
 import { api } from '../api';
-
-type Deliveryman = {
-  id: string;
-  name: string;
-  email: string;
-  avatar_url: string;
-};
+import { Deliveryman } from '../../models/Deliveryman';
 
 export const useFetchDeliverymans = () => {
   const toast = useToast();
@@ -25,6 +19,8 @@ export const useFetchDeliverymans = () => {
           status: 'error',
         });
       },
+      staleTime: 1000 * 60 * 10, // 10 minutes
+      cacheTime: 1000 * 60 * 10, // 10 minutes
     },
   );
 };

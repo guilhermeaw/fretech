@@ -7,7 +7,7 @@ export const newDeliverymanValidationSchema = zod.object({
     .max(100, 'Nome muito longo'),
   email: zod.string().email('Informe um e-mail válido'),
   password: zod.string().min(6, 'Senha muito curta'),
-  phone: zod.string().min(10, 'Informe o DDD e o número do telefone'),
+  phone: zod.string().min(11, 'Informe o DDD e o número do telefone'),
 });
 
 export type NewDeliverymanFormData = zod.infer<

@@ -10,6 +10,7 @@ import {
   MenuButton,
   MenuItem,
   MenuList,
+  SimpleGrid,
   Text,
 } from '@chakra-ui/react';
 
@@ -36,12 +37,21 @@ const DeliveryMansList = () => {
       </HStack>
 
       {deliverymans?.map(({ id, name, email }) => (
-        <Box key={id} bg="#fff" borderRadius="4px" p="1rem" my="1rem">
-          <HStack spacing="2rem" justifyContent="space-between">
-            <Text>{`#${id}`}</Text>
-            <Avatar name={name} />
-            <Text>{name}</Text>
-            <Text>{email}</Text>
+        <SimpleGrid
+          key={id}
+          bg="#fff"
+          borderRadius="4px"
+          p="1rem"
+          my="1rem"
+          columns={5}
+          alignItems="center"
+        >
+          <Text>{`#${id}`}</Text>
+          <Avatar name={name} />
+          <Text>{name}</Text>
+          <Text>{email}</Text>
+
+          <Box display="flex" justifyContent="flex-end">
             <Menu>
               <MenuButton
                 as={IconButton}
@@ -54,8 +64,8 @@ const DeliveryMansList = () => {
                 <MenuItem icon={<FiTrash color="red" />}>Excluir</MenuItem>
               </MenuList>
             </Menu>
-          </HStack>
-        </Box>
+          </Box>
+        </SimpleGrid>
       ))}
     </>
   );

@@ -3,26 +3,37 @@ import { rest } from 'msw';
 
 const basePath = 'http://localhost:3333';
 
+const deliverymans = [
+  {
+    id: 1,
+    name: 'João da Silva',
+    email: 'joao@gmail.com',
+    phone: '51999999999',
+  },
+  {
+    id: 2,
+    name: 'Maria da Silva',
+    email: 'maria@gmail.com',
+    phone: '51999999999',
+  },
+  {
+    id: 3,
+    name: 'Alfredo Costa',
+    email: 'alfredo@gmail.com',
+    phone: '51999999999',
+  },
+];
+
 export const handlers = [
   rest.get(`${basePath}/deliverymans`, (req, res, ctx) => {
+    return res(ctx.json(deliverymans));
+  }),
+
+  rest.get(`${basePath}/deliverymans/:id`, (req, res, ctx) => {
+    const { id } = req.params;
+
     return res(
-      ctx.json([
-        {
-          id: 1,
-          name: 'João da Silva',
-          email: 'joao@gmail.com',
-        },
-        {
-          id: 2,
-          name: 'Maria da Silva',
-          email: 'maria@gmail.com',
-        },
-        {
-          id: 3,
-          name: 'Alfredo Costa',
-          email: 'alfredo@gmail.com',
-        },
-      ]),
+      ctx.json(deliverymans.find(deliveryman => deliveryman.id === Number(id))),
     );
   }),
 
@@ -32,6 +43,22 @@ export const handlers = [
     return res(
       ctx.json({
         id: Math.floor(Math.random() * (10 - 4 + 1) + 4),
+        name,
+        email,
+        phone,
+      }),
+    );
+  }),
+
+  rest.put(`${basePath}/deliverymans/:id`, async (req, res, ctx) => {
+    const { name, email, phone } = await req.json();
+    const { id } = req.params;
+
+    const deliverymanId = Number(id);
+
+    return res(
+      ctx.json({
+        id: deliverymanId,
         name,
         email,
         phone,

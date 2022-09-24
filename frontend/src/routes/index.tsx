@@ -4,6 +4,7 @@ import { ContentContainer } from '../components/ContentContainer';
 import { Header } from '../components/Header';
 
 import AddDeliveryman from '../pages/deliverymans/Add';
+import EditDeliveryman from '../pages/deliverymans/Edit';
 import DeliveryMansList from '../pages/deliverymans/List';
 
 import Login from '../pages/Login';
@@ -15,6 +16,7 @@ const AppRoutes = () => (
       <DOMRoutes>
         <Route path="entregadores" element={<DeliveryMansList />} />
         <Route path="entregadores/novo" element={<AddDeliveryman />} />
+        <Route path="entregadores/editar/:id" element={<EditDeliveryman />} />
       </DOMRoutes>
     </ContentContainer>
   </>

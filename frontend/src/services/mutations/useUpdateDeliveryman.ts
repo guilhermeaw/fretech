@@ -4,32 +4,46 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { Deliveryman } from '../../models/Deliveryman';
 import { api } from '../api';
 
-interface CreateDeliveryman extends Omit<Deliveryman, 'id'> {
+interface EditDeliveryman extends Deliveryman {
   password: string;
+  phone: string;
 }
 
 type Props = {
   afterSuccess?: () => void;
 };
 
-export const useCreateDeliveryman = ({ afterSuccess }: Props) => {
+export const useUpdateDeliveryman = ({ afterSuccess }: Props) => {
   const toast = useToast();
   const queryClient = useQueryClient();
 
-  const updateDeliverymansQuery = (newDeliveryman: Deliveryman) => {
+  const updateDeliverymansQuery = (updatedDeliveryman: Deliveryman) => {
     const previousDeliverymans =
       queryClient.getQueryData<Deliveryman[]>(['deliverymans']) ?? [];
 
     queryClient.setQueryData<Deliveryman[]>(
       ['deliverymans'],
-      [...previousDeliverymans, newDeliveryman],
+      previousDeliverymans.map(deliveryman => {
+        if (deliveryman.id === updatedDeliveryman.id) {
+          return updatedDeliveryman;
+        }
+
+        return deliveryman;
+      }),
+    );
+  };
+
+  const updateDeliverymanQuery = (updatedDeliveryman: Deliveryman) => {
+    queryClient.setQueryData<Deliveryman>(
+      ['deliveryman', updatedDeliveryman.id],
+      updatedDeliveryman,
     );
   };
 
   return useMutation(
-    ({ name, email, password, phone }: CreateDeliveryman) =>
+    ({ name, email, password, phone, id }: EditDeliveryman) =>
       api
-        .post<Deliveryman>('/deliverymans', {
+        .put<Deliveryman>(`/deliverymans/${id}`, {
           name,
           email,
           password,
@@ -39,18 +53,19 @@ export const useCreateDeliveryman = ({ afterSuccess }: Props) => {
     {
       onError: (error: Error) => {
         toast({
-          title: 'Erro ao criar entregador',
+          title: 'Erro ao editar entregador',
           description: error.message,
           status: 'error',
         });
       },
       onSuccess: (data: Deliveryman) => {
         toast({
-          title: 'Entregador criado com sucesso',
-          description: `O entregador ${data.name} foi criado com sucesso`,
+          title: 'Entregador editado com sucesso',
+          description: `O entregador ${data.name} foi editado com sucesso`,
           status: 'success',
         });
         updateDeliverymansQuery(data);
+        updateDeliverymanQuery(data);
         afterSuccess?.();
       },
     },

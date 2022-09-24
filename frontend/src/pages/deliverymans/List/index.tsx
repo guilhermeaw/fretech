@@ -17,7 +17,7 @@ import {
 import { FiEdit, FiMoreVertical, FiTrash, FiPlus } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 
-import { useFetchDeliverymans } from '../../services/queries';
+import { useFetchDeliverymans } from '../../../services/queries';
 
 const DeliveryMansList = () => {
   const { data: deliverymans } = useFetchDeliverymans();
@@ -60,7 +60,13 @@ const DeliveryMansList = () => {
                 icon={<FiMoreVertical />}
               />
               <MenuList>
-                <MenuItem icon={<FiEdit color="blue" />}>Editar</MenuItem>
+                <MenuItem
+                  as={Link}
+                  to={`/entregadores/editar/${id}`}
+                  icon={<FiEdit color="blue" />}
+                >
+                  Editar
+                </MenuItem>
                 <MenuItem icon={<FiTrash color="red" />}>Excluir</MenuItem>
               </MenuList>
             </Menu>

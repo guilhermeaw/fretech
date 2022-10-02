@@ -10,13 +10,13 @@ import {
   MenuButton,
   MenuItem,
   MenuList,
-  SimpleGrid,
   Text,
 } from '@chakra-ui/react';
 
 import { FiEdit, FiMoreVertical, FiTrash, FiPlus } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 
+import { Card } from '../../../components/Card';
 import { useFetchDeliverymans } from '../../../services/queries';
 
 const DeliveryMansList = () => {
@@ -37,15 +37,7 @@ const DeliveryMansList = () => {
       </HStack>
 
       {deliverymans?.map(({ id, name, email }) => (
-        <SimpleGrid
-          key={id}
-          bg="#fff"
-          borderRadius="4px"
-          p="1rem"
-          my="1rem"
-          columns={5}
-          alignItems="center"
-        >
+        <Card key={id} columns={5}>
           <Text>{`#${id}`}</Text>
           <Avatar name={name} />
           <Text>{name}</Text>
@@ -71,7 +63,7 @@ const DeliveryMansList = () => {
               </MenuList>
             </Menu>
           </Box>
-        </SimpleGrid>
+        </Card>
       ))}
     </>
   );

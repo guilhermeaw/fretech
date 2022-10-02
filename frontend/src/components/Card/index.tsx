@@ -1,11 +1,13 @@
+import { Children } from 'react';
 import { SimpleGrid } from '@chakra-ui/react';
 
 type CardProps = {
   children: React.ReactNode;
-  columns: number;
 };
 
-export const Card = ({ children, columns }: CardProps) => {
+export const Card = ({ children }: CardProps) => {
+  const columns = Children.count(children);
+
   return (
     <SimpleGrid
       bg="#fff"

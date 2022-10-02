@@ -1,11 +1,7 @@
 import {
   Avatar,
   Box,
-  Button,
-  Heading,
-  HStack,
   IconButton,
-  Input,
   Menu,
   MenuButton,
   MenuItem,
@@ -13,31 +9,26 @@ import {
   Text,
 } from '@chakra-ui/react';
 
-import { FiEdit, FiMoreVertical, FiTrash, FiPlus } from 'react-icons/fi';
+import { FiEdit, FiMoreVertical, FiTrash } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 
 import { Card } from '../../../components/Card';
+import { ListContainer } from '../../../templates/ListContainer';
 import { useFetchDeliverymans } from '../../../services/queries';
 
-const DeliveryMansList = () => {
+const DeliverymansList = () => {
   const { data: deliverymans } = useFetchDeliverymans();
 
   return (
-    <>
-      <Heading size="lg">Gerenciando entregadores</Heading>
-      <Text>Cadastre, edite e visualize os entregadores</Text>
-
-      <HStack my="1rem" justifyContent="space-between">
-        <Input placeholder="Busca por entregadores" width="sm" bg="#fff" />
-        <Link to="/entregadores/novo">
-          <Button variant="primary" leftIcon={<FiPlus />}>
-            CADASTRAR
-          </Button>
-        </Link>
-      </HStack>
-
+    <ListContainer
+      addButtonLink="/entregadores/novo"
+      title="Gerenciando entregadores"
+      subtitle="Cadastre, edite e visualize os entregadores"
+      placeholder="Busca por entregadores"
+      headerLabels={['ID', 'Foto', 'Nome', 'Email', 'Ações']}
+    >
       {deliverymans?.map(({ id, name, email }) => (
-        <Card key={id} columns={5}>
+        <Card key={id}>
           <Text>{`#${id}`}</Text>
           <Avatar name={name} />
           <Text>{name}</Text>
@@ -65,8 +56,8 @@ const DeliveryMansList = () => {
           </Box>
         </Card>
       ))}
-    </>
+    </ListContainer>
   );
 };
 
-export default DeliveryMansList;
+export default DeliverymansList;

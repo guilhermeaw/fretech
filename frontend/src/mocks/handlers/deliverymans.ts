@@ -1,7 +1,8 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { rest } from 'msw';
 
-const basePath = 'http://localhost:3333';
+import { basePath } from './constants';
+import { Deliveryman } from '../../models/Deliveryman';
 
 const deliverymans = [
   {
@@ -22,9 +23,9 @@ const deliverymans = [
     email: 'alfredo@gmail.com',
     phone: '51999999999',
   },
-];
+] as Deliveryman[];
 
-export const handlers = [
+export const deliverymansHandlers = [
   rest.get(`${basePath}/deliverymans`, (req, res, ctx) => {
     return res(ctx.json(deliverymans));
   }),

@@ -67,9 +67,13 @@ export const Header = () => {
       </HStack>
 
       <HStack>
-        <Text as="strong">Admin Fretech</Text>
+        {isLargerThan1024 && (
+          <Text as="strong" noOfLines={1}>
+            Admin Fretech
+          </Text>
+        )}
         <Button variant="ghost" colorScheme="red">
-          Sair do sistema
+          Sair
         </Button>
       </HStack>
     </HStack>

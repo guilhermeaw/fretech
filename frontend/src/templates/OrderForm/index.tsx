@@ -30,7 +30,10 @@ export const OrderForm = ({ onSubmit, defaultValues }: OrderFormProps) => {
     formState: { errors },
   } = useForm<OrderFormData>({
     resolver: zodResolver(orderValidationSchema),
-    ...(defaultValues && { defaultValues }),
+    defaultValues: {
+      status: OrderStatus.PENDING,
+      ...defaultValues,
+    },
   });
 
   const navigate = useNavigate();

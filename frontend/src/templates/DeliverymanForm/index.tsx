@@ -14,7 +14,7 @@ type DeliveryFormProps = {
   defaultValues?: DeliverymanFormData;
 };
 
-export const DeliveryForm = ({
+export const DeliverymanForm = ({
   onSubmit,
   defaultValues,
 }: DeliveryFormProps) => {

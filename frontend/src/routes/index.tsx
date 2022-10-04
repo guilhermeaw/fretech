@@ -10,6 +10,7 @@ import DeliverymansList from '../pages/deliverymans/List';
 import OrdersList from '../pages/orders/List';
 
 import Login from '../pages/Login';
+import AddOrder from '../pages/orders/Add';
 
 const AppRoutes = () => (
   <>
@@ -21,6 +22,7 @@ const AppRoutes = () => (
         <Route path="entregadores/editar/:id" element={<EditDeliveryman />} />
 
         <Route path="pedidos" element={<OrdersList />} />
+        <Route path="pedidos/novo" element={<AddOrder />} />
       </DOMRoutes>
     </ContentContainer>
   </>

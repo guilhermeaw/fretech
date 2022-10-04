@@ -1,7 +1,7 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import { Heading, Text } from '@chakra-ui/react';
 
-import { DeliveryForm } from '../../../templates/DeliverymanForm';
+import { DeliverymanForm } from '../../../templates/DeliverymanForm';
 import { useFindDeliverymanById } from '../../../services/queries';
 import { useUpdateDeliveryman } from '../../../services/mutations';
 import { DeliverymanFormData } from '../../../templates/DeliverymanForm/useDeliverymanValidationSchema';
@@ -30,13 +30,11 @@ const EditDeliveryman = () => {
       <Text>Edite as informações do entregador</Text>
 
       {deliverymanToEdit && (
-        <DeliveryForm
+        <DeliverymanForm
           onSubmit={handleEditDeliveryman}
           defaultValues={{
-            name: deliverymanToEdit.name,
-            email: deliverymanToEdit.email,
+            ...deliverymanToEdit,
             password: '',
-            phone: deliverymanToEdit.phone,
           }}
         />
       )}

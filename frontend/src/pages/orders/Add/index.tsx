@@ -2,17 +2,18 @@ import { useNavigate } from 'react-router-dom';
 import { Heading, Text } from '@chakra-ui/react';
 
 import { OrderForm } from '../../../templates/OrderForm';
+import { useCreateOrder } from '../../../services/mutations';
 import { OrderFormData } from '../../../templates/OrderForm/orderValidationSchema';
 
 const AddOrder = () => {
   const navigate = useNavigate();
 
-  // const { mutate: createDeliveryman } = useCreateDeliveryman({
-  //   afterSuccess: () => navigate(-1),
-  // });
+  const { mutate: createOrder } = useCreateOrder({
+    afterSuccess: () => navigate(-1),
+  });
 
   const handleCreateNewOrder = async (data: OrderFormData) => {
-    console.log({ data });
+    createOrder(data);
   };
 
   return (

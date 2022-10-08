@@ -81,22 +81,21 @@ export const OrderForm = ({ onSubmit, defaultValues }: OrderFormProps) => {
 
         <FormInput
           label="Nome"
-          errorMessage={errors?.name?.message}
-          {...register('name')}
+          errorMessage={errors?.receiver?.name?.message}
+          {...register('receiver.name')}
         />
 
         <FormInput
           label="Telefone"
           type="tel"
-          errorMessage={errors?.phone?.message}
-          {...register('phone')}
+          errorMessage={errors?.receiver?.phone?.message}
+          {...register('receiver.phone')}
         />
 
         <FormInput
           label="CPF"
-          type="number"
-          errorMessage={errors?.cpf?.message}
-          {...register('cpf')}
+          errorMessage={errors?.receiver?.cpf?.message}
+          {...register('receiver.cpf')}
         />
       </Box>
 
@@ -109,41 +108,41 @@ export const OrderForm = ({ onSubmit, defaultValues }: OrderFormProps) => {
           <FormInput
             label="CEP"
             type="number"
-            errorMessage={errors?.cep?.message}
-            {...register('cep')}
+            errorMessage={errors?.address?.cep?.message}
+            {...register('address.cep')}
           />
 
           <FormInput
             label="Cidade"
-            errorMessage={errors?.city?.message}
-            {...register('city')}
+            errorMessage={errors?.address?.city?.message}
+            {...register('address.city')}
           />
 
           <FormInput
             label="Estado"
-            errorMessage={errors?.state?.message}
-            {...register('state')}
+            errorMessage={errors?.address?.state?.message}
+            {...register('address.state')}
           />
 
           <FormInput
             label="Rua"
-            errorMessage={errors?.street?.message}
-            {...register('street')}
+            errorMessage={errors?.address?.street?.message}
+            {...register('address.street')}
           />
 
           <FormInput
             label="Número"
             type="number"
-            errorMessage={errors?.number?.message}
-            {...register('number', {
+            errorMessage={errors?.address?.number?.message}
+            {...register('address.number', {
               setValueAs: v => Number(v),
             })}
           />
 
           <FormInput
             label="Complemento"
-            errorMessage={errors?.complement?.message}
-            {...register('complement')}
+            errorMessage={errors?.address?.complement?.message}
+            {...register('address.complement')}
           />
         </SimpleGrid>
       </Box>

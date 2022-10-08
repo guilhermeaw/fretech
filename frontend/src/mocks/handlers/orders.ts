@@ -65,4 +65,18 @@ export const ordersHandlers = [
   rest.get(`${basePath}/orders`, (req, res, ctx) => {
     return res(ctx.json(orders));
   }),
+
+  rest.post(`${basePath}/orders`, async (req, res, ctx) => {
+    const { address, receiver, status } = await req.json();
+
+    return res(
+      ctx.json({
+        id: Math.floor(Math.random() * (10 - 4 + 1) + 4),
+        address,
+        receiver,
+        status,
+        signature_url: null,
+      }),
+    );
+  }),
 ];

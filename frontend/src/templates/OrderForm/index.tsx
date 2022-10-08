@@ -11,6 +11,7 @@ import {
   SimpleGrid,
 } from '@chakra-ui/react';
 
+import { FormContainer } from '../FormContainer';
 import { FormInput } from '../../components/Form/Input';
 import { FormRadioGroup } from '../../components/Form/RadioGroup';
 import { OrderStatus, OrderStatusLabel } from '../../models/Order';
@@ -42,15 +43,7 @@ export const OrderForm = ({ onSubmit, defaultValues }: OrderFormProps) => {
   };
 
   return (
-    <form
-      style={{
-        backgroundColor: '#fff',
-        borderRadius: 8,
-        padding: '1rem',
-        margin: '1rem 0',
-      }}
-      onSubmit={handleSubmit(onSubmit)}
-    >
+    <FormContainer onSubmit={handleSubmit(onSubmit)}>
       <Box mb={8}>
         <Heading fontSize="2xl">Status do pedido</Heading>
 
@@ -144,6 +137,6 @@ export const OrderForm = ({ onSubmit, defaultValues }: OrderFormProps) => {
           Salvar
         </Button>
       </HStack>
-    </form>
+    </FormContainer>
   );
 };

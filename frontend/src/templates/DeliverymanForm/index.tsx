@@ -4,6 +4,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { Avatar, Button, Center, HStack } from '@chakra-ui/react';
 
 import { FormInput } from '../../components/Form/Input';
+import { FormContainer } from '../FormContainer';
 import {
   DeliverymanFormData,
   useDeliverymanValidationSchema,
@@ -44,15 +45,7 @@ export const DeliverymanForm = ({
   const name = watch('name');
 
   return (
-    <form
-      style={{
-        backgroundColor: '#fff',
-        borderRadius: 8,
-        padding: '1rem',
-        margin: '1rem 0',
-      }}
-      onSubmit={handleSubmit(onSubmit)}
-    >
+    <FormContainer onSubmit={handleSubmit(onSubmit)}>
       <Center>
         <Avatar name={name} size="2xl" />
       </Center>
@@ -90,6 +83,6 @@ export const DeliverymanForm = ({
           Salvar
         </Button>
       </HStack>
-    </form>
+    </FormContainer>
   );
 };

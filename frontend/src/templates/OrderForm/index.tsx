@@ -1,6 +1,6 @@
-import { Controller, useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
+import { zodResolver } from '@hookform/resolvers/zod';
 import {
   Box,
   Button,
@@ -8,12 +8,11 @@ import {
   Heading,
   HStack,
   Radio,
-  RadioGroup,
   SimpleGrid,
-  Stack,
 } from '@chakra-ui/react';
 
-import { FormInput } from '../../components/Form/FormInput';
+import { FormInput } from '../../components/Form/Input';
+import { FormRadioGroup } from '../../components/Form/RadioGroup';
 import { OrderStatus, OrderStatusLabel } from '../../models/Order';
 import { OrderFormData, orderValidationSchema } from './orderValidationSchema';
 
@@ -55,25 +54,17 @@ export const OrderForm = ({ onSubmit, defaultValues }: OrderFormProps) => {
       <Box mb={8}>
         <Heading fontSize="2xl">Status do pedido</Heading>
 
-        <Controller
-          name="status"
+        <FormRadioGroup
           control={control}
-          render={({ field: { onChange, value } }) => (
-            <RadioGroup
-              onChange={onChange}
-              value={value}
-              defaultValue={OrderStatus.PENDING}
-            >
-              <Stack direction={['column', 'row']} my="4" spacing={4}>
-                {Object.values(OrderStatus).map(statusValue => (
-                  <Radio key={statusValue} value={statusValue}>
-                    {OrderStatusLabel[statusValue]}
-                  </Radio>
-                ))}
-              </Stack>
-            </RadioGroup>
-          )}
-        />
+          name="status"
+          defaultValue={OrderStatus.PENDING}
+        >
+          {Object.values(OrderStatus).map(statusValue => (
+            <Radio key={statusValue} value={statusValue}>
+              {OrderStatusLabel[statusValue]}
+            </Radio>
+          ))}
+        </FormRadioGroup>
       </Box>
 
       <Box my={8}>

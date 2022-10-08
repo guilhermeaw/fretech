@@ -3,7 +3,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Avatar, Button, Center, HStack } from '@chakra-ui/react';
 
-import { FormInput } from '../../components/Form/FormInput';
+import { FormInput } from '../../components/Form/Input';
 import {
   DeliverymanFormData,
   useDeliverymanValidationSchema,

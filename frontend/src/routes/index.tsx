@@ -11,6 +11,7 @@ import OrdersList from '../pages/orders/List';
 
 import Login from '../pages/Login';
 import AddOrder from '../pages/orders/Add';
+import EditOrder from '../pages/orders/Edit';
 
 const AppRoutes = () => (
   <>
@@ -23,6 +24,7 @@ const AppRoutes = () => (
 
         <Route path="pedidos" element={<OrdersList />} />
         <Route path="pedidos/novo" element={<AddOrder />} />
+        <Route path="pedidos/editar/:id" element={<EditOrder />} />
       </DOMRoutes>
     </ContentContainer>
   </>

@@ -66,6 +66,12 @@ export const ordersHandlers = [
     return res(ctx.json(orders));
   }),
 
+  rest.get(`${basePath}/orders/:id`, (req, res, ctx) => {
+    const { id } = req.params;
+
+    return res(ctx.json(orders.find(order => order.id === Number(id))));
+  }),
+
   rest.post(`${basePath}/orders`, async (req, res, ctx) => {
     const { address, receiver, status } = await req.json();
 
@@ -76,6 +82,23 @@ export const ordersHandlers = [
         receiver,
         status,
         signature_url: null,
+      }),
+    );
+  }),
+
+  rest.put(`${basePath}/orders/:id`, async (req, res, ctx) => {
+    const { address, receiver, status, signature_url } = await req.json();
+    const { id } = req.params;
+
+    const orderId = Number(id);
+
+    return res(
+      ctx.json({
+        id: orderId,
+        address,
+        receiver,
+        status,
+        signature_url,
       }),
     );
   }),

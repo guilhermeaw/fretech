@@ -6,7 +6,6 @@ import { api } from '../api';
 
 interface CreateDeliveryman extends Omit<Deliveryman, 'id'> {
   password: string;
-  phone: string;
 }
 
 type Props = {
@@ -17,14 +16,19 @@ export const useCreateDeliveryman = ({ afterSuccess }: Props) => {
   const toast = useToast();
   const queryClient = useQueryClient();
 
-  const updateDeliverymansQuery = (newDeliveryman: Deliveryman) => {
-    const previousDeliverymans =
-      queryClient.getQueryData<Deliveryman[]>(['deliverymans']) ?? [];
+  const updateDeliverymansQueryIfExistsOnCache = (
+    newDeliveryman: Deliveryman,
+  ) => {
+    const cachedDeliverymans = queryClient.getQueryData<Deliveryman[]>([
+      'deliverymans',
+    ]);
 
-    queryClient.setQueryData<Deliveryman[]>(
-      ['deliverymans'],
-      [...previousDeliverymans, newDeliveryman],
-    );
+    if (cachedDeliverymans) {
+      queryClient.setQueryData<Deliveryman[]>(
+        ['deliverymans'],
+        [...cachedDeliverymans, newDeliveryman],
+      );
+    }
   };
 
   return useMutation(
@@ -51,8 +55,8 @@ export const useCreateDeliveryman = ({ afterSuccess }: Props) => {
           description: `O entregador ${data.name} foi criado com sucesso`,
           status: 'success',
         });
+        updateDeliverymansQueryIfExistsOnCache(data);
         afterSuccess?.();
-        updateDeliverymansQuery(data);
       },
     },
   );

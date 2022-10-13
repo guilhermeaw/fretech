@@ -1,6 +1,6 @@
 import { Box, Button, Center } from '@chakra-ui/react';
 
-import { FormInput } from '../components/Form/FormInput';
+import { FormInput } from '../components/Form/Input';
 
 const Login = () => {
   return (

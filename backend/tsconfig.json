@@ -13,8 +13,8 @@
     "emitDecoratorMetadata": true,
     "strictPropertyInitialization": false,
     "paths": {
-      "@modules/*": ["modules/*"],
-      "@config/*": ["config/*"],
+      "@modules/*": ["src/modules/*"],
+      "@config/*": ["src/config/*"],
       "@shared/*": ["shared/*"]
     }
   },

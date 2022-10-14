@@ -4,7 +4,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { User, UserRole } from '../../models/User';
 import { api } from '../api';
 
-interface EditDeliveryman extends User {
+interface EditDeliveryman extends Omit<User, 'role'> {
   password: string;
   phone: string;
 }

@@ -1,9 +1,9 @@
 import { DataSource } from 'typeorm';
 
-// const entitiesDir =
-//   process.env.NODE_ENV === 'dev'
-//     ? 'src/modules/**/entities/*.ts'
-//     : 'dist/modules/**/entities/*.js';
+const entitiesDir =
+  process.env.NODE_ENV === 'dev'
+    ? 'src/modules/**/entities/*.ts'
+    : 'dist/modules/**/entities/*.js';
 
 const AppDataSource = new DataSource({
   name: 'default',
@@ -13,7 +13,7 @@ const AppDataSource = new DataSource({
   username: 'postgres',
   password: 'postgres',
   database: 'fretech',
-  entities: ['src/modules/**/entities/*.ts'],
+  entities: [entitiesDir],
   synchronize: true,
 });
 

@@ -1,25 +1,19 @@
-import { Box, Button, Center } from '@chakra-ui/react';
+import { Center } from '@chakra-ui/react';
 
-import { FormInput } from '../components/Form/Input';
+import { useAuth } from '../store/Auth';
+import { LoginForm } from '../templates/LoginForm';
+import { LoginFormData } from '../templates/LoginForm/loginValidationSchema';
 
 const Login = () => {
+  const { signIn } = useAuth();
+
+  const handleLogin = (data: LoginFormData) => {
+    signIn(data);
+  };
+
   return (
     <Center h="100vh" w="100vw" bg="brand.500">
-      <Box mx="1.2rem" as="form" w="400px" bg="white" p="2rem" borderRadius={4}>
-        <Center mb="2rem">
-          <img
-            src="/assets/images/big-logo.svg"
-            alt="Logotipo do produto Fretech na cor roxa"
-          />
-        </Center>
-
-        <FormInput type="email" placeholder="E-mail" label="Seu e-mail" />
-        <FormInput type="password" placeholder="Senha" label="Sua senha" />
-
-        <Button type="submit" w="100%" my="1rem" variant="primary">
-          Entrar
-        </Button>
-      </Box>
+      <LoginForm onSubmit={handleLogin} />
     </Center>
   );
 };

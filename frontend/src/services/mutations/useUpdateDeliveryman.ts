@@ -1,10 +1,10 @@
 import { useToast } from '@chakra-ui/react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
-import { Deliveryman } from '../../models/Deliveryman';
+import { User, UserRole } from '../../models/User';
 import { api } from '../api';
 
-interface EditDeliveryman extends Deliveryman {
+interface EditDeliveryman extends User {
   password: string;
   phone: string;
 }
@@ -17,11 +17,11 @@ export const useUpdateDeliveryman = ({ afterSuccess }: Props) => {
   const toast = useToast();
   const queryClient = useQueryClient();
 
-  const updateDeliverymansQuery = (updatedDeliveryman: Deliveryman) => {
+  const updateDeliverymansQuery = (updatedDeliveryman: User) => {
     const previousDeliverymans =
-      queryClient.getQueryData<Deliveryman[]>(['deliverymans']) ?? [];
+      queryClient.getQueryData<User[]>(['deliverymans']) ?? [];
 
-    queryClient.setQueryData<Deliveryman[]>(
+    queryClient.setQueryData<User[]>(
       ['deliverymans'],
       previousDeliverymans.map(deliveryman => {
         if (deliveryman.id === updatedDeliveryman.id) {
@@ -33,8 +33,8 @@ export const useUpdateDeliveryman = ({ afterSuccess }: Props) => {
     );
   };
 
-  const updateDeliverymanQuery = (updatedDeliveryman: Deliveryman) => {
-    queryClient.setQueryData<Deliveryman>(
+  const updateDeliverymanQuery = (updatedDeliveryman: User) => {
+    queryClient.setQueryData<User>(
       ['deliveryman', updatedDeliveryman.id],
       updatedDeliveryman,
     );
@@ -43,11 +43,12 @@ export const useUpdateDeliveryman = ({ afterSuccess }: Props) => {
   return useMutation(
     ({ name, email, password, phone, id }: EditDeliveryman) =>
       api
-        .put<Deliveryman>(`/deliverymans/${id}`, {
+        .put<User>(`/deliverymans/${id}`, {
           name,
           email,
           password,
           phone,
+          role: UserRole.DELIVERYMAN,
         })
         .then(response => response.data),
     {
@@ -58,7 +59,7 @@ export const useUpdateDeliveryman = ({ afterSuccess }: Props) => {
           status: 'error',
         });
       },
-      onSuccess: (data: Deliveryman) => {
+      onSuccess: (data: User) => {
         toast({
           title: 'Entregador editado com sucesso',
           description: `O entregador ${data.name} foi editado com sucesso`,

@@ -4,7 +4,7 @@
   "main": "src/shared/server.ts",
   "license": "MIT",
   "scripts": {
-    "dev": "ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --no-notify --ignore-watch node_modules src/shared/server.ts",
+    "dev": "NODE_ENV=dev ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --no-notify --ignore-watch node_modules src/shared/server.ts",
     "start": "node dist/shared/server.js",
     "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files"
   },

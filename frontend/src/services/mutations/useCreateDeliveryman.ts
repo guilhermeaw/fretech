@@ -1,10 +1,10 @@
 import { useToast } from '@chakra-ui/react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
-import { Deliveryman } from '../../models/Deliveryman';
+import { User, UserRole } from '../../models/User';
 import { api } from '../api';
 
-interface CreateDeliveryman extends Omit<Deliveryman, 'id'> {
+interface CreateDeliveryman extends Omit<User, 'id'> {
   password: string;
 }
 
@@ -16,15 +16,13 @@ export const useCreateDeliveryman = ({ afterSuccess }: Props) => {
   const toast = useToast();
   const queryClient = useQueryClient();
 
-  const updateDeliverymansQueryIfExistsOnCache = (
-    newDeliveryman: Deliveryman,
-  ) => {
-    const cachedDeliverymans = queryClient.getQueryData<Deliveryman[]>([
+  const updateDeliverymansQueryIfExistsOnCache = (newDeliveryman: User) => {
+    const cachedDeliverymans = queryClient.getQueryData<User[]>([
       'deliverymans',
     ]);
 
     if (cachedDeliverymans) {
-      queryClient.setQueryData<Deliveryman[]>(
+      queryClient.setQueryData<User[]>(
         ['deliverymans'],
         [...cachedDeliverymans, newDeliveryman],
       );
@@ -34,11 +32,12 @@ export const useCreateDeliveryman = ({ afterSuccess }: Props) => {
   return useMutation(
     ({ name, email, password, phone }: CreateDeliveryman) =>
       api
-        .post<Deliveryman>('/deliverymans', {
+        .post<User>('/deliverymans', {
           name,
           email,
           password,
           phone,
+          role: UserRole.DELIVERYMAN,
         })
         .then(response => response.data),
     {
@@ -49,7 +48,7 @@ export const useCreateDeliveryman = ({ afterSuccess }: Props) => {
           status: 'error',
         });
       },
-      onSuccess: (data: Deliveryman) => {
+      onSuccess: (data: User) => {
         toast({
           title: 'Entregador criado com sucesso',
           description: `O entregador ${data.name} foi criado com sucesso`,

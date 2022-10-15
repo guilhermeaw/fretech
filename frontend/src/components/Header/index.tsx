@@ -13,13 +13,19 @@ import {
   useMediaQuery,
 } from '@chakra-ui/react';
 import { FiMenu } from 'react-icons/fi';
+import { useAuth } from '../../store/Auth';
 
 import { Navbar } from './Navbar';
 import { navitems } from './navitems';
 
 export const Header = () => {
-  const [isLargerThan1024] = useMediaQuery(['(min-width: 1024px)']);
+  const { signOut } = useAuth();
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const [isLargerThan1024] = useMediaQuery(['(min-width: 1024px)']);
+
+  const handleLogout = () => {
+    signOut();
+  };
 
   return (
     <HStack
@@ -72,7 +78,8 @@ export const Header = () => {
             Admin Fretech
           </Text>
         )}
-        <Button variant="ghost" colorScheme="red">
+
+        <Button variant="ghost" colorScheme="red" onClick={handleLogout}>
           Sair
         </Button>
       </HStack>

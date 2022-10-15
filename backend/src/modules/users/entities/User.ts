@@ -2,8 +2,8 @@ import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 import { Exclude } from 'class-transformer';
 
 export enum UserRole {
-    ADMINISTRATOR = 'administrator',
-    DELIVERYMAN = 'deliveryman',
+  ADMINISTRATOR = 'administrator',
+  DELIVERYMAN = 'deliveryman',
 }
 
 @Entity('users')
@@ -25,6 +25,5 @@ export default class User {
   role: UserRole;
 
   @Column()
-  @Exclude()
-  phone: number;
+  phone: string;
 }

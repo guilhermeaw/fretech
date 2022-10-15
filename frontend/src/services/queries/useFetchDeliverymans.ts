@@ -2,15 +2,14 @@ import { useToast } from '@chakra-ui/react';
 import { useQuery } from '@tanstack/react-query';
 
 import { api } from '../api';
-import { Deliveryman } from '../../models/Deliveryman';
+import { User } from '../../models/User';
 
 export const useFetchDeliverymans = () => {
   const toast = useToast();
 
   return useQuery(
     ['deliverymans'],
-    () =>
-      api.get<Deliveryman[]>('/deliverymans').then(response => response.data),
+    () => api.get<User[]>('/deliverymans').then(response => response.data),
     {
       onError: (error: Error) => {
         toast({

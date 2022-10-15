@@ -2,7 +2,7 @@
 import { rest } from 'msw';
 
 import { basePath } from './constants';
-import { Deliveryman } from '../../models/Deliveryman';
+import { User } from '../../models/User';
 
 const deliverymans = [
   {
@@ -23,7 +23,7 @@ const deliverymans = [
     email: 'alfredo@gmail.com',
     phone: '51999999999',
   },
-] as Deliveryman[];
+] as User[];
 
 export const deliverymansHandlers = [
   rest.get(`${basePath}/deliverymans`, (req, res, ctx) => {

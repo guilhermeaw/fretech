@@ -17,6 +17,7 @@
     "framer-motion": "^7.0.0",
     "msw": "^0.47.1",
     "react": "^18.2.0",
+    "react-cookie": "^4.1.1",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.36.0",
     "react-icons": "^4.4.0",

@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes as DOMRoutes } from 'react-router-dom';
 
+import { useAuth } from '../store/Auth';
 import { Header } from '../components/Header';
 import { ContentContainer } from '../components/ContentContainer';
 
@@ -32,14 +33,18 @@ const AppRoutes = () => (
 
 const AuthRoutes = () => (
   <DOMRoutes>
-    <Route path="/" element={<Login />} />
+    <Route path="*" element={<Login />} />
   </DOMRoutes>
 );
 
 export const Routes = () => {
-  const logged = true;
+  const { user } = useAuth();
+
+  const isAuthenticated = !!user;
 
   return (
-    <BrowserRouter>{logged ? <AppRoutes /> : <AuthRoutes />}</BrowserRouter>
+    <BrowserRouter>
+      {isAuthenticated ? <AppRoutes /> : <AuthRoutes />}
+    </BrowserRouter>
   );
 };

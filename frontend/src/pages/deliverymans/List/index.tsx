@@ -50,7 +50,7 @@ const DeliverymansList = () => {
                 >
                   Editar
                 </MenuItem>
-                <MenuItem icon={<FiTrash color="red" />}>Excluir</MenuItem>
+                {/* <MenuItem icon={<FiTrash color="red" />}>Excluir</MenuItem> */}
               </MenuList>
             </Menu>
           </Box>

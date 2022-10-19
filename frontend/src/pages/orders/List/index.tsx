@@ -50,13 +50,13 @@ const OrdersList = () => {
                 icon={<FiMoreVertical />}
               />
               <MenuList>
-                <MenuItem
+                {/* <MenuItem
                   as={Link}
                   to={`/pedidos/${id}`}
                   icon={<FiEye color="purple" />}
                 >
                   Visualizar
-                </MenuItem>
+                </MenuItem> */}
                 <MenuItem
                   as={Link}
                   to={`/pedidos/editar/${id}`}
@@ -64,8 +64,7 @@ const OrdersList = () => {
                 >
                   Editar
                 </MenuItem>
-
-                <MenuItem icon={<FiTrash color="red" />}>Excluir</MenuItem>
+                {/* <MenuItem icon={<FiTrash color="red" />}>Excluir</MenuItem> */}
               </MenuList>
             </Menu>
           </Box>

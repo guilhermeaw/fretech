@@ -13,13 +13,14 @@ import {
   useMediaQuery,
 } from '@chakra-ui/react';
 import { FiMenu } from 'react-icons/fi';
+import { Link } from 'react-router-dom';
 import { useAuth } from '../../store/Auth';
 
 import { Navbar } from './Navbar';
 import { navitems } from './navitems';
 
 export const Header = () => {
-  const { signOut } = useAuth();
+  const { signOut, user } = useAuth();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [isLargerThan1024] = useMediaQuery(['(min-width: 1024px)']);
 
@@ -56,11 +57,13 @@ export const Header = () => {
           </>
         )}
 
-        <img
-          src="/assets/images/logo.svg"
-          alt="Logotipo do produto Fretech na cor roxa"
-          style={{ marginRight: '1rem' }}
-        />
+        <Link to="/">
+          <img
+            src="/assets/images/logo.svg"
+            alt="Logotipo do produto Fretech na cor roxa"
+            style={{ marginRight: '1rem' }}
+          />
+        </Link>
 
         {isLargerThan1024 && (
           <>
@@ -75,7 +78,7 @@ export const Header = () => {
       <HStack>
         {isLargerThan1024 && (
           <Text as="strong" noOfLines={1}>
-            Admin Fretech
+            {user.name}
           </Text>
         )}
 

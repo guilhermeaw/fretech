@@ -8,12 +8,13 @@ import AddDeliveryman from '../pages/deliverymans/Add';
 import EditDeliveryman from '../pages/deliverymans/Edit';
 import DeliverymansList from '../pages/deliverymans/List';
 
-import OrdersList from '../pages/orders/List';
-
 import Login from '../pages/login';
+import HomePage from '../pages/home';
+
 import AddOrder from '../pages/orders/Add';
 import EditOrder from '../pages/orders/Edit';
-import HomePage from '../pages/home';
+import OrdersList from '../pages/orders/List';
+import OccurrencesList from '../pages/occurrences/List';
 
 const AppRoutes = () => (
   <>
@@ -29,6 +30,8 @@ const AppRoutes = () => (
         <Route path="pedidos" element={<OrdersList />} />
         <Route path="pedidos/novo" element={<AddOrder />} />
         <Route path="pedidos/editar/:id" element={<EditOrder />} />
+
+        <Route path="ocorrencias" element={<OccurrencesList />} />
       </DOMRoutes>
     </ContentContainer>
   </>

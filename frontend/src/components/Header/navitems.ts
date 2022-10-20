@@ -16,10 +16,10 @@ export const navitems = [
     title: 'Pedidos',
     to: '/pedidos',
   },
-  // {
-  //   title: 'Ocorrências',
-  //   to: '/ocorrencias',
-  // },
+  {
+    title: 'Ocorrências',
+    to: '/ocorrencias',
+  },
   // {
   //   title: 'Veículos',
   //   to: '/veiculos',

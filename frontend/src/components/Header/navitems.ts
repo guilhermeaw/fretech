@@ -20,8 +20,8 @@ export const navitems = [
     title: 'Ocorrências',
     to: '/ocorrencias',
   },
-  // {
-  //   title: 'Veículos',
-  //   to: '/veiculos',
-  // },
+  {
+    title: 'Veículos',
+    to: '/veiculos',
+  },
 ] as NavitemProp[];

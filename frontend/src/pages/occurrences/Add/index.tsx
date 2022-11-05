@@ -1,9 +1,9 @@
 import { useNavigate } from 'react-router-dom';
 import { Heading, Text } from '@chakra-ui/react';
 
+import { useCreateOccurrence } from '../../../services/mutations';
 import { OccurrenceForm } from '../../../templates/OccurrenceForm';
 import { OccurrenceFormData } from '../../../templates/OccurrenceForm/occurrenceValidationSchema';
-import { useCreateOccurrence } from '../../../services/mutations/useCreateOccurrence';
 
 const AddOccurrence = () => {
   const navigate = useNavigate();

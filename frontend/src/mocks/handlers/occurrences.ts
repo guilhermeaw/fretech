@@ -1,6 +1,6 @@
 import { rest } from 'msw';
-import { Occurrence } from '../../models/Occurrence';
 import { basePath } from './constants';
+import { Occurrence } from '../../models/Occurrence';
 
 const occurrences = [
   {
@@ -32,5 +32,19 @@ const occurrences = [
 export const occurrencesHandlers = [
   rest.get(`${basePath}/occurrences`, (req, res, ctx) => {
     return res(ctx.json(occurrences));
+  }),
+
+  rest.post(`${basePath}/occurrences`, async (req, res, ctx) => {
+    const { name, description, order_id } = await req.json();
+
+    return res(
+      ctx.json({
+        id: Math.floor(Math.random() * (10 - 4 + 1) + 4),
+        created_at: new Date().toISOString(),
+        name,
+        description,
+        order_id,
+      }),
+    );
   }),
 ];

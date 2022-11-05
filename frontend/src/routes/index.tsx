@@ -14,6 +14,8 @@ import HomePage from '../pages/home';
 import AddOrder from '../pages/orders/Add';
 import EditOrder from '../pages/orders/Edit';
 import OrdersList from '../pages/orders/List';
+
+import AddOccurrence from '../pages/occurrences/Add';
 import OccurrencesList from '../pages/occurrences/List';
 
 const AppRoutes = () => (
@@ -32,6 +34,7 @@ const AppRoutes = () => (
         <Route path="pedidos/editar/:id" element={<EditOrder />} />
 
         <Route path="ocorrencias" element={<OccurrencesList />} />
+        <Route path="ocorrencias/nova" element={<AddOccurrence />} />
       </DOMRoutes>
     </ContentContainer>
   </>

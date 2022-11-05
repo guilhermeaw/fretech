@@ -24,9 +24,9 @@ type OrderFormProps = {
 
 export const OrderForm = ({ onSubmit, defaultValues }: OrderFormProps) => {
   const {
+    control,
     register,
     handleSubmit,
-    control,
     formState: { errors },
   } = useForm<OrderFormData>({
     resolver: zodResolver(orderValidationSchema),

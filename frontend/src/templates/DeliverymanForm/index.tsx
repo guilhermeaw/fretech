@@ -10,7 +10,7 @@ import {
   useDeliverymanValidationSchema,
 } from './useDeliverymanValidationSchema';
 
-type DeliveryFormProps = {
+type DeliverymanFormProps = {
   onSubmit: (data: DeliverymanFormData) => void;
   defaultValues?: DeliverymanFormData;
 };
@@ -18,7 +18,7 @@ type DeliveryFormProps = {
 export const DeliverymanForm = ({
   onSubmit,
   defaultValues,
-}: DeliveryFormProps) => {
+}: DeliverymanFormProps) => {
   const { pathname } = useLocation();
   const isNewDeliveryman = pathname.includes('novo');
 

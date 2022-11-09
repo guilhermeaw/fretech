@@ -1,6 +1,6 @@
 import { Badge } from '@chakra-ui/react';
 
-import { VehicleStatus, VehicleStatusLabel } from '../../../models/Vehicle';
+import { VehicleStatus, VehicleStatusLabel } from '../../../../models/Vehicle';
 
 const badgeColors = {
   IN_USE: 'red',

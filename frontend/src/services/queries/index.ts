@@ -1,3 +1,4 @@
+export * from './useFetchDeliveries';
 export * from './useFetchDeliverymans';
 export * from './useFetchOccurrences';
 export * from './useFetchOrders';

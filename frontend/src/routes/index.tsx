@@ -20,6 +20,8 @@ import OccurrencesList from '../pages/occurrences/List';
 
 import VehiclesList from '../pages/vehicles/List';
 
+import DeliveriesList from '../pages/deliveries/List';
+
 const AppRoutes = () => (
   <>
     <Header />
@@ -39,6 +41,8 @@ const AppRoutes = () => (
         <Route path="ocorrencias/nova" element={<AddOccurrence />} />
 
         <Route path="veiculos" element={<VehiclesList />} />
+
+        <Route path="entregas" element={<DeliveriesList />} />
       </DOMRoutes>
     </ContentContainer>
   </>

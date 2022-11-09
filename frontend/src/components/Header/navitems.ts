@@ -4,10 +4,10 @@ export type NavitemProp = {
 };
 
 export const navitems = [
-  // {
-  //   title: 'Entregas',
-  //   to: '/entregas',
-  // },
+  {
+    title: 'Entregas',
+    to: '/entregas',
+  },
   {
     title: 'Entregadores',
     to: '/entregadores',

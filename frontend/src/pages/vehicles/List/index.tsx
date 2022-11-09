@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 import { FiEdit, FiEye, FiMoreVertical, FiTrash } from 'react-icons/fi';
 
 import { Card } from '../../../components/Card';
-import { VehicleStatusBadge } from '../VehicleStatusBadge';
+import { VehicleStatusBadge } from '../components/VehicleStatusBadge';
 import { useFetchVehicles } from '../../../services/queries';
 import { ListContainer } from '../../../templates/ListContainer';
 

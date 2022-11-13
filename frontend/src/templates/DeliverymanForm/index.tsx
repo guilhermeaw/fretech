@@ -60,15 +60,18 @@ export const DeliverymanForm = ({
         label="E-mail"
         type="email"
         errorMessage={errors?.email?.message}
+        isDisabled={!isNewDeliveryman}
         {...register('email')}
       />
 
-      <FormInput
-        label="Senha"
-        type="password"
-        errorMessage={errors?.password?.message}
-        {...register('password')}
-      />
+      {isNewDeliveryman && (
+        <FormInput
+          label="Senha"
+          type="password"
+          errorMessage={errors?.password?.message}
+          {...register('password')}
+        />
+      )}
 
       <FormInput
         label="Telefone"

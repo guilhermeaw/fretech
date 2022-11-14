@@ -21,7 +21,7 @@ const OrderInfo = () => {
           p="4"
           mt="4"
           borderRadius={8}
-          defaultIndex={[0]}
+          defaultIndex={[0, 1, 2]}
           allowMultiple
         >
           <GeneralSection id={order.id} status={order.status} />

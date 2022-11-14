@@ -13,6 +13,7 @@ import HomePage from '../pages/home';
 
 import AddOrder from '../pages/orders/Add';
 import EditOrder from '../pages/orders/Edit';
+import OrderInfo from '../pages/orders/Info';
 import OrdersList from '../pages/orders/List';
 
 import AddOccurrence from '../pages/occurrences/Add';
@@ -36,6 +37,7 @@ const AppRoutes = () => (
         <Route path="pedidos" element={<OrdersList />} />
         <Route path="pedidos/novo" element={<AddOrder />} />
         <Route path="pedidos/editar/:id" element={<EditOrder />} />
+        <Route path="pedidos/:id" element={<OrderInfo />} />
 
         <Route path="ocorrencias" element={<OccurrencesList />} />
         <Route path="ocorrencias/nova" element={<AddOccurrence />} />

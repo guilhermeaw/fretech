@@ -7,6 +7,7 @@ import {
   MenuItem,
   MenuList,
   Text,
+  Link as ChakraLink,
   useDisclosure,
 } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
@@ -48,8 +49,10 @@ const OccurrencesList = () => {
 
           return (
             <Card key={id}>
-              {/** TODO: deixar um link pra visualizar o pedido, quando tiver pronta a tela de visualização detalhada do pedido */}
-              <Text>{`#${order_id}`}</Text>
+              <ChakraLink
+                as={Link}
+                to={`/pedidos/${order_id}`}
+              >{`#${order_id}`}</ChakraLink>
               <Text>{name}</Text>
               <Text>{formatDate(created_at)}</Text>
 

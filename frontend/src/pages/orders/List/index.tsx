@@ -50,13 +50,13 @@ const OrdersList = () => {
                 icon={<FiMoreVertical />}
               />
               <MenuList>
-                {/* <MenuItem
+                <MenuItem
                   as={Link}
                   to={`/pedidos/${id}`}
                   icon={<FiEye color="purple" />}
                 >
                   Visualizar
-                </MenuItem> */}
+                </MenuItem>
                 <MenuItem
                   as={Link}
                   to={`/pedidos/editar/${id}`}

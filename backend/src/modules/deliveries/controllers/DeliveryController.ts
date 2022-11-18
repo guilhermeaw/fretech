@@ -1,20 +1,19 @@
-// import { instanceToPlain } from 'class-transformer';
-// import { Request, Response } from 'express';
+import { instanceToPlain } from 'class-transformer';
+import { Request, Response } from 'express';
 
-// import CreateDeliveryService from '../services/CreateDeliveryService';
+import CreateDeliveryService from '../services/CreateDeliveryService';
 
-// export default class DeliveryController {
-//     public async create(request: Request, response:Response): Promise<Response> {
-//         const {name, email, password, role, phone} = request.body;
+export default class DeliveryController {
+    public async create(request: Request, response:Response): Promise<Response> {
+        const { user_id, vehicle_id, start_date, end_date } = request.body;
 
-//         const user = await new CreateDeliveryService().execute({
-//             name, 
-//             email,
-//             password,
-//             role,
-//             phone,
-//         })
+        const delivery = await new CreateDeliveryService().execute({
+            user_id: Number(user_id), 
+            vehicle_id: Number(vehicle_id),
+            start_date,
+            end_date
+        })
         
-//         return response.json(instanceToPlain(user));
-//     }
-// }
+        return response.json(instanceToPlain(delivery));
+    }
+}

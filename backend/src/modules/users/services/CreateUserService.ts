@@ -9,7 +9,7 @@ interface IRequest {
   email: string;
   password: string;
   role: Enumerator;
-  phone: number;
+  phone: string;
 }
 
 export default class CreateUserService {

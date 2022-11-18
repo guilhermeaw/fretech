@@ -16,6 +16,7 @@ export const Card = ({ children }: CardProps) => {
       my="1rem"
       columns={columns}
       alignItems="center"
+      spacingX={2}
     >
       {children}
     </SimpleGrid>

@@ -1,8 +1,8 @@
 import { Center } from '@chakra-ui/react';
 
-import { useAuth } from '../store/Auth';
-import { LoginForm } from '../templates/LoginForm';
-import { LoginFormData } from '../templates/LoginForm/loginValidationSchema';
+import { useAuth } from '../../store/Auth';
+import { LoginForm } from '../../templates/LoginForm';
+import { LoginFormData } from '../../templates/LoginForm/loginValidationSchema';
 
 const Login = () => {
   const { signIn } = useAuth();

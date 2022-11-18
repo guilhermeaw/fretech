@@ -1,5 +1,4 @@
 import {
-  Avatar,
   Box,
   IconButton,
   Menu,
@@ -8,31 +7,34 @@ import {
   MenuList,
   Text,
 } from '@chakra-ui/react';
-
-import { FiEdit, FiMoreVertical, FiTrash } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
+import { FiEdit, FiEye, FiMoreVertical, FiTrash } from 'react-icons/fi';
 
 import { Card } from '../../../components/Card';
+import { VehicleStatusBadge } from '../components/VehicleStatusBadge';
+import { useFetchVehicles } from '../../../services/queries';
 import { ListContainer } from '../../../templates/ListContainer';
-import { useFetchDeliverymans } from '../../../services/queries';
 
-const DeliverymansList = () => {
-  const { data: deliverymans } = useFetchDeliverymans();
+const VehiclesList = () => {
+  const { data: vehicles } = useFetchVehicles();
 
   return (
     <ListContainer
-      addButtonLink="/entregadores/novo"
-      title="Gerenciando entregadores"
-      subtitle="Cadastre, edite e visualize os entregadores"
-      placeholder="Busca por entregadores"
-      headerLabels={['ID', 'Foto', 'Nome', 'Email', 'Ações']}
+      addButtonLink="/veiculos/novo"
+      placeholder="Busca por veículos"
+      subtitle="Cadastre, edite e visualize os veículos"
+      title="Gerenciando veículos"
+      headerLabels={['Placa', 'Modelo', 'Capacidade', 'Status', 'Ações']}
     >
-      {deliverymans?.map(({ id, name, email }) => (
+      {vehicles?.map(({ id, model, plate, capacity, status }) => (
         <Card key={id}>
-          <Text>{`#${id}`}</Text>
-          <Avatar name={name} />
-          <Text>{name}</Text>
-          <Text>{email}</Text>
+          <Text>{plate}</Text>
+          <Text>{model}</Text>
+          <Text>
+            {`${capacity} m`}
+            <sup>3</sup>
+          </Text>
+          <VehicleStatusBadge status={status} />
 
           <Box display="flex" justifyContent="flex-end">
             <Menu>
@@ -43,13 +45,13 @@ const DeliverymansList = () => {
                 icon={<FiMoreVertical />}
               />
               <MenuList>
-                <MenuItem
+                {/* <MenuItem
                   as={Link}
-                  to={`/entregadores/editar/${id}`}
+                  to={`/veiculos/editar/${id}`}
                   icon={<FiEdit color="blue" />}
                 >
                   Editar
-                </MenuItem>
+                </MenuItem> */}
                 {/* <MenuItem icon={<FiTrash color="red" />}>Excluir</MenuItem> */}
               </MenuList>
             </Menu>
@@ -60,4 +62,4 @@ const DeliverymansList = () => {
   );
 };
 
-export default DeliverymansList;
+export default VehiclesList;

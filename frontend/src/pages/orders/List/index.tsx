@@ -23,7 +23,7 @@ const OrdersList = () => {
       addButtonLink="/pedidos/novo"
       placeholder="Busca por pedidos"
       subtitle="Cadastre, edite e visualize os pedidos"
-      title="Gerenciando Pedidos"
+      title="Gerenciando pedidos"
       headerLabels={[
         'ID',
         'Destinatário',
@@ -64,8 +64,7 @@ const OrdersList = () => {
                 >
                   Editar
                 </MenuItem>
-
-                <MenuItem icon={<FiTrash color="red" />}>Excluir</MenuItem>
+                {/* <MenuItem icon={<FiTrash color="red" />}>Excluir</MenuItem> */}
               </MenuList>
             </Menu>
           </Box>

@@ -8,17 +8,28 @@ import AddDeliveryman from '../pages/deliverymans/Add';
 import EditDeliveryman from '../pages/deliverymans/Edit';
 import DeliverymansList from '../pages/deliverymans/List';
 
-import OrdersList from '../pages/orders/List';
+import Login from '../pages/login';
+import HomePage from '../pages/home';
 
-import Login from '../pages/Login';
 import AddOrder from '../pages/orders/Add';
 import EditOrder from '../pages/orders/Edit';
+import OrderInfo from '../pages/orders/Info';
+import OrdersList from '../pages/orders/List';
+
+import AddOccurrence from '../pages/occurrences/Add';
+import OccurrencesList from '../pages/occurrences/List';
+
+import VehiclesList from '../pages/vehicles/List';
+
+import DeliveriesList from '../pages/deliveries/List';
 
 const AppRoutes = () => (
   <>
     <Header />
     <ContentContainer>
       <DOMRoutes>
+        <Route path="/" element={<HomePage />} />
+
         <Route path="entregadores" element={<DeliverymansList />} />
         <Route path="entregadores/novo" element={<AddDeliveryman />} />
         <Route path="entregadores/editar/:id" element={<EditDeliveryman />} />
@@ -26,6 +37,14 @@ const AppRoutes = () => (
         <Route path="pedidos" element={<OrdersList />} />
         <Route path="pedidos/novo" element={<AddOrder />} />
         <Route path="pedidos/editar/:id" element={<EditOrder />} />
+        <Route path="pedidos/:id" element={<OrderInfo />} />
+
+        <Route path="ocorrencias" element={<OccurrencesList />} />
+        <Route path="ocorrencias/nova" element={<AddOccurrence />} />
+
+        <Route path="veiculos" element={<VehiclesList />} />
+
+        <Route path="entregas" element={<DeliveriesList />} />
       </DOMRoutes>
     </ContentContainer>
   </>

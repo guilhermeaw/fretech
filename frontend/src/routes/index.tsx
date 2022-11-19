@@ -19,6 +19,7 @@ import OrdersList from '../pages/orders/List';
 import AddOccurrence from '../pages/occurrences/Add';
 import OccurrencesList from '../pages/occurrences/List';
 
+import AddVehicle from '../pages/vehicles/Add';
 import VehiclesList from '../pages/vehicles/List';
 
 import DeliveriesList from '../pages/deliveries/List';
@@ -43,6 +44,7 @@ const AppRoutes = () => (
         <Route path="ocorrencias/nova" element={<AddOccurrence />} />
 
         <Route path="veiculos" element={<VehiclesList />} />
+        <Route path="veiculos/novo" element={<AddVehicle />} />
 
         <Route path="entregas" element={<DeliveriesList />} />
       </DOMRoutes>

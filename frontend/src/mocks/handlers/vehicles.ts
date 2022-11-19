@@ -1,7 +1,7 @@
 import { rest } from 'msw';
 
 import { basePath } from './constants';
-import { Vehicle } from '../../models/Vehicle';
+import { Vehicle, VehicleStatus } from '../../models/Vehicle';
 
 const vehicles = [
   {
@@ -30,5 +30,19 @@ const vehicles = [
 export const vehiclesHandlers = [
   rest.get(`${basePath}/vehicles`, (req, res, ctx) => {
     return res(ctx.json(vehicles));
+  }),
+
+  rest.post(`${basePath}/vehicles`, async (req, res, ctx) => {
+    const { plate, model, capacity } = await req.json();
+
+    return res(
+      ctx.json({
+        id: Math.floor(Math.random() * (10 - 4 + 1) + 4),
+        capacity,
+        model,
+        plate,
+        status: VehicleStatus.AVAILABLE,
+      }),
+    );
   }),
 ];

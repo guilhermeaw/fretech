@@ -22,6 +22,7 @@ import OccurrencesList from '../pages/occurrences/List';
 import AddVehicle from '../pages/vehicles/Add';
 import VehiclesList from '../pages/vehicles/List';
 
+import AddDelivery from '../pages/deliveries/Add';
 import DeliveriesList from '../pages/deliveries/List';
 
 const AppRoutes = () => (
@@ -47,6 +48,7 @@ const AppRoutes = () => (
         <Route path="veiculos/novo" element={<AddVehicle />} />
 
         <Route path="entregas" element={<DeliveriesList />} />
+        <Route path="entregas/nova" element={<AddDelivery />} />
       </DOMRoutes>
     </ContentContainer>
   </>

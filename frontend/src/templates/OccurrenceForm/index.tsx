@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { zodResolver } from '@hookform/resolvers/zod';
 
 import { FormContainer } from '../FormContainer';
+import { extractOrdersOptions } from '../../utils';
 import { FormInput } from '../../components/Form/Input';
 import { useFetchOrders } from '../../services/queries';
 import { FormSelect } from '../../components/Form/Select';
@@ -35,11 +36,7 @@ export const OccurrenceForm = ({
   const navigate = useNavigate();
 
   const { data: orders } = useFetchOrders();
-  const ordersOptions =
-    orders?.map(order => ({
-      value: order.id.toString(),
-      label: `Pedido #${order.id} - ${order.receiver.name}`,
-    })) || [];
+  const ordersOptions = extractOrdersOptions(orders);
 
   const handleCancel = () => {
     navigate(-1);
@@ -50,9 +47,9 @@ export const OccurrenceForm = ({
       <FormSelect
         label="Pedido"
         placeholder="Selecione um pedido"
-        name="order_id"
+        name="order"
         control={control}
-        errorMessage={errors?.order_id?.message}
+        errorMessage={errors?.order?.message}
         options={ordersOptions}
       />
 

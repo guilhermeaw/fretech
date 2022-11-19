@@ -24,6 +24,7 @@ export const LoginForm = ({ onSubmit }: LoginFormProps) => {
       w="400px"
       bg="white"
       p="2rem"
+      m="1rem"
       borderRadius={4}
       onSubmit={handleSubmit(onSubmit)}
     >

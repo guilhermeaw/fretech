@@ -1,6 +1,5 @@
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import { Button, HStack } from '@chakra-ui/react';
 import { zodResolver } from '@hookform/resolvers/zod';
 
 import { FormContainer } from '../FormContainer';
@@ -8,6 +7,7 @@ import { FormInput } from '../../components/Form/Input';
 import { useFetchOrders } from '../../services/queries';
 import { FormSelect } from '../../components/Form/Select';
 import { FormTextarea } from '../../components/Form/Textarea';
+import { FormActionButtons } from '../../components/FormActionButtons';
 import {
   OccurrenceFormData,
   occurrenceValidationSchema,
@@ -68,12 +68,7 @@ export const OccurrenceForm = ({
         {...register('description')}
       />
 
-      <HStack justify="flex-end" py="1rem">
-        <Button onClick={handleCancel}>Cancelar</Button>
-        <Button variant="primary" type="submit">
-          Salvar
-        </Button>
-      </HStack>
+      <FormActionButtons onCancel={handleCancel} />
     </FormContainer>
   );
 };

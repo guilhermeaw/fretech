@@ -1,10 +1,10 @@
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import { Button, HStack } from '@chakra-ui/react';
 import { zodResolver } from '@hookform/resolvers/zod';
 
 import { FormContainer } from '../FormContainer';
 import { FormInput } from '../../components/Form/Input';
+import { FormActionButtons } from '../../components/FormActionButtons';
 import {
   VehicleFormData,
   vehicleValidationSchema,
@@ -54,12 +54,7 @@ export const VehicleForm = ({ onSubmit, defaultValues }: VehicleFormProps) => {
         {...register('capacity', { setValueAs: v => Number(v) })}
       />
 
-      <HStack justify="flex-end" py="1rem">
-        <Button onClick={handleCancel}>Cancelar</Button>
-        <Button variant="primary" type="submit">
-          Salvar
-        </Button>
-      </HStack>
+      <FormActionButtons onCancel={handleCancel} />
     </FormContainer>
   );
 };

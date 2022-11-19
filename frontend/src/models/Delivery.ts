@@ -1,5 +1,5 @@
-import { Order } from './Order';
 import { User } from './User';
+import { Order } from './Order';
 import { Vehicle } from './Vehicle';
 
 export interface Delivery {

@@ -31,20 +31,6 @@ export const useCreateDelivery = ({ afterSuccess }: Props) => {
     }
   };
 
-  const updateDeliveryQueryIfExistsOnCache = (updatedDelivery: Delivery) => {
-    const cachedDelivery = queryClient.getQueryData<Delivery[]>([
-      'delivery',
-      updatedDelivery.id,
-    ]);
-
-    if (cachedDelivery) {
-      queryClient.setQueryData<Delivery>(
-        ['delivery', updatedDelivery.id],
-        updatedDelivery,
-      );
-    }
-  };
-
   return useMutation(
     ({ deliveryman_id, orders_ids, vehicle_id }: CreateDelivery) =>
       api
@@ -69,7 +55,6 @@ export const useCreateDelivery = ({ afterSuccess }: Props) => {
           status: 'success',
         });
         updateDeliveriesQueryIfExistsOnCache(data);
-        updateDeliveryQueryIfExistsOnCache(data);
         afterSuccess?.();
       },
     },

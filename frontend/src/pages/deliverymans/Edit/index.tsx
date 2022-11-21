@@ -1,5 +1,5 @@
-import { useNavigate, useParams } from 'react-router-dom';
 import { Heading, Text } from '@chakra-ui/react';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import { DeliverymanForm } from '../../../templates/DeliverymanForm';
 import { useFindDeliverymanById } from '../../../services/queries';

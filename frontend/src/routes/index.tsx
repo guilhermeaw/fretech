@@ -24,6 +24,7 @@ import VehiclesList from '../pages/vehicles/List';
 
 import AddDelivery from '../pages/deliveries/Add';
 import DeliveriesList from '../pages/deliveries/List';
+import EditOccurrence from '../pages/occurrences/Edit';
 
 const AppRoutes = () => (
   <>
@@ -43,6 +44,7 @@ const AppRoutes = () => (
 
         <Route path="ocorrencias" element={<OccurrencesList />} />
         <Route path="ocorrencias/nova" element={<AddOccurrence />} />
+        <Route path="ocorrencias/editar/:id" element={<EditOccurrence />} />
 
         <Route path="veiculos" element={<VehiclesList />} />
         <Route path="veiculos/novo" element={<AddVehicle />} />

@@ -71,13 +71,13 @@ const OccurrencesList = () => {
                     >
                       Visualizar
                     </MenuItem>
-                    {/* <MenuItem
+                    <MenuItem
                       as={Link}
                       to={`/ocorrencias/editar/${id}`}
                       icon={<FiEdit color="blue" />}
                     >
                       Editar
-                    </MenuItem> */}
+                    </MenuItem>
                     {/* <MenuItem icon={<FiTrash color="red" />}>Excluir</MenuItem> */}
                   </MenuList>
                 </Menu>

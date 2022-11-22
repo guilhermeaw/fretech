@@ -47,9 +47,9 @@ export const OccurrenceForm = ({
       <FormSelect
         label="Pedido"
         placeholder="Selecione um pedido"
-        name="order"
+        name="order_id"
         control={control}
-        errorMessage={errors?.order?.message}
+        errorMessage={errors?.order_id?.message}
         options={ordersOptions}
       />
 

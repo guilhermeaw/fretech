@@ -1,5 +1,12 @@
-import { Control, Controller } from 'react-hook-form';
-import Select, { Props, GroupBase } from 'react-select';
+import { Control, Controller, ControllerRenderProps } from 'react-hook-form';
+import Select, {
+  Props,
+  GroupBase,
+  OnChangeValue,
+  PropsValue,
+  MultiValue,
+} from 'react-select';
+
 import {
   FormControl,
   FormControlProps,
@@ -27,7 +34,7 @@ export type FormSelectProps<
 };
 
 export const FormSelect = <
-  Option,
+  Option extends FormSelectOption,
   IsMulti extends boolean = false,
   Group extends GroupBase<Option> = GroupBase<Option>,
 >({
@@ -37,8 +44,41 @@ export const FormSelect = <
   wrapperProps,
   control,
   name,
+  options,
   ...props
 }: FormSelectProps<Option, IsMulti, Group>) => {
+  const getValue = (field: ControllerRenderProps<any, string>) => {
+    const fieldValue = field.value;
+
+    if (props.isMulti) {
+      return options?.filter(option => {
+        const { value: optionValue } = option as Option;
+        return fieldValue?.includes(optionValue);
+      }) as PropsValue<Option> | undefined;
+    }
+
+    return options?.find(option => {
+      const { value: optionValue } = option as Option;
+      return optionValue === fieldValue;
+    }) as Option | undefined;
+  };
+
+  const onChangeValue = (
+    selectedOption: OnChangeValue<FormSelectOption, IsMulti>,
+    field: ControllerRenderProps<any, string>,
+  ) => {
+    if (Array.isArray(selectedOption)) {
+      const selectedValues = (
+        selectedOption as MultiValue<FormSelectOption>
+      ).map((option: FormSelectOption) => option.value);
+
+      field.onChange(selectedValues);
+      return;
+    }
+
+    field.onChange((selectedOption as FormSelectOption).value);
+  };
+
   return (
     <Controller
       control={control}
@@ -47,7 +87,14 @@ export const FormSelect = <
       render={({ field }) => (
         <FormControl my="1rem" isInvalid={!!errorMessage} {...wrapperProps}>
           <FormLabel>{label}</FormLabel>
-          <Select noOptionsMessage={() => 'Sem opções'} {...field} {...props} />
+          <Select
+            noOptionsMessage={() => 'Sem opções'}
+            {...field}
+            {...props}
+            options={options}
+            value={getValue(field)}
+            onChange={selectedOption => onChangeValue(selectedOption, field)}
+          />
 
           {!!helpMessage && <FormHelperText>{helpMessage}</FormHelperText>}
           {!!errorMessage && (

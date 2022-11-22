@@ -60,28 +60,28 @@ export const DeliveryForm = ({
       <FormSelect
         label="Entregador"
         placeholder="Selecione o entregador"
-        name="deliveryman"
+        name="deliveryman_id"
         control={control}
-        errorMessage={errors?.deliveryman?.message}
+        errorMessage={errors?.deliveryman_id?.message}
         options={deliverymansOptions}
       />
 
       <FormSelect
         label="Veículo"
         placeholder="Selecione o veículo"
-        name="vehicle"
+        name="vehicle_id"
         control={control}
-        errorMessage={errors?.vehicle?.message}
+        errorMessage={errors?.vehicle_id?.message}
         options={vehiclesOptions}
       />
 
       <FormSelect
         label="Pedidos"
         placeholder="Selecione os pedidos"
-        name="orders"
+        name="orders_ids"
         control={control}
         isMulti
-        errorMessage={errors?.orders?.message}
+        errorMessage={errors?.orders_ids?.message}
         options={ordersOptions}
       />
 

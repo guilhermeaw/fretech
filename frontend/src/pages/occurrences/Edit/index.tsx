@@ -26,7 +26,7 @@ const EditOccurrence = () => {
         ...data,
         id: occurrenceId,
         created_at: occurrenceToEdit.created_at,
-        order_id: Number(data.order.value),
+        order_id: Number(data.order_id),
       });
     }
   };
@@ -42,10 +42,7 @@ const EditOccurrence = () => {
           defaultValues={{
             name: occurrenceToEdit.name,
             description: occurrenceToEdit.description,
-            order: {
-              value: occurrenceToEdit.order_id.toString(),
-              label: occurrenceToEdit.order_id.toString(),
-            },
+            order_id: occurrenceToEdit.order_id.toString(),
           }}
         />
       )}

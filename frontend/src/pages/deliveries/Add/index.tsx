@@ -14,9 +14,9 @@ const AddDelivery = () => {
 
   const handleCreateNewDelivery = async (data: DeliveryFormData) => {
     createDelivery({
-      vehicle_id: Number(data.vehicle.value),
-      deliveryman_id: Number(data.deliveryman.value),
-      orders_ids: data.orders.map(order => Number(order.value)),
+      vehicle_id: Number(data.vehicle_id),
+      deliveryman_id: Number(data.deliveryman_id),
+      orders_ids: data.orders_ids.map(order => Number(order)),
     });
   };
 

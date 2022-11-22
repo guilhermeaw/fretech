@@ -13,7 +13,7 @@ const AddOccurrence = () => {
   });
 
   const handleCreateNewOccurrence = async (data: OccurrenceFormData) => {
-    createOccurrence({ ...data, order_id: Number(data.order.value) });
+    createOccurrence({ ...data, order_id: Number(data.order_id) });
   };
 
   return (

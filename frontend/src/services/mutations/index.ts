@@ -7,3 +7,4 @@ export * from './useLogin';
 export * from './useUpdateDeliveryman';
 export * from './useUpdateOccurrence';
 export * from './useUpdateOrder';
+export * from './useUpdateVehicle';

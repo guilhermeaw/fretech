@@ -60,16 +60,16 @@ export const occurrencesHandlers = [
     const { name, description, order_id } = await req.json();
     const { id } = req.params;
 
-    const deliverymanId = Number(id);
+    const occurrenceId = Number(id);
 
     return res(
       ctx.json({
-        id: deliverymanId,
+        id: occurrenceId,
         name,
         description,
         order_id,
         created_at: occurrences.find(
-          occurrence => occurrence.id === deliverymanId,
+          occurrence => occurrence.id === occurrenceId,
         )?.created_at,
       }),
     );

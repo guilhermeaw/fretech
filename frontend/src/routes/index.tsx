@@ -17,14 +17,15 @@ import OrderInfo from '../pages/orders/Info';
 import OrdersList from '../pages/orders/List';
 
 import AddOccurrence from '../pages/occurrences/Add';
+import EditOccurrence from '../pages/occurrences/Edit';
 import OccurrencesList from '../pages/occurrences/List';
 
 import AddVehicle from '../pages/vehicles/Add';
+import EditVehicle from '../pages/vehicles/Edit';
 import VehiclesList from '../pages/vehicles/List';
 
 import AddDelivery from '../pages/deliveries/Add';
 import DeliveriesList from '../pages/deliveries/List';
-import EditOccurrence from '../pages/occurrences/Edit';
 
 const AppRoutes = () => (
   <>
@@ -48,6 +49,7 @@ const AppRoutes = () => (
 
         <Route path="veiculos" element={<VehiclesList />} />
         <Route path="veiculos/novo" element={<AddVehicle />} />
+        <Route path="veiculos/editar/:id" element={<EditVehicle />} />
 
         <Route path="entregas" element={<DeliveriesList />} />
         <Route path="entregas/nova" element={<AddDelivery />} />

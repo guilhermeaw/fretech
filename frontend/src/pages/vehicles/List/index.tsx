@@ -8,12 +8,12 @@ import {
   Text,
 } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
-import { FiEdit, FiEye, FiMoreVertical, FiTrash } from 'react-icons/fi';
+import { FiEdit, FiMoreVertical, FiTrash } from 'react-icons/fi';
 
 import { Card } from '../../../components/Card';
-import { VehicleStatusBadge } from '../components/VehicleStatusBadge';
 import { useFetchVehicles } from '../../../services/queries';
 import { ListContainer } from '../../../templates/ListContainer';
+import { VehicleStatusBadge } from '../components/VehicleStatusBadge';
 
 const VehiclesList = () => {
   const { data: vehicles } = useFetchVehicles();
@@ -45,13 +45,13 @@ const VehiclesList = () => {
                 icon={<FiMoreVertical />}
               />
               <MenuList>
-                {/* <MenuItem
+                <MenuItem
                   as={Link}
                   to={`/veiculos/editar/${id}`}
                   icon={<FiEdit color="blue" />}
                 >
                   Editar
-                </MenuItem> */}
+                </MenuItem>
                 {/* <MenuItem icon={<FiTrash color="red" />}>Excluir</MenuItem> */}
               </MenuList>
             </Menu>

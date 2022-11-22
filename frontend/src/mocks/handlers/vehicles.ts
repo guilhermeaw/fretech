@@ -32,6 +32,11 @@ export const vehiclesHandlers = [
     return res(ctx.json(vehicles));
   }),
 
+  rest.get(`${basePath}/vehicles/:id`, (req, res, ctx) => {
+    const { id } = req.params;
+    return res(ctx.json(vehicles.find(vehicle => vehicle.id === Number(id))));
+  }),
+
   rest.post(`${basePath}/vehicles`, async (req, res, ctx) => {
     const { plate, model, capacity } = await req.json();
 
@@ -42,6 +47,23 @@ export const vehiclesHandlers = [
         model,
         plate,
         status: VehicleStatus.AVAILABLE,
+      }),
+    );
+  }),
+
+  rest.put(`${basePath}/vehicles/:id`, async (req, res, ctx) => {
+    const { model, plate, capacity } = await req.json();
+    const { id } = req.params;
+
+    const vehicleId = Number(id);
+
+    return res(
+      ctx.json({
+        id: vehicleId,
+        model,
+        plate,
+        capacity,
+        status: vehicles.find(vehicle => vehicle.id === vehicleId)?.status,
       }),
     );
   }),

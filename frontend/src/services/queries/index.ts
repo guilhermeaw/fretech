@@ -6,3 +6,4 @@ export * from './useFetchVehicles';
 export * from './useFindDeliverymanById';
 export * from './useFindOccurrenceById';
 export * from './useFindOrderById';
+export * from './useFindVehicleById';

@@ -7,8 +7,8 @@ import { OccurrenceForm } from '../../../templates/OccurrenceForm';
 import { OccurrenceFormData } from '../../../templates/OccurrenceForm/occurrenceValidationSchema';
 
 const EditOccurrence = () => {
-  const navigate = useNavigate();
   const { id } = useParams();
+  const navigate = useNavigate();
 
   const occurrenceId = Number(id);
 

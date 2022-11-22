@@ -25,6 +25,7 @@ import EditVehicle from '../pages/vehicles/Edit';
 import VehiclesList from '../pages/vehicles/List';
 
 import AddDelivery from '../pages/deliveries/Add';
+import EditDelivery from '../pages/deliveries/Edit';
 import DeliveriesList from '../pages/deliveries/List';
 
 const AppRoutes = () => (
@@ -53,6 +54,7 @@ const AppRoutes = () => (
 
         <Route path="entregas" element={<DeliveriesList />} />
         <Route path="entregas/nova" element={<AddDelivery />} />
+        <Route path="entregas/editar/:id" element={<EditDelivery />} />
       </DOMRoutes>
     </ContentContainer>
   </>

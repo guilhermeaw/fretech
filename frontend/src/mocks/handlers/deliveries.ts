@@ -157,4 +157,28 @@ export const deliveriesHandlers = [
       }),
     );
   }),
+
+  rest.put(`${basePath}/deliveries/:id`, async (req, res, ctx) => {
+    const { vehicle_id, deliveryman_id, orders_ids } = await req.json();
+    const { id } = req.params;
+
+    const deliveryId = Number(id);
+
+    const findDelivery = deliveries.find(
+      delivery => delivery.id === deliveryId,
+    );
+
+    return res(
+      ctx.json({
+        id: deliveryId,
+        start_date: findDelivery?.start_date,
+        end_date: findDelivery?.end_date,
+        vehicle: vehicles.find(vehicle => vehicle.id === vehicle_id),
+        orders: orders.filter(order => orders_ids.includes(order.id)),
+        deliveryman: deliverymans.find(
+          deliveryman => deliveryman.id === deliveryman_id,
+        ),
+      }),
+    );
+  }),
 ];

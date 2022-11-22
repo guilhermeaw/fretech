@@ -4,12 +4,14 @@ import {
   IconButton,
   Menu,
   MenuButton,
+  MenuItem,
   MenuList,
   Stack,
   Text,
 } from '@chakra-ui/react';
 
-import { FiMoreVertical } from 'react-icons/fi';
+import { FiEdit, FiMoreVertical } from 'react-icons/fi';
+import { Link } from 'react-router-dom';
 import { Card } from '../../../../components/Card';
 import { formatDateTime } from '../../../../utils';
 import { Delivery } from '../../../../models/Delivery';
@@ -56,13 +58,13 @@ export const DeliveryListItem = ({ delivery }: DeliveryListItemProps) => {
             icon={<FiMoreVertical />}
           />
           <MenuList>
-            {/* <MenuItem
-                  as={Link}
-                  to={`/veiculos/editar/${id}`}
-                  icon={<FiEdit color="blue" />}
-                >
-                  Editar
-                </MenuItem> */}
+            <MenuItem
+              as={Link}
+              to={`/entregas/editar/${delivery.id}`}
+              icon={<FiEdit color="blue" />}
+            >
+              Editar
+            </MenuItem>
             {/* <MenuItem icon={<FiTrash color="red" />}>Excluir</MenuItem> */}
           </MenuList>
         </Menu>

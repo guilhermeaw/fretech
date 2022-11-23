@@ -112,8 +112,8 @@ const orders = [
 const deliveries = [
   {
     id: 1,
-    start_date: '2022-11-10T10:00:00',
-    end_date: '2022-11-10T18:00:00',
+    start_date: null,
+    end_date: null,
     vehicle: vehicles[0],
     deliveryman: deliverymans[0],
     orders,
@@ -159,20 +159,17 @@ export const deliveriesHandlers = [
   }),
 
   rest.put(`${basePath}/deliveries/:id`, async (req, res, ctx) => {
-    const { vehicle_id, deliveryman_id, orders_ids } = await req.json();
+    const { vehicle_id, deliveryman_id, orders_ids, start_date, end_date } =
+      await req.json();
+
     const { id } = req.params;
-
     const deliveryId = Number(id);
-
-    const findDelivery = deliveries.find(
-      delivery => delivery.id === deliveryId,
-    );
 
     return res(
       ctx.json({
         id: deliveryId,
-        start_date: findDelivery?.start_date,
-        end_date: findDelivery?.end_date,
+        start_date,
+        end_date,
         vehicle: vehicles.find(vehicle => vehicle.id === vehicle_id),
         orders: orders.filter(order => orders_ids.includes(order.id)),
         deliveryman: deliverymans.find(

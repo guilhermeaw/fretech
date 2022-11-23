@@ -38,11 +38,19 @@ const OccurrencesList = () => {
   return (
     <>
       <ListContainer
-        addButtonLink="/ocorrencias/nova"
-        placeholder="Busca por ocorrências"
-        subtitle="Cadastre, edite e visualize as ocorrências dos pedidos"
-        title="Gerenciando ocorrências"
         headerLabels={['Pedido', 'Ocorrência', 'Criada em', 'Ações']}
+        header={
+          <ListContainer.Header
+            title="Gerenciando ocorrências"
+            subtitle="Cadastre, edite e visualize as ocorrências dos pedidos"
+          />
+        }
+        subHeader={
+          <ListContainer.SubHeader
+            addButtonLink="/ocorrencias/nova"
+            placeholder="Busca por ocorrências"
+          />
+        }
       >
         {occurrences?.map(occurrence => {
           const { id, order_id, name, created_at } = occurrence;

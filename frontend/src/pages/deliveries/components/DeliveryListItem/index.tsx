@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+import { FiEdit, FiMoreVertical, FiSettings } from 'react-icons/fi';
 import {
   Avatar,
   Box,
@@ -10,8 +12,6 @@ import {
   Text,
 } from '@chakra-ui/react';
 
-import { FiEdit, FiMoreVertical } from 'react-icons/fi';
-import { Link } from 'react-router-dom';
 import { Card } from '../../../../components/Card';
 import { formatDateTime } from '../../../../utils';
 import { Delivery } from '../../../../models/Delivery';
@@ -64,6 +64,13 @@ export const DeliveryListItem = ({ delivery }: DeliveryListItemProps) => {
               icon={<FiEdit color="blue" />}
             >
               Editar
+            </MenuItem>
+            <MenuItem
+              as={Link}
+              to={`/entregas/controlar/${delivery.id}`}
+              icon={<FiSettings color="purple" />}
+            >
+              Controlar
             </MenuItem>
             {/* <MenuItem icon={<FiTrash color="red" />}>Excluir</MenuItem> */}
           </MenuList>

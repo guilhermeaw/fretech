@@ -8,7 +8,7 @@ export const FormActionButtons = ({ onCancel }: FormActionButtonsProps) => {
   return (
     <HStack justify="flex-end" py="1rem">
       <Button onClick={onCancel}>Cancelar</Button>
-      <Button variant="primary" type="submit">
+      <Button colorScheme="brand" type="submit">
         Salvar
       </Button>
     </HStack>

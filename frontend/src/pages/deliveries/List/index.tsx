@@ -7,10 +7,6 @@ const DeliveriesList = () => {
 
   return (
     <ListContainer
-      addButtonLink="/entregas/nova"
-      placeholder="Busca por entregas"
-      subtitle="Cadastre, edite e visualize as entregas"
-      title="Gerenciando entregas"
       headerLabels={[
         'Andamento',
         'Entregador',
@@ -19,6 +15,18 @@ const DeliveriesList = () => {
         'Saída',
         'Ações',
       ]}
+      header={
+        <ListContainer.Header
+          title="Gerenciando entregas"
+          subtitle="Cadastre, edite e visualize as entregas"
+        />
+      }
+      subHeader={
+        <ListContainer.SubHeader
+          addButtonLink="/entregas/nova"
+          placeholder="Busca por entregas"
+        />
+      }
     >
       {deliveries?.map(delivery => (
         <DeliveryListItem key={delivery.id} delivery={delivery} />

@@ -21,11 +21,19 @@ const DeliverymansList = () => {
 
   return (
     <ListContainer
-      addButtonLink="/entregadores/novo"
-      title="Gerenciando entregadores"
-      subtitle="Cadastre, edite e visualize os entregadores"
-      placeholder="Busca por entregadores"
       headerLabels={['ID', 'Foto', 'Nome', 'Email', 'Ações']}
+      header={
+        <ListContainer.Header
+          title="Gerenciando entregadores"
+          subtitle="Cadastre, edite e visualize os entregadores"
+        />
+      }
+      subHeader={
+        <ListContainer.SubHeader
+          addButtonLink="/entregadores/novo"
+          placeholder="Busca por entregadores"
+        />
+      }
     >
       {deliverymans?.map(({ id, name, email }) => (
         <Card key={id}>

@@ -20,11 +20,19 @@ const VehiclesList = () => {
 
   return (
     <ListContainer
-      addButtonLink="/veiculos/novo"
-      placeholder="Busca por veículos"
-      subtitle="Cadastre, edite e visualize os veículos"
-      title="Gerenciando veículos"
       headerLabels={['Placa', 'Modelo', 'Capacidade', 'Status', 'Ações']}
+      header={
+        <ListContainer.Header
+          title="Gerenciando veículos"
+          subtitle="Cadastre, edite e visualize os veículos"
+        />
+      }
+      subHeader={
+        <ListContainer.SubHeader
+          addButtonLink="/veiculos/novo"
+          placeholder="Busca por veículos"
+        />
+      }
     >
       {vehicles?.map(({ id, model, plate, capacity, status }) => (
         <Card key={id}>

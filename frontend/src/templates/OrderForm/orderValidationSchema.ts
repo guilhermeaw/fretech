@@ -1,9 +1,6 @@
 import * as zod from 'zod';
 
-import { OrderStatus } from '../../models/Order';
-
 export const orderValidationSchema = zod.object({
-  status: zod.nativeEnum(OrderStatus),
   receiver: zod.object({
     name: zod
       .string()

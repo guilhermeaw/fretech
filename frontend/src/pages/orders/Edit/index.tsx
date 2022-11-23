@@ -1,6 +1,7 @@
 import { Heading, Text } from '@chakra-ui/react';
 import { useNavigate, useParams } from 'react-router-dom';
 
+import { OrderStatus } from '../../../models/Order';
 import { OrderForm } from '../../../templates/OrderForm';
 import { useFindOrderById } from '../../../services/queries';
 import { useUpdateOrder } from '../../../services/mutations';
@@ -21,7 +22,11 @@ const EditOrder = () => {
   });
 
   const handleEditOrder = async (data: OrderFormData) => {
-    editOrder({ ...data, id: orderId });
+    editOrder({
+      ...data,
+      id: orderId,
+      status: orderToEdit?.status || OrderStatus.PENDING,
+    });
   };
 
   return (

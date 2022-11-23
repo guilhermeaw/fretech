@@ -18,6 +18,9 @@ export const ManageDelivery = () => {
     return null;
   }
 
+  const isActiveDelivery =
+    !!deliveryToManage.start_date && !deliveryToManage.end_date;
+
   return (
     <ListContainer
       headerLabels={[
@@ -31,15 +34,19 @@ export const ManageDelivery = () => {
       header={
         <HStack justify="space-between">
           <ListContainer.Header
-            title="Controlar entrega"
-            subtitle="Controle a entrega e seus pedidos"
+            title="Controlar pedidos da entrega"
+            subtitle="Para atualizar o status dos pedidos, a entrega deve estar em andamento"
           />
           <DeliveryStatusButtons delivery={deliveryToManage} />
         </HStack>
       }
     >
       {deliveryToManage?.orders.map(order => (
-        <OrdersListItem key={order.id} order={order} />
+        <OrdersListItem
+          key={order.id}
+          order={order}
+          canUpdateStatus={isActiveDelivery}
+        />
       ))}
     </ListContainer>
   );

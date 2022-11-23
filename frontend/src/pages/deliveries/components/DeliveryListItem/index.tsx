@@ -70,7 +70,7 @@ export const DeliveryListItem = ({ delivery }: DeliveryListItemProps) => {
               to={`/entregas/controlar/${delivery.id}`}
               icon={<FiSettings color="purple" />}
             >
-              Controlar
+              Controlar pedidos
             </MenuItem>
             {/* <MenuItem icon={<FiTrash color="red" />}>Excluir</MenuItem> */}
           </MenuList>

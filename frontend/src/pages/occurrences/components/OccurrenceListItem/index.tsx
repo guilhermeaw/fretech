@@ -95,7 +95,7 @@ export const OccurrenceListItem = ({ occurrence }: OccurrenceListItemProps) => {
       />
 
       <AlertDialog
-        title={`Remover ocorrência ${occurrence.name}`}
+        title={`Remover ocorrência ${name}`}
         description="Tem certeza que deseja remover esta ocorrência?"
         isOpen={isOpenOccurrenceDelete}
         onClose={onCloseOccurrenceDelete}

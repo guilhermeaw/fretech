@@ -74,4 +74,16 @@ export const occurrencesHandlers = [
       }),
     );
   }),
+
+  rest.delete(`${basePath}/occurrences/:id`, async (req, res, ctx) => {
+    const { id } = req.params;
+
+    const occurrenceId = Number(id);
+
+    return res(
+      ctx.json({
+        id: occurrenceId,
+      }),
+    );
+  }),
 ];

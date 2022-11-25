@@ -8,6 +8,8 @@ type Props = {
   afterSuccess?: () => void;
 };
 
+type DeleteVehicle = Pick<Vehicle, 'id'>;
+
 export const useDeleteVehicle = ({ afterSuccess }: Props) => {
   const toast = useToast();
   const queryClient = useQueryClient();
@@ -28,7 +30,9 @@ export const useDeleteVehicle = ({ afterSuccess }: Props) => {
 
   return useMutation(
     (id: number) =>
-      api.delete<Vehicle>(`/vehicles/${id}`).then(response => response.data),
+      api
+        .delete<DeleteVehicle>(`/vehicles/${id}`)
+        .then(response => response.data),
     {
       onError: (error: Error) => {
         toast({
@@ -37,7 +41,7 @@ export const useDeleteVehicle = ({ afterSuccess }: Props) => {
           status: 'error',
         });
       },
-      onSuccess: ({ id }: Pick<Vehicle, 'id'>) => {
+      onSuccess: ({ id }: DeleteVehicle) => {
         toast({
           title: 'Veículo excluído com sucesso',
           description: 'O veículo foi excluído com sucesso',

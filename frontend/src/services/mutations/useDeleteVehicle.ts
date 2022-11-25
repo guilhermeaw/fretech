@@ -32,7 +32,7 @@ export const useDeleteVehicle = ({ afterSuccess }: Props) => {
     {
       onError: (error: Error) => {
         toast({
-          title: 'Erro ao editar veículo',
+          title: 'Erro ao remover veículo',
           description: error.message,
           status: 'error',
         });

@@ -1,7 +1,7 @@
 import { rest } from 'msw';
 
 import { basePath } from './constants';
-import { Vehicle } from '../../models/Vehicle';
+import { Vehicle, VehicleStatus } from '../../models/Vehicle';
 
 const vehicles = [
   {
@@ -30,5 +30,53 @@ const vehicles = [
 export const vehiclesHandlers = [
   rest.get(`${basePath}/vehicles`, (req, res, ctx) => {
     return res(ctx.json(vehicles));
+  }),
+
+  rest.get(`${basePath}/vehicles/:id`, (req, res, ctx) => {
+    const { id } = req.params;
+    return res(ctx.json(vehicles.find(vehicle => vehicle.id === Number(id))));
+  }),
+
+  rest.post(`${basePath}/vehicles`, async (req, res, ctx) => {
+    const { plate, model, capacity } = await req.json();
+
+    return res(
+      ctx.json({
+        id: Math.floor(Math.random() * (10 - 4 + 1) + 4),
+        capacity,
+        model,
+        plate,
+        status: VehicleStatus.AVAILABLE,
+      }),
+    );
+  }),
+
+  rest.put(`${basePath}/vehicles/:id`, async (req, res, ctx) => {
+    const { model, plate, capacity } = await req.json();
+    const { id } = req.params;
+
+    const vehicleId = Number(id);
+
+    return res(
+      ctx.json({
+        id: vehicleId,
+        model,
+        plate,
+        capacity,
+        status: vehicles.find(vehicle => vehicle.id === vehicleId)?.status,
+      }),
+    );
+  }),
+
+  rest.delete(`${basePath}/vehicles/:id`, async (req, res, ctx) => {
+    const { id } = req.params;
+
+    const vehicleId = Number(id);
+
+    return res(
+      ctx.json({
+        id: vehicleId,
+      }),
+    );
   }),
 ];

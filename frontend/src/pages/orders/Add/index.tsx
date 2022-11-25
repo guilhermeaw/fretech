@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { Heading, Text } from '@chakra-ui/react';
 
+import { OrderStatus } from '../../../models/Order';
 import { OrderForm } from '../../../templates/OrderForm';
 import { useCreateOrder } from '../../../services/mutations';
 import { OrderFormData } from '../../../templates/OrderForm/orderValidationSchema';
@@ -13,7 +14,7 @@ const AddOrder = () => {
   });
 
   const handleCreateNewOrder = async (data: OrderFormData) => {
-    createOrder(data);
+    createOrder({ ...data, status: OrderStatus.PENDING });
   };
 
   return (

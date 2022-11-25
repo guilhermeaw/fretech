@@ -34,6 +34,14 @@ export const occurrencesHandlers = [
     return res(ctx.json(occurrences));
   }),
 
+  rest.get(`${basePath}/occurrences/:id`, (req, res, ctx) => {
+    const { id } = req.params;
+
+    return res(
+      ctx.json(occurrences.find(occurrence => occurrence.id === Number(id))),
+    );
+  }),
+
   rest.post(`${basePath}/occurrences`, async (req, res, ctx) => {
     const { name, description, order_id } = await req.json();
 
@@ -44,6 +52,37 @@ export const occurrencesHandlers = [
         name,
         description,
         order_id,
+      }),
+    );
+  }),
+
+  rest.put(`${basePath}/occurrences/:id`, async (req, res, ctx) => {
+    const { name, description, order_id } = await req.json();
+    const { id } = req.params;
+
+    const occurrenceId = Number(id);
+
+    return res(
+      ctx.json({
+        id: occurrenceId,
+        name,
+        description,
+        order_id,
+        created_at: occurrences.find(
+          occurrence => occurrence.id === occurrenceId,
+        )?.created_at,
+      }),
+    );
+  }),
+
+  rest.delete(`${basePath}/occurrences/:id`, async (req, res, ctx) => {
+    const { id } = req.params;
+
+    const occurrenceId = Number(id);
+
+    return res(
+      ctx.json({
+        id: occurrenceId,
       }),
     );
   }),

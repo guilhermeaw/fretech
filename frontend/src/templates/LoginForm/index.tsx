@@ -24,6 +24,7 @@ export const LoginForm = ({ onSubmit }: LoginFormProps) => {
       w="400px"
       bg="white"
       p="2rem"
+      m="1rem"
       borderRadius={4}
       onSubmit={handleSubmit(onSubmit)}
     >
@@ -49,7 +50,7 @@ export const LoginForm = ({ onSubmit }: LoginFormProps) => {
         {...register('password')}
       />
 
-      <Button type="submit" w="100%" my="1rem" variant="primary">
+      <Button type="submit" w="100%" my="1rem" colorScheme="brand">
         Entrar
       </Button>
     </Box>

@@ -1,5 +1,5 @@
-import { Box, UnorderedList } from '@chakra-ui/react';
 import { useLocation } from 'react-router-dom';
+import { Box, UnorderedList } from '@chakra-ui/react';
 
 import { Navitem } from '../Navitem';
 import { NavitemProp } from '../navitems';
@@ -12,6 +12,10 @@ type NavbarProps = {
 export const Navbar = ({ navitems, direction = 'row' }: NavbarProps) => {
   const { pathname } = useLocation();
   const isDirectionColumn = direction === 'column';
+
+  const pathnameIncludesPath = (path: string) => {
+    return pathname.includes(path.split('/')[1]);
+  };
 
   return (
     <Box as="nav" h="100%">
@@ -27,7 +31,7 @@ export const Navbar = ({ navitems, direction = 'row' }: NavbarProps) => {
             key={title}
             title={title}
             to={to}
-            isActive={to === pathname}
+            isActive={(() => pathnameIncludesPath(to))()}
             size={isDirectionColumn ? '4xl' : 'md'}
           />
         ))}

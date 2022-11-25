@@ -1,20 +1,11 @@
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { zodResolver } from '@hookform/resolvers/zod';
-import {
-  Box,
-  Button,
-  Divider,
-  Heading,
-  HStack,
-  Radio,
-  SimpleGrid,
-} from '@chakra-ui/react';
+import { Box, Divider, Heading, SimpleGrid } from '@chakra-ui/react';
 
 import { FormContainer } from '../FormContainer';
 import { FormInput } from '../../components/Form/Input';
-import { FormRadioGroup } from '../../components/Form/RadioGroup';
-import { OrderStatus, OrderStatusLabel } from '../../models/Order';
+import { FormActionButtons } from '../../components/FormActionButtons';
 import { OrderFormData, orderValidationSchema } from './orderValidationSchema';
 
 type OrderFormProps = {
@@ -24,14 +15,12 @@ type OrderFormProps = {
 
 export const OrderForm = ({ onSubmit, defaultValues }: OrderFormProps) => {
   const {
-    control,
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<OrderFormData>({
     resolver: zodResolver(orderValidationSchema),
     defaultValues: {
-      status: OrderStatus.PENDING,
       ...defaultValues,
     },
   });
@@ -45,22 +34,6 @@ export const OrderForm = ({ onSubmit, defaultValues }: OrderFormProps) => {
   return (
     <FormContainer onSubmit={handleSubmit(onSubmit)}>
       <Box mb={8}>
-        <Heading fontSize="2xl">Status do pedido</Heading>
-
-        <FormRadioGroup
-          control={control}
-          name="status"
-          defaultValue={OrderStatus.PENDING}
-        >
-          {Object.values(OrderStatus).map(statusValue => (
-            <Radio key={statusValue} value={statusValue}>
-              {OrderStatusLabel[statusValue]}
-            </Radio>
-          ))}
-        </FormRadioGroup>
-      </Box>
-
-      <Box my={8}>
         <Heading fontSize="2xl">Informações do destinatário</Heading>
 
         <FormInput
@@ -91,7 +64,6 @@ export const OrderForm = ({ onSubmit, defaultValues }: OrderFormProps) => {
         <SimpleGrid columns={[1, 2]} spacingX={4}>
           <FormInput
             label="CEP"
-            type="number"
             errorMessage={errors?.address?.cep?.message}
             {...register('address.cep')}
           />
@@ -131,12 +103,7 @@ export const OrderForm = ({ onSubmit, defaultValues }: OrderFormProps) => {
         </SimpleGrid>
       </Box>
 
-      <HStack justify="flex-end" py="1rem">
-        <Button onClick={handleCancel}>Cancelar</Button>
-        <Button variant="primary" type="submit">
-          Salvar
-        </Button>
-      </HStack>
+      <FormActionButtons onCancel={handleCancel} />
     </FormContainer>
   );
 };

@@ -1,10 +1,11 @@
 import { useForm } from 'react-hook-form';
+import { Avatar, Center } from '@chakra-ui/react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Avatar, Button, Center, HStack } from '@chakra-ui/react';
 
-import { FormInput } from '../../components/Form/Input';
 import { FormContainer } from '../FormContainer';
+import { FormInput } from '../../components/Form/Input';
+import { FormActionButtons } from '../../components/FormActionButtons';
 import {
   DeliverymanFormData,
   useDeliverymanValidationSchema,
@@ -80,12 +81,7 @@ export const DeliverymanForm = ({
         {...register('phone')}
       />
 
-      <HStack justify="flex-end" py="1rem">
-        <Button onClick={handleCancel}>Cancelar</Button>
-        <Button variant="primary" type="submit">
-          Salvar
-        </Button>
-      </HStack>
+      <FormActionButtons onCancel={handleCancel} />
     </FormContainer>
   );
 };

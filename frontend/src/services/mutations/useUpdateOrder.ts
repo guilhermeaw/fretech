@@ -1,8 +1,8 @@
 import { useToast } from '@chakra-ui/react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
-import { Order } from '../../models/Order';
 import { api } from '../api';
+import { Order } from '../../models/Order';
 
 type Props = {
   afterSuccess?: () => void;

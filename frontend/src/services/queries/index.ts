@@ -3,5 +3,8 @@ export * from './useFetchDeliverymans';
 export * from './useFetchOccurrences';
 export * from './useFetchOrders';
 export * from './useFetchVehicles';
+export * from './useFindDeliveryById';
 export * from './useFindDeliverymanById';
+export * from './useFindOccurrenceById';
 export * from './useFindOrderById';
+export * from './useFindVehicleById';

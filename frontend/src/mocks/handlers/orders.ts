@@ -102,4 +102,16 @@ export const ordersHandlers = [
       }),
     );
   }),
+
+  rest.delete(`${basePath}/orders/:id`, async (req, res, ctx) => {
+    const { id } = req.params;
+
+    const orderId = Number(id);
+
+    return res(
+      ctx.json({
+        id: orderId,
+      }),
+    );
+  }),
 ];

@@ -67,4 +67,16 @@ export const vehiclesHandlers = [
       }),
     );
   }),
+
+  rest.delete(`${basePath}/vehicles/:id`, async (req, res, ctx) => {
+    const { id } = req.params;
+
+    const vehicleId = Number(id);
+
+    return res(
+      ctx.json({
+        id: vehicleId,
+      }),
+    );
+  }),
 ];

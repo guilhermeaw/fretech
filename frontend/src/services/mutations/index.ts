@@ -4,6 +4,7 @@ export * from './useCreateOccurrence';
 export * from './useCreateOrder';
 export * from './useCreateVehicle';
 export * from './useDeleteOccurrence';
+export * from './useDeleteOrder';
 export * from './useDeleteVehicle';
 export * from './useLogin';
 export * from './useUpdateDelivery';

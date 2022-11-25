@@ -1,6 +1,6 @@
+import { HStack } from '@chakra-ui/react';
 import { useParams } from 'react-router-dom';
 
-import { HStack } from '@chakra-ui/react';
 import { useFindDeliveryById } from '../../../services/queries';
 import { DeliveryStatusButtons } from './DeliveryStatusButtons';
 import { ListContainer } from '../../../templates/ListContainer';
@@ -46,6 +46,7 @@ export const ManageDelivery = () => {
           key={order.id}
           order={order}
           canUpdateStatus={isActiveDelivery}
+          canDeleteOrder={false}
         />
       ))}
     </ListContainer>

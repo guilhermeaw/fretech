@@ -52,7 +52,7 @@ export const OrdersListItem = ({
 
   const { mutate: deleteOrder } = useDeleteOrder({});
 
-  const handleDeleteOpenedOrder = () => {
+  const handleDeleteOrder = () => {
     deleteOrder(id);
     onCloseOrderDelete();
   };
@@ -123,7 +123,7 @@ export const OrdersListItem = ({
         description="Tem certeza que deseja remover este pedido?"
         isOpen={isOpenOrderDelete}
         onClose={onCloseOrderDelete}
-        afterConfirm={handleDeleteOpenedOrder}
+        afterConfirm={handleDeleteOrder}
       />
     </>
   );

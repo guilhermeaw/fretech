@@ -3,7 +3,7 @@ import { OrdersListItem } from '../components/OrderListItem';
 import { ListContainer } from '../../../templates/ListContainer';
 
 const OrdersList = () => {
-  const { data: orders } = useFetchOrders();
+  const { data: orders, isLoading } = useFetchOrders();
 
   return (
     <ListContainer
@@ -27,6 +27,8 @@ const OrdersList = () => {
           placeholder="Busca por pedidos"
         />
       }
+      hasItems={!!orders?.length}
+      isLoading={isLoading}
     >
       {orders?.map(order => (
         <OrdersListItem key={order.id} order={order} />

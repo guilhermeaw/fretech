@@ -10,7 +10,7 @@ export const ManageDelivery = () => {
   const { id } = useParams();
   const deliveryId = Number(id);
 
-  const { data: deliveryToManage } = useFindDeliveryById({
+  const { data: deliveryToManage, isLoading } = useFindDeliveryById({
     id: deliveryId,
   });
 
@@ -40,6 +40,8 @@ export const ManageDelivery = () => {
           <DeliveryStatusButtons delivery={deliveryToManage} />
         </HStack>
       }
+      hasItems={!!deliveryToManage.orders.length}
+      isLoading={isLoading}
     >
       {deliveryToManage?.orders.map(order => (
         <OrdersListItem

@@ -3,7 +3,7 @@ import { useFetchDeliverymans } from '../../../services/queries';
 import { DeliverymansListItem } from '../components/DeliverymanListItem';
 
 const DeliverymansList = () => {
-  const { data: deliverymans } = useFetchDeliverymans();
+  const { data: deliverymans, isLoading } = useFetchDeliverymans();
 
   return (
     <ListContainer
@@ -20,6 +20,8 @@ const DeliverymansList = () => {
           placeholder="Busca por entregadores"
         />
       }
+      hasItems={!!deliverymans?.length}
+      isLoading={isLoading}
     >
       {deliverymans?.map(deliveryman => (
         <DeliverymansListItem key={deliveryman.id} deliveryman={deliveryman} />

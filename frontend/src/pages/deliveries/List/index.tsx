@@ -3,7 +3,7 @@ import { ListContainer } from '../../../templates/ListContainer';
 import { DeliveryListItem } from '../components/DeliveryListItem';
 
 const DeliveriesList = () => {
-  const { data: deliveries } = useFetchDeliveries();
+  const { data: deliveries, isLoading } = useFetchDeliveries();
 
   return (
     <ListContainer
@@ -27,6 +27,8 @@ const DeliveriesList = () => {
           placeholder="Busca por entregas"
         />
       }
+      hasItems={!!deliveries?.length}
+      isLoading={isLoading}
     >
       {deliveries?.map(delivery => (
         <DeliveryListItem key={delivery.id} delivery={delivery} />

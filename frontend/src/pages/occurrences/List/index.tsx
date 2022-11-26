@@ -3,7 +3,7 @@ import { ListContainer } from '../../../templates/ListContainer';
 import { OccurrenceListItem } from '../components/OccurrenceListItem';
 
 const OccurrencesList = () => {
-  const { data: occurrences } = useFetchOccurrences();
+  const { data: occurrences, isLoading } = useFetchOccurrences();
 
   return (
     <ListContainer
@@ -20,6 +20,8 @@ const OccurrencesList = () => {
           placeholder="Busca por ocorrências"
         />
       }
+      hasItems={!!occurrences?.length}
+      isLoading={isLoading}
     >
       {occurrences?.map(occurrence => (
         <OccurrenceListItem key={occurrence.id} occurrence={occurrence} />

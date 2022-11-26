@@ -19,7 +19,7 @@ const ListContainer = ({
   subHeader,
   headerLabels,
   hasItems = true,
-  isLoading = true,
+  isLoading = false,
   children,
 }: ListContainerProps) => {
   return (

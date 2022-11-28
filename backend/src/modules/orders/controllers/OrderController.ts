@@ -1,36 +1,22 @@
 import { instanceToPlain } from 'class-transformer';
 import { Request, Response } from 'express';
 
-import CreateOccurenceService from '../services/CreateOccurenceService';
+import CreateOrderService from '../services/CreateOrderService';
 
-export default class OccurenceController {
-    public async create(request: Request, response:Response): Promise<Response> {
-        const { 
-            cep, 
-            state, 
-            city, 
-            number, 
-            street, 
-            status, 
-            entry_date, 
-            exit_date, 
-            name_receiver, 
-            cpf_receiver
-        } = request.body;
+export default class OrderController {
+  public async create(request: Request, response: Response): Promise<Response> {
+    const { address, status, entry_date, exit_date, receiver } = request.body;
 
-        const occurence = await new CreateOccurenceService().execute({
-            cep, 
-            state, 
-            city, 
-            number, 
-            street, 
-            status, 
-            entry_date, 
-            exit_date, 
-            name_receiver, 
-            cpf_receiver
-        })
-        
-        return response.json(instanceToPlain(occurence));
-    }
+    const order = await new CreateOrderService().execute({
+      ...address,
+      status,
+      entry_date,
+      exit_date,
+      name_receiver: receiver.name,
+      cpf_receiver: receiver.cpf,
+      phone_receiver: receiver.phone,
+    });
+
+    return response.json(instanceToPlain(order));
+  }
 }

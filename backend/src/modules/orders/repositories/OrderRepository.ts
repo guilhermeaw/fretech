@@ -10,7 +10,9 @@ export default class OrderRepository {
     this.ormRepository = AppDataSource.getRepository(Order);
   }
 
-  public async create(orderData: Omit<Order, 'id'>): Promise<Order> {
+  public async create(
+    orderData: Omit<Order, 'id' | 'getAddress' | 'getReceiver'>,
+  ): Promise<Order> {
     const order = this.ormRepository.create(orderData);
     await this.ormRepository.save(order);
 

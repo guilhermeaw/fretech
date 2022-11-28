@@ -1,6 +1,7 @@
 import { Repository } from 'typeorm';
 
 import AppDataSource from '@shared/database/ormconfig';
+import { IUpdateUserDTO } from '../dtos/IUpdateUserDTO';
 import User from '../entities/User';
 
 export default class UsersRepository {
@@ -21,5 +22,23 @@ export default class UsersRepository {
     return this.ormRepository.findOne({
       where: { email },
     });
+  }
+
+  public async findById(id: number): Promise<User | null> {
+    const user = await this.ormRepository.findOne({
+      where: { id },
+    });
+
+    return user;
+  }
+
+  public async update({ id, userData }: IUpdateUserDTO): Promise<void> {
+    await this.ormRepository.update({ id }, userData);
+  }
+
+  public async listAll(): Promise<User[]> {
+    const users = await this.ormRepository.find();
+
+    return users;
   }
 }

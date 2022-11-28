@@ -1,5 +1,3 @@
-import AppError from '@shared/errors/AppError';
-
 import { ICreateDeliveryDTO } from '../dtos/ICreateDeliveryDTO';
 import Delivery from '../entities/Delivery';
 import DeliveryRepository from '../repositories/DeliveryRepository';
@@ -11,7 +9,12 @@ export default class CreateDeliveryService {
     this.deliveryRepository = new DeliveryRepository();
   }
 
-  public async execute({ user_id, vehicle_id, start_date, end_date }: ICreateDeliveryDTO): Promise<Delivery> {
+  public async execute({
+    user_id,
+    vehicle_id,
+    start_date,
+    end_date,
+  }: ICreateDeliveryDTO): Promise<Delivery> {
     // Validações
     // const checkDeliveryExists = await this.deliveryRepository.findByDate(start_date);
 
@@ -20,10 +23,10 @@ export default class CreateDeliveryService {
     // }
 
     const delivery = await this.deliveryRepository.create({
-        user_id,
-        vehicle_id,
-        start_date,
-        end_date
+      user_id,
+      vehicle_id,
+      start_date,
+      end_date,
     });
 
     return delivery;

@@ -6,7 +6,7 @@ const deliveriesRouter = Router();
 
 const develieriesController = new DeliveryController();
 
-deliveriesRouter.post('/create', develieriesController.create);
+deliveriesRouter.post('/', develieriesController.create);
 // deliveriesRouter.delete('/:id', develieriesController.delete);
 // deliveriesRouter.get('/me', develieriesController.listMy);
 

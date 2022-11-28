@@ -1,5 +1,4 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-import { Exclude } from 'class-transformer';
 
 @Entity('vehicles')
 export default class Vehicle {
@@ -13,6 +12,5 @@ export default class Vehicle {
   model: string;
 
   @Column()
-  @Exclude()
-  volume: number;
+  capacity: number;
 }

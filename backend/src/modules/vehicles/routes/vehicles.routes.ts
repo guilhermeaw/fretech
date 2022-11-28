@@ -6,6 +6,6 @@ const vehiclesRouter = Router();
 
 const vehiclesController = new VehicleController();
 
-vehiclesRouter.post('/create', vehiclesController.create);
+vehiclesRouter.post('/', vehiclesController.create);
 
 export default vehiclesRouter;

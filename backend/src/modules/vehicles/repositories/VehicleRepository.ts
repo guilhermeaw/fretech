@@ -1,4 +1,4 @@
-import { MoreThan, Repository } from 'typeorm';
+import { Repository } from 'typeorm';
 
 import AppDataSource from '@shared/database/ormconfig';
 import Vehicle from '../entities/Vehicle';

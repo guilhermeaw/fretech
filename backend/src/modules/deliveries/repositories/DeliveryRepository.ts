@@ -1,4 +1,4 @@
-import { MoreThan, Repository } from 'typeorm';
+import { Repository } from 'typeorm';
 
 import AppDataSource from '@shared/database/ormconfig';
 import Delivery from '../entities/Delivery';
@@ -11,7 +11,7 @@ export default class DeliveryRepository {
     this.ormRepository = AppDataSource.getRepository(Delivery);
   }
 
-  public async create(deliveryData: Omit<ICreateDeliveryDTO, 'id'>): Promise<Delivery> {
+  public async create(deliveryData: ICreateDeliveryDTO): Promise<Delivery> {
     const delivery = this.ormRepository.create(deliveryData);
     await this.ormRepository.save(delivery);
 

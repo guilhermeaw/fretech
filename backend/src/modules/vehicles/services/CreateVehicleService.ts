@@ -1,7 +1,11 @@
-import AppError from '@shared/errors/AppError';
-
 import Vehicle from '../entities/Vehicle';
 import VehicleRepository from '../repositories/VehicleRepository';
+
+interface ICreateVehicleDTO {
+  plate: string;
+  model: string;
+  capacity: number;
+}
 
 export default class CreateVehicleService {
   private vehicleRepository: VehicleRepository;
@@ -10,11 +14,15 @@ export default class CreateVehicleService {
     this.vehicleRepository = new VehicleRepository();
   }
 
-  public async execute({ plate, model, volume }: Vehicle): Promise<Vehicle> {
+  public async execute({
+    plate,
+    model,
+    capacity,
+  }: ICreateVehicleDTO): Promise<Vehicle> {
     const delivery = await this.vehicleRepository.create({
-        plate,
-        model,
-        volume
+      plate,
+      model,
+      capacity,
     });
 
     return delivery;

@@ -3,7 +3,7 @@ import { VehicleListItem } from '../components/VehicleListItem';
 import { ListContainer } from '../../../templates/ListContainer';
 
 const VehiclesList = () => {
-  const { data: vehicles } = useFetchVehicles();
+  const { data: vehicles, isLoading } = useFetchVehicles();
 
   return (
     <ListContainer
@@ -20,6 +20,8 @@ const VehiclesList = () => {
           placeholder="Busca por veículos"
         />
       }
+      hasItems={!!vehicles?.length}
+      isLoading={isLoading}
     >
       {vehicles?.map(vehicle => (
         <VehicleListItem key={vehicle.id} vehicle={vehicle} />

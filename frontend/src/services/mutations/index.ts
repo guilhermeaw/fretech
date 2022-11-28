@@ -3,6 +3,7 @@ export * from './useCreateDeliveryman';
 export * from './useCreateOccurrence';
 export * from './useCreateOrder';
 export * from './useCreateVehicle';
+export * from './useDeleteDelivery';
 export * from './useDeleteDeliveryman';
 export * from './useDeleteOccurrence';
 export * from './useDeleteOrder';

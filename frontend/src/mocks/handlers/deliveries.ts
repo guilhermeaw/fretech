@@ -178,4 +178,16 @@ export const deliveriesHandlers = [
       }),
     );
   }),
+
+  rest.delete(`${basePath}/deliveries/:id`, async (req, res, ctx) => {
+    const { id } = req.params;
+
+    const deliveryId = Number(id);
+
+    return res(
+      ctx.json({
+        id: deliveryId,
+      }),
+    );
+  }),
 ];

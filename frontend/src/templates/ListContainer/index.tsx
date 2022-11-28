@@ -1,19 +1,16 @@
-import {
-  Button,
-  Heading,
-  HStack,
-  Input,
-  SimpleGrid,
-  Text,
-  VStack,
-} from '@chakra-ui/react';
-import { FiPlus } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
+import { FiPlus } from 'react-icons/fi';
+import { Button, Heading, HStack, Input, Text, VStack } from '@chakra-ui/react';
+
+import { ListContainerContent } from './ListContainerContent';
+import { ListLoadingContainer } from './ListLoadingContainer';
 
 type ListContainerProps = {
   header?: React.ReactNode;
   subHeader?: React.ReactNode;
   headerLabels?: string[];
+  hasItems: boolean;
+  isLoading?: boolean;
   children: React.ReactNode;
 };
 
@@ -21,6 +18,8 @@ const ListContainer = ({
   header,
   subHeader,
   headerLabels,
+  hasItems = true,
+  isLoading = false,
   children,
 }: ListContainerProps) => {
   return (
@@ -28,24 +27,13 @@ const ListContainer = ({
       {header}
       {subHeader}
 
-      {headerLabels?.length && (
-        <SimpleGrid my="1rem" px="1rem" columns={headerLabels.length}>
-          {headerLabels.map((label, index) => {
-            const isLastIndex = index === headerLabels.length - 1;
-
-            return (
-              <Text
-                key={label}
-                align={isLastIndex ? 'right' : 'left'}
-                fontWeight="bold"
-              >
-                {label}
-              </Text>
-            );
-          })}
-        </SimpleGrid>
+      {isLoading ? (
+        <ListLoadingContainer />
+      ) : (
+        <ListContainerContent headerLabels={headerLabels} hasItems={hasItems}>
+          {children}
+        </ListContainerContent>
       )}
-      {children}
     </>
   );
 };

@@ -8,8 +8,8 @@ describe('EmptyList', () => {
         
         render(<EmptyList message={message} />);
 
-        expect(screen.getByAltText(/caixa vazia/i));
-        expect(screen.getByRole('heading', { name: /nada por aqui/i }));
-        expect(screen.getByText(message));
+        expect(screen.getByAltText(/caixa vazia/i)).toBeInTheDocument();
+        expect(screen.getByRole('heading', { name: /nada por aqui/i })).toBeInTheDocument();
+        expect(screen.getByText(message)).toBeInTheDocument();
     })
 })

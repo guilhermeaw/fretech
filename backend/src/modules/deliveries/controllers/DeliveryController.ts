@@ -2,6 +2,7 @@ import { instanceToPlain } from 'class-transformer';
 import { Request, Response } from 'express';
 
 import CreateDeliveryService from '../services/CreateDeliveryService';
+import ListDeliveriesService from '../services/ListDeliveriesService';
 
 export default class DeliveryController {
   public async create(request: Request, response: Response): Promise<Response> {
@@ -22,5 +23,11 @@ export default class DeliveryController {
     });
 
     return response.json(instanceToPlain(delivery));
+  }
+
+  public async index(request: Request, response: Response): Promise<Response> {
+    const deliveries = await new ListDeliveriesService().execute();
+
+    return response.json(instanceToPlain(deliveries));
   }
 }

@@ -1,4 +1,4 @@
-import { Repository } from 'typeorm';
+import { In, Repository } from 'typeorm';
 
 import AppDataSource from '@shared/database/ormconfig';
 import Order from '../entities/Order';
@@ -17,6 +17,10 @@ export default class OrderRepository {
     await this.ormRepository.save(order);
 
     return order;
+  }
+
+  public async listByIds(ids: number[]): Promise<Order[]> {
+    return this.ormRepository.find({ where: { id: In(ids) } });
   }
 
   // public async findByDate(start_date: string): Promise<Delivery | null> {

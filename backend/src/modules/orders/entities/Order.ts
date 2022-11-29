@@ -1,9 +1,12 @@
 import { Exclude, Expose } from 'class-transformer';
+import Delivery from 'modules/deliveries/entities/Delivery';
 import {
   CreateDateColumn,
   Entity,
   PrimaryGeneratedColumn,
   Column,
+  ManyToMany,
+  JoinTable,
 } from 'typeorm';
 
 export enum StatusRole {
@@ -76,6 +79,10 @@ export default class Order {
   @Exclude()
   @Column()
   phone_receiver: string;
+
+  @ManyToMany(() => Delivery, delivery => delivery.orders)
+  @JoinTable()
+  deliveries: Delivery[];
 
   @Expose({ name: 'address' })
   getAddress(): Address {

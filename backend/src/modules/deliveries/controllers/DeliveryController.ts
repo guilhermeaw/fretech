@@ -8,6 +8,7 @@ export default class DeliveryController {
     const {
       deliveryman_id,
       vehicle_id,
+      orders_ids,
       start_date = null,
       end_date = null,
     } = request.body;
@@ -15,6 +16,7 @@ export default class DeliveryController {
     const delivery = await new CreateDeliveryService().execute({
       user_id: Number(deliveryman_id),
       vehicle_id: Number(vehicle_id),
+      orders_ids: orders_ids.map((order_id: string) => Number(order_id)),
       start_date,
       end_date,
     });

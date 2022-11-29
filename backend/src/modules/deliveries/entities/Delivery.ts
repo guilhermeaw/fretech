@@ -5,9 +5,12 @@ import {
   PrimaryGeneratedColumn,
   JoinColumn,
   Column,
+  OneToMany,
 } from 'typeorm';
 
+import Order from 'modules/orders/entities/Order';
 import User from '../../users/entities/User';
+import DeliveryHasOrders from './DeliveryHasOrders';
 import Vehicle from '../../vehicles/entities/Vehicle';
 
 @Entity('deliveries')
@@ -28,6 +31,12 @@ export default class Delivery {
   @ManyToOne(() => Vehicle, { eager: true })
   @JoinColumn({ name: 'vehicle_id' })
   vehicle: Vehicle;
+
+  @OneToMany(
+    () => DeliveryHasOrders,
+    deliveriesOrdersMapping => deliveriesOrdersMapping.order,
+  )
+  orders: Order[];
 
   @CreateDateColumn({ nullable: true })
   start_date?: Date;

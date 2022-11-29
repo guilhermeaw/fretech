@@ -11,7 +11,9 @@ export default class DeliveryRepository {
     this.ormRepository = AppDataSource.getRepository(Delivery);
   }
 
-  public async create(deliveryData: ICreateDeliveryDTO): Promise<Delivery> {
+  public async create(
+    deliveryData: Omit<ICreateDeliveryDTO, 'orders_ids'>,
+  ): Promise<Delivery> {
     const delivery = this.ormRepository.create(deliveryData);
     await this.ormRepository.save(delivery);
 

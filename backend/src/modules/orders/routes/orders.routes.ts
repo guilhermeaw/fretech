@@ -7,7 +7,9 @@ const ordersRouter = Router();
 const ordersController = new OrderController();
 
 ordersRouter.post('/', ordersController.create);
-// deliveriesRouter.delete('/:id', develieriesController.delete);
-// deliveriesRouter.get('/me', develieriesController.listMy);
+ordersRouter.put('/:id', ordersController.update);
+ordersRouter.delete('/:id', ordersController.delete);
+ordersRouter.get('/:id', ordersController.findById);
+ordersRouter.get('/', ordersController.index);
 
 export default ordersRouter;

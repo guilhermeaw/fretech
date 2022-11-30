@@ -2,6 +2,9 @@ import { instanceToPlain } from 'class-transformer';
 import { Request, Response } from 'express';
 
 import CreateOrderService from '../services/CreateOrderService';
+import DeleteOrderService from '../services/DeleteOrderService';
+import FindOrderService from '../services/FindOrderService';
+import ListOrdersService from '../services/ListOrdersService';
 
 export default class OrderController {
   public async create(request: Request, response: Response): Promise<Response> {
@@ -16,6 +19,52 @@ export default class OrderController {
       cpf_receiver: receiver.cpf,
       phone_receiver: receiver.phone,
     });
+
+    return response.json(instanceToPlain(order));
+  }
+
+  public async update(request: Request, response: Response): Promise<Response> {
+    const { address, status, entry_date, exit_date, receiver } = request.body;
+
+    const { id } = request.params;
+    const idAsNumber = Number(id);
+
+    await new CreateOrderService().execute({
+      ...address,
+      id: idAsNumber,
+      status,
+      entry_date,
+      exit_date,
+      name_receiver: receiver.name,
+      cpf_receiver: receiver.cpf,
+      phone_receiver: receiver.phone,
+    });
+
+    return response.status(204).json();
+  }
+
+  public async delete(request: Request, response: Response): Promise<Response> {
+    const { id } = request.params;
+    const idAsNumber = Number(id);
+
+    await new DeleteOrderService().execute(idAsNumber);
+    return response.status(204).json();
+  }
+
+  public async index(request: Request, response: Response): Promise<Response> {
+    const orders = await new ListOrdersService().execute();
+
+    return response.json(instanceToPlain(orders));
+  }
+
+  public async findById(
+    request: Request,
+    response: Response,
+  ): Promise<Response> {
+    const { id } = request.params;
+    const idAsNumber = Number(id);
+
+    const order = await new FindOrderService().execute(idAsNumber);
 
     return response.json(instanceToPlain(order));
   }

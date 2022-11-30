@@ -4,6 +4,7 @@ import AppDataSource from '@shared/database/ormconfig';
 import Delivery from '../entities/Delivery';
 
 import { ICreateDeliveryDTO } from '../dtos/ICreateDeliveryDTO';
+import { IUpdateDeliveryDTO } from '../dtos/IUpdateDeliveryDTO';
 
 type CreateDelivery = Omit<ICreateDeliveryDTO, 'orders_ids'> & {
   orders: Delivery['orders'];
@@ -27,9 +28,15 @@ export default class DeliveryRepository {
     return this.ormRepository.find();
   }
 
-  // public async findByDate(start_date: string): Promise<Delivery | null> {
-  //   return await this.ormRepository.find({
-  //     where: { last_modified:  MoreThan(start_date) },
-  //   });
-  // }
+  public async findById(id: number): Promise<Delivery | null> {
+    const devlivery = await this.ormRepository.findOne({
+      where: { id },
+    });
+
+    return devlivery;
+  }
+
+  public async update({ id, deliveryData }: IUpdateDeliveryDTO): Promise<void> {
+    await this.ormRepository.update({ id }, deliveryData);
+  }
 }

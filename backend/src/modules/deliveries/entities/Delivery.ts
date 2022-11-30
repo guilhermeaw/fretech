@@ -22,7 +22,7 @@ export default class Delivery {
 
   @ManyToOne(() => User, { eager: true })
   @JoinColumn({ name: 'user_id' })
-  user: User;
+  deliveryman: User;
 
   @Column()
   vehicle_id: number;

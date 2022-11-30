@@ -10,6 +10,10 @@ type CreateDelivery = Omit<ICreateDeliveryDTO, 'orders_ids'> & {
   orders: Delivery['orders'];
 };
 
+type UpdateDelivery = Omit<IUpdateDeliveryDTO, 'orders_ids'> & {
+  orders: Delivery['orders'];
+};
+
 export default class DeliveryRepository {
   private ormRepository: Repository<Delivery>;
 
@@ -24,19 +28,26 @@ export default class DeliveryRepository {
     return delivery;
   }
 
+  public async update(deliveryData: UpdateDelivery): Promise<Delivery> {
+    const delivery = this.ormRepository.create(deliveryData);
+    await this.ormRepository.save(delivery);
+
+    return delivery;
+  }
+
+  public async delete(id: number): Promise<void> {
+    await this.ormRepository.delete(id);
+  }
+
   public async list(): Promise<Delivery[]> {
     return this.ormRepository.find();
   }
 
   public async findById(id: number): Promise<Delivery | null> {
-    const devlivery = await this.ormRepository.findOne({
+    const delivery = await this.ormRepository.findOne({
       where: { id },
     });
 
-    return devlivery;
-  }
-
-  public async update({ id, deliveryData }: IUpdateDeliveryDTO): Promise<void> {
-    await this.ormRepository.update({ id }, deliveryData);
+    return delivery;
   }
 }

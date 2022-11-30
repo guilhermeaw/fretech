@@ -62,8 +62,10 @@ export const useUpdateDelivery = ({ afterSuccess }: Props) => {
           description: 'A entrega foi editada com sucesso',
           status: 'success',
         });
-        updateDeliveriesQuery(data);
-        updateDeliveryQuery(data);
+        // updateDeliveriesQuery(data);
+        // updateDeliveryQuery(data);
+        queryClient.invalidateQueries(['deliveries'], ['delivery', data.id]);
+        queryClient.invalidateQueries(['delivery', data.id]);
         afterSuccess?.();
       },
     },

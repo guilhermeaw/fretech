@@ -7,8 +7,9 @@ const deliveriesRouter = Router();
 const develieriesController = new DeliveryController();
 
 deliveriesRouter.post('/', develieriesController.create);
+deliveriesRouter.put('/:id', develieriesController.update);
+deliveriesRouter.delete('/:id', develieriesController.delete);
 deliveriesRouter.get('/', develieriesController.index);
-// deliveriesRouter.delete('/:id', develieriesController.delete);
-// deliveriesRouter.get('/me', develieriesController.listMy);
+deliveriesRouter.get('/:id', develieriesController.findById);
 
 export default deliveriesRouter;

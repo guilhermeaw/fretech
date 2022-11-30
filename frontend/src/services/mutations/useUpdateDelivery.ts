@@ -64,7 +64,7 @@ export const useUpdateDelivery = ({ afterSuccess }: Props) => {
         });
         // updateDeliveriesQuery(data);
         // updateDeliveryQuery(data);
-        queryClient.invalidateQueries(['deliveries'], ['delivery', data.id]);
+        queryClient.invalidateQueries(['deliveries']);
         queryClient.invalidateQueries(['delivery', data.id]);
         afterSuccess?.();
       },

@@ -9,7 +9,7 @@ import {
   JoinTable,
 } from 'typeorm';
 
-export enum StatusRole {
+export enum OrderStatus {
   PENDING = 'PENDING',
   IN_PROGRESS = 'IN_PROGRESS',
   DELIVERED = 'DELIVERED',
@@ -56,8 +56,8 @@ export default class Order {
   @Column()
   street: string;
 
-  @Column('enum', { enum: StatusRole })
-  status: StatusRole;
+  @Column('enum', { enum: OrderStatus })
+  status: OrderStatus;
 
   @Column({ nullable: true })
   asignature_url?: string;

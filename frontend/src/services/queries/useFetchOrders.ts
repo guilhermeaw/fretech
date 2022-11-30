@@ -18,8 +18,7 @@ export const useFetchOrders = () => {
           status: 'error',
         });
       },
-      staleTime: 1000 * 60 * 10, // 10 minutes
-      cacheTime: 1000 * 60 * 10, // 10 minutes
+      staleTime: 1000 * 60 * 1, // 1 minute
     },
   );
 };

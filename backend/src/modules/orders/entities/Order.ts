@@ -23,6 +23,7 @@ interface Address {
   city: string;
   number: number;
   street: string;
+  complement?: string;
 }
 
 interface Receiver {
@@ -55,6 +56,10 @@ export default class Order {
   @Exclude()
   @Column()
   street: string;
+
+  @Exclude()
+  @Column({ nullable: true })
+  complement?: string;
 
   @Column('enum', { enum: OrderStatus })
   status: OrderStatus;
@@ -92,6 +97,7 @@ export default class Order {
       city: this.city,
       number: Number(this.number),
       street: this.street,
+      complement: this.complement,
     };
   }
 

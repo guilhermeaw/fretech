@@ -18,8 +18,7 @@ export const useFindDeliverymanById = ({ id }: { id: number }) => {
           status: 'error',
         });
       },
-      staleTime: 1000 * 60 * 10, // 10 minutes
-      cacheTime: 1000 * 60 * 10, // 10 minutes
+      staleTime: 1000 * 60 * 1, // 1 minute
     },
   );
 };

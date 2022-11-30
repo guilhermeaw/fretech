@@ -5,6 +5,7 @@ import CreateOrderService from '../services/CreateOrderService';
 import DeleteOrderService from '../services/DeleteOrderService';
 import FindOrderService from '../services/FindOrderService';
 import ListOrdersService from '../services/ListOrdersService';
+import UpdateOrderService from '../services/UpdateOrderService';
 
 export default class OrderController {
   public async create(request: Request, response: Response): Promise<Response> {
@@ -29,7 +30,7 @@ export default class OrderController {
     const { id } = request.params;
     const idAsNumber = Number(id);
 
-    await new CreateOrderService().execute({
+    const order = await new UpdateOrderService().execute({
       ...address,
       id: idAsNumber,
       status,
@@ -40,7 +41,7 @@ export default class OrderController {
       phone_receiver: receiver.phone,
     });
 
-    return response.status(204).json();
+    return response.json(instanceToPlain(order));
   }
 
   public async delete(request: Request, response: Response): Promise<Response> {
@@ -48,7 +49,7 @@ export default class OrderController {
     const idAsNumber = Number(id);
 
     await new DeleteOrderService().execute(idAsNumber);
-    return response.status(204).json();
+    return response.json({ id: idAsNumber });
   }
 
   public async index(request: Request, response: Response): Promise<Response> {

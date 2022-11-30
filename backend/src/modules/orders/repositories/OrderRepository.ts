@@ -19,8 +19,11 @@ export default class OrderRepository {
     return order;
   }
 
-  public async update({ id, ...orderData }: IUpdateOrderDTO): Promise<void> {
-    await this.ormRepository.update({ id }, orderData);
+  public async update(orderData: IUpdateOrderDTO): Promise<Order> {
+    const order = this.ormRepository.create(orderData);
+    await this.ormRepository.save(order);
+
+    return order;
   }
 
   public async delete(id: number): Promise<void> {
@@ -32,7 +35,7 @@ export default class OrderRepository {
   }
 
   public async list(): Promise<Order[]> {
-    return this.ormRepository.find();
+    return this.ormRepository.find({ order: { id: 'ASC' } });
   }
 
   public async findById(id: number): Promise<Order | null> {

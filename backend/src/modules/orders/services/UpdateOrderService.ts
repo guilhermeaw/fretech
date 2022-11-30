@@ -1,4 +1,5 @@
 import { IUpdateOrderDTO } from '../dtos/IUpdateOrderDTO';
+import Order from '../entities/Order';
 import OrderRepository from '../repositories/OrderRepository';
 
 export default class UpdateOrderService {
@@ -8,7 +9,7 @@ export default class UpdateOrderService {
     this.orderRepository = new OrderRepository();
   }
 
-  public async execute(orderToUpdate: IUpdateOrderDTO): Promise<void> {
-    await this.orderRepository.update(orderToUpdate);
+  public async execute(orderToUpdate: IUpdateOrderDTO): Promise<Order> {
+    return this.orderRepository.update(orderToUpdate);
   }
 }

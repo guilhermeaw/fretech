@@ -8,6 +8,6 @@ export const handlers = [
   ...deliveriesHandlers,
   ...deliverymansHandlers,
   ...occurrencesHandlers,
-  ...ordersHandlers,
+  // ...ordersHandlers,
   ...vehiclesHandlers,
 ];

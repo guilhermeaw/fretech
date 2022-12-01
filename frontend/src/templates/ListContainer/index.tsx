@@ -1,13 +1,12 @@
 import { Link } from 'react-router-dom';
 import { FiPlus } from 'react-icons/fi';
-import { Button, Heading, HStack, Input, Text, VStack } from '@chakra-ui/react';
+import { Button, Heading, HStack, Text, VStack } from '@chakra-ui/react';
 
 import { ListContainerContent } from './ListContainerContent';
 import { ListLoadingContainer } from './ListLoadingContainer';
 
 type ListContainerProps = {
   header?: React.ReactNode;
-  subHeader?: React.ReactNode;
   headerLabels?: string[];
   hasItems: boolean;
   isLoading?: boolean;
@@ -16,7 +15,6 @@ type ListContainerProps = {
 
 const ListContainer = ({
   header,
-  subHeader,
   headerLabels,
   hasItems = true,
   isLoading = false,
@@ -25,7 +23,6 @@ const ListContainer = ({
   return (
     <>
       {header}
-      {subHeader}
 
       {isLoading ? (
         <ListLoadingContainer />
@@ -41,35 +38,26 @@ const ListContainer = ({
 type HeaderProps = {
   title: string;
   subtitle: string;
+  addButtonLink?: string;
 };
 
-const Header = ({ subtitle, title }: HeaderProps) => (
-  <VStack align="flex-start" spacing={0}>
-    <Heading size="lg">{title}</Heading>
-    <Text>{subtitle}</Text>
-  </VStack>
-);
+const Header = ({ subtitle, title, addButtonLink }: HeaderProps) => (
+  <HStack m="1rem 0 2rem" justifyContent="space-between">
+    <VStack align="flex-start" spacing={0}>
+      <Heading size="lg">{title}</Heading>
+      <Text>{subtitle}</Text>
+    </VStack>
 
-type SubHeaderProps = {
-  placeholder: string;
-  addButtonLink: string;
-};
-
-const SubHeader = ({ addButtonLink, placeholder }: SubHeaderProps) => {
-  return (
-    <HStack my="1rem" justifyContent="space-between">
-      <Input placeholder={placeholder} width="sm" bg="#fff" />
-
+    {addButtonLink && (
       <Link to={addButtonLink}>
         <Button colorScheme="brand" leftIcon={<FiPlus />}>
           CADASTRAR
         </Button>
       </Link>
-    </HStack>
-  );
-};
+    )}
+  </HStack>
+);
 
-ListContainer.SubHeader = SubHeader;
 ListContainer.Header = Header;
 
 export { ListContainer };

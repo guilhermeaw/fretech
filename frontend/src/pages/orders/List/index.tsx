@@ -19,12 +19,7 @@ const OrdersList = () => {
         <ListContainer.Header
           title="Gerenciando pedidos"
           subtitle="Cadastre, edite e visualize os pedidos"
-        />
-      }
-      subHeader={
-        <ListContainer.SubHeader
           addButtonLink="/pedidos/novo"
-          placeholder="Busca por pedidos"
         />
       }
       hasItems={!!orders?.length}

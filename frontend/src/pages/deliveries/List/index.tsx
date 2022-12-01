@@ -19,12 +19,7 @@ const DeliveriesList = () => {
         <ListContainer.Header
           title="Gerenciando entregas"
           subtitle="Cadastre, edite e visualize as entregas"
-        />
-      }
-      subHeader={
-        <ListContainer.SubHeader
           addButtonLink="/entregas/nova"
-          placeholder="Busca por entregas"
         />
       }
       hasItems={!!deliveries?.length}

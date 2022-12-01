@@ -46,6 +46,8 @@ export const useDeleteOrder = ({ afterSuccess }: Props) => {
         });
         updateOrdersQuery(id);
         invalidateOrderQuery(id);
+        queryClient.invalidateQueries(['deliveries']);
+        queryClient.invalidateQueries(['delivery']);
         afterSuccess?.();
       },
     },

@@ -12,12 +12,7 @@ const DeliverymansList = () => {
         <ListContainer.Header
           title="Gerenciando entregadores"
           subtitle="Cadastre, edite e visualize os entregadores"
-        />
-      }
-      subHeader={
-        <ListContainer.SubHeader
           addButtonLink="/entregadores/novo"
-          placeholder="Busca por entregadores"
         />
       }
       hasItems={!!deliverymans?.length}

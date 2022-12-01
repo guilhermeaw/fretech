@@ -52,7 +52,10 @@ export const DeliveryListItem = ({ delivery }: DeliveryListItemProps) => {
         </Stack>
 
         <Text>{vehicle.model}</Text>
-        <Text>{`${orders.length} pedido${orders.length > 1 ? 's' : ''}`}</Text>
+        <Text>{`${orders.length} pedido${
+          orders.length === 1 ? '' : 's'
+        }`}</Text>
+
         <Text>{formatDateTime(start_date)}</Text>
 
         <Box display="flex" justifyContent="flex-end">

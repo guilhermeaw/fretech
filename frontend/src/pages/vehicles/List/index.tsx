@@ -12,12 +12,7 @@ const VehiclesList = () => {
         <ListContainer.Header
           title="Gerenciando veículos"
           subtitle="Cadastre, edite e visualize os veículos"
-        />
-      }
-      subHeader={
-        <ListContainer.SubHeader
           addButtonLink="/veiculos/novo"
-          placeholder="Busca por veículos"
         />
       }
       hasItems={!!vehicles?.length}

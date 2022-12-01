@@ -18,28 +18,28 @@ export const useUpdateDelivery = ({ afterSuccess }: Props) => {
   const toast = useToast();
   const queryClient = useQueryClient();
 
-  const updateDeliveriesQuery = (updatedDelivery: Delivery) => {
-    const previousDeliveries =
-      queryClient.getQueryData<Delivery[]>(['deliveries']) ?? [];
+  // const updateDeliveriesQuery = (updatedDelivery: Delivery) => {
+  //   const previousDeliveries =
+  //     queryClient.getQueryData<Delivery[]>(['deliveries']) ?? [];
 
-    queryClient.setQueryData<Delivery[]>(
-      ['deliveries'],
-      previousDeliveries.map(delivery => {
-        if (delivery.id === updatedDelivery.id) {
-          return updatedDelivery;
-        }
+  //   queryClient.setQueryData<Delivery[]>(
+  //     ['deliveries'],
+  //     previousDeliveries.map(delivery => {
+  //       if (delivery.id === updatedDelivery.id) {
+  //         return updatedDelivery;
+  //       }
 
-        return delivery;
-      }),
-    );
-  };
+  //       return delivery;
+  //     }),
+  //   );
+  // };
 
-  const updateDeliveryQuery = (updatedDelivery: Delivery) => {
-    queryClient.setQueryData<Delivery>(
-      ['delivery', updatedDelivery.id],
-      updatedDelivery,
-    );
-  };
+  // const updateDeliveryQuery = (updatedDelivery: Delivery) => {
+  //   queryClient.setQueryData<Delivery>(
+  //     ['delivery', updatedDelivery.id],
+  //     updatedDelivery,
+  //   );
+  // };
 
   return useMutation(
     ({ id, ...rest }: EditDelivery) =>

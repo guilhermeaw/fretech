@@ -12,12 +12,7 @@ const OccurrencesList = () => {
         <ListContainer.Header
           title="Gerenciando ocorrências"
           subtitle="Cadastre, edite e visualize as ocorrências dos pedidos"
-        />
-      }
-      subHeader={
-        <ListContainer.SubHeader
           addButtonLink="/ocorrencias/nova"
-          placeholder="Busca por ocorrências"
         />
       }
       hasItems={!!occurrences?.length}

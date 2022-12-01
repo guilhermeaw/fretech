@@ -54,6 +54,8 @@ export const useUpdateOrder = ({ afterSuccess }: Props) => {
         });
         updateOrderQuery(data);
         updateOrdersQuery(data);
+        queryClient.invalidateQueries(['deliveries']);
+        queryClient.invalidateQueries(['delivery']);
         afterSuccess?.();
       },
     },

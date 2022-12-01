@@ -35,4 +35,8 @@ export default class VehicleRepository {
   public async findById(id: number): Promise<Vehicle | null> {
     return this.ormRepository.findOne({ where: { id } });
   }
+
+  public async findByPlate(plate: string): Promise<Vehicle | null> {
+    return this.ormRepository.findOne({ where: { plate } });
+  }
 }

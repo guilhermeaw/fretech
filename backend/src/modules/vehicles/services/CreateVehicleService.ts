@@ -1,3 +1,4 @@
+import AppError from '@shared/errors/AppError';
 import Vehicle from '../entities/Vehicle';
 import VehicleRepository from '../repositories/VehicleRepository';
 
@@ -19,6 +20,14 @@ export default class CreateVehicleService {
     model,
     capacity,
   }: ICreateVehicleDTO): Promise<Vehicle> {
+    const checkVehicleExists = await this.vehicleRepository.findByPlate(plate);
+
+    if (checkVehicleExists) {
+      throw new AppError(
+        'Já existe um veículo cadastrado com a placa informada.',
+      );
+    }
+
     const delivery = await this.vehicleRepository.create({
       plate,
       model,

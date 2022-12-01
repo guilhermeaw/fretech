@@ -70,7 +70,7 @@ export default class Order {
   @CreateDateColumn()
   entry_date: Date;
 
-  @CreateDateColumn({ nullable: true })
+  @Column({ nullable: true })
   exit_date?: Date;
 
   @Exclude()

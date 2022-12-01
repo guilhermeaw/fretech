@@ -1,10 +1,11 @@
 import {
-    Entity,
-    PrimaryGeneratedColumn,
-    Column,
-    ManyToOne,
-    JoinColumn
-  } from 'typeorm';
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  ManyToOne,
+  JoinColumn,
+  CreateDateColumn,
+} from 'typeorm';
 
 import Order from '../../orders/entities/Order';
 
@@ -17,12 +18,15 @@ export default class Occurrence {
   description: string;
 
   @Column()
-  image: string;
-
-  @Column()
   name: string;
 
+  @Column()
+  order_id: number;
+
+  @CreateDateColumn()
+  created_at: Date;
+
   @ManyToOne(() => Order, { eager: true })
-  @JoinColumn({ name: 'orders_id' })
-  vehicle_id: Order;
+  @JoinColumn({ name: 'order_id' })
+  order: Order;
 }

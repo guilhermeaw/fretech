@@ -4,8 +4,12 @@ import OccurrenceController from '../controllers/OccurrenceController';
 
 const occurrencesRouter = Router();
 
-const occurrenceController = new OccurrenceController();
+const occurrencesController = new OccurrenceController();
 
-occurrencesRouter.post('/create', occurrenceController.create);
+occurrencesRouter.post('/', occurrencesController.create);
+occurrencesRouter.put('/:id', occurrencesController.update);
+occurrencesRouter.delete('/:id', occurrencesController.delete);
+occurrencesRouter.get('/:id', occurrencesController.findById);
+occurrencesRouter.get('/', occurrencesController.index);
 
-export default occurrenceController;
+export default occurrencesRouter;

@@ -12,7 +12,7 @@ import {
   useDisclosure,
 } from '@chakra-ui/react';
 
-import { formatDate } from '../../../../utils';
+import { formatDateTime } from '../../../../utils';
 import { Card } from '../../../../components/Card';
 import { OccurrenceModal } from '../OccurrenceModal';
 import { Occurrence } from '../../../../models/Occurrence';
@@ -53,7 +53,7 @@ export const OccurrenceListItem = ({ occurrence }: OccurrenceListItemProps) => {
           to={`/pedidos/${order_id}`}
         >{`#${order_id}`}</ChakraLink>
         <Text>{name}</Text>
-        <Text>{formatDate(created_at)}</Text>
+        <Text>{formatDateTime(created_at)}</Text>
 
         <Box display="flex" justifyContent="flex-end">
           <Menu>

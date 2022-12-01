@@ -1,8 +1,8 @@
-import { ICreateOccurrenceDTO } from '../dtos/ICreateOccurrenceDTO';
+import { IUpdateOccurrenceDTO } from '../dtos/IUpdateOccurrenceDTO';
 import Occurrence from '../entities/Occurrence';
 import OccurrenceRepository from '../repositories/OccurrenceRepository';
 
-export default class CreateOccurenceService {
+export default class UpdateOccurrenceService {
   private occurrenceRepository: OccurrenceRepository;
 
   constructor() {
@@ -10,8 +10,8 @@ export default class CreateOccurenceService {
   }
 
   public async execute(
-    occurrenceData: ICreateOccurrenceDTO,
+    occurrenceToUpdate: IUpdateOccurrenceDTO,
   ): Promise<Occurrence> {
-    return this.occurrenceRepository.create(occurrenceData);
+    return this.occurrenceRepository.update(occurrenceToUpdate);
   }
 }

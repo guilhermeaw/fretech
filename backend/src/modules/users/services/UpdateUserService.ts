@@ -20,7 +20,7 @@ export default class UpdateUserService {
     id,
     phone,
     password,
-  }: User): Promise<void> {
+  }: User): Promise<User> {
     const userExists = await this.usersRepository.findById(id);
 
     if (!userExists) {
@@ -33,7 +33,7 @@ export default class UpdateUserService {
       hashedPassword = await this.hashProvider.generateHash(password);
     }
 
-    await this.usersRepository.update({
+    return this.usersRepository.update({
       id,
       userData: {
         email,

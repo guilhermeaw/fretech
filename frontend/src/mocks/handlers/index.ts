@@ -6,7 +6,7 @@ import { vehiclesHandlers } from './vehicles';
 
 export const handlers = [
   // ...deliveriesHandlers,
-  ...deliverymansHandlers,
+  // ...deliverymansHandlers,
   ...occurrencesHandlers,
   // ...ordersHandlers,
   // ...vehiclesHandlers,

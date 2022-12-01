@@ -35,7 +35,7 @@ export const useDeleteDeliveryman = ({ afterSuccess }: Props) => {
   return useMutation(
     (id: number) =>
       api
-        .delete<DeleteDeliveryman>(`/deliverymans/${id}`)
+        .delete<DeleteDeliveryman>(`/users/${id}`)
         .then(response => response.data),
     {
       onError: (error: Error) => {

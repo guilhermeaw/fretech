@@ -43,7 +43,7 @@ export const useUpdateDeliveryman = ({ afterSuccess }: Props) => {
   return useMutation(
     ({ name, email, password, phone, id }: EditDeliveryman) =>
       api
-        .put<User>(`/deliverymans/${id}`, {
+        .put<User>(`/users/${id}`, {
           name,
           email,
           password,

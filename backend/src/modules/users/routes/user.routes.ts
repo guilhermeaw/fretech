@@ -7,7 +7,9 @@ const usersRouter = Router();
 const usersController = new UsersController();
 
 usersRouter.post('/', usersController.create);
-usersRouter.put('/update/:id', usersController.update);
-usersRouter.get('/list-all', usersController.listAll);
+usersRouter.put('/:id', usersController.update);
+usersRouter.delete('/:id', usersController.delete);
+usersRouter.get('/', usersController.listDeliverymans);
+usersRouter.get('/:id', usersController.findById);
 
 export default usersRouter;

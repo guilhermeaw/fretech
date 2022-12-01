@@ -9,7 +9,7 @@ export const useFetchDeliverymans = () => {
 
   return useQuery(
     ['deliverymans'],
-    () => api.get<User[]>('/deliverymans').then(response => response.data),
+    () => api.get<User[]>('/users').then(response => response.data),
     {
       onError: (error: Error) => {
         toast({

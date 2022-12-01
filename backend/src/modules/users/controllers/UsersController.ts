@@ -4,7 +4,9 @@ import { Request, Response } from 'express';
 import { UserRole } from '../entities/User';
 import CreateUserService from '../services/CreateUserService';
 import UpdateUserService from '../services/UpdateUserService';
-import ListAllUsersService from '../services/ListAllUsersService';
+import ListDeliverymansService from '../services/ListDeliverymansService';
+import FindUserService from '../services/FindUserService';
+import DeleteUserService from '../services/DeleteUserService';
 
 export default class UsersController {
   public async create(request: Request, response: Response): Promise<Response> {
@@ -22,12 +24,18 @@ export default class UsersController {
   }
 
   public async update(request: Request, response: Response): Promise<Response> {
-    const { phone, password, email, name, role = UserRole.DELIVERYMAN } = request.body;
+    const {
+      phone,
+      password,
+      email,
+      name,
+      role = UserRole.DELIVERYMAN,
+    } = request.body;
     const { id } = request.params;
 
     const idAsNumber = Number(id);
 
-    await new UpdateUserService().execute({
+    const user = await new UpdateUserService().execute({
       email,
       name,
       role,
@@ -36,15 +44,35 @@ export default class UsersController {
       id: idAsNumber,
     });
 
-    return response.status(204).json();
+    return response.json(instanceToPlain(user));
   }
 
-  public async listAll(
+  public async delete(request: Request, response: Response): Promise<Response> {
+    const { id } = request.params;
+    const idAsNumber = Number(id);
+
+    await new DeleteUserService().execute(idAsNumber);
+    return response.json({ id: idAsNumber });
+  }
+
+  public async listDeliverymans(
     request: Request,
     response: Response,
   ): Promise<Response> {
-    const users = await new ListAllUsersService().execute();
+    const deliverymans = await new ListDeliverymansService().execute();
 
-    return response.json(instanceToPlain(users));
+    return response.json(instanceToPlain(deliverymans));
+  }
+
+  public async findById(
+    request: Request,
+    response: Response,
+  ): Promise<Response> {
+    const { id } = request.params;
+    const idAsNumber = Number(id);
+
+    const user = await new FindUserService().execute(idAsNumber);
+
+    return response.json(instanceToPlain(user));
   }
 }

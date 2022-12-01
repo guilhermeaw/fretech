@@ -32,7 +32,7 @@ export const useCreateDeliveryman = ({ afterSuccess }: Props) => {
   return useMutation(
     ({ name, email, password, phone }: CreateDeliveryman) =>
       api
-        .post<User>('/deliverymans', {
+        .post<User>('/users', {
           name,
           email,
           password,

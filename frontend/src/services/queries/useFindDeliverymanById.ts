@@ -9,7 +9,7 @@ export const useFindDeliverymanById = ({ id }: { id: number }) => {
 
   return useQuery(
     ['deliveryman', id],
-    () => api.get<User>(`/deliverymans/${id}`).then(response => response.data),
+    () => api.get<User>(`/users/${id}`).then(response => response.data),
     {
       onError: (error: Error) => {
         toast({

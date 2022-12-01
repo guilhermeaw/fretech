@@ -22,7 +22,7 @@ type VehicleListItemProps = {
 };
 
 export const VehicleListItem = ({ vehicle }: VehicleListItemProps) => {
-  const { id, model, plate, capacity, status } = vehicle;
+  const { id, model, plate, capacity /* , status */ } = vehicle;
 
   const {
     isOpen: isOpenVehicleDelete,
@@ -46,7 +46,7 @@ export const VehicleListItem = ({ vehicle }: VehicleListItemProps) => {
           {`${capacity} m`}
           <sup>3</sup>
         </Text>
-        <VehicleStatusBadge status={status} />
+        {/* <VehicleStatusBadge status={status} /> */}
 
         <Box display="flex" justifyContent="flex-end">
           <Menu>

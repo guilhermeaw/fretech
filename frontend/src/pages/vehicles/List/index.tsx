@@ -7,7 +7,7 @@ const VehiclesList = () => {
 
   return (
     <ListContainer
-      headerLabels={['Placa', 'Modelo', 'Capacidade', 'Status', 'Ações']}
+      headerLabels={['Placa', 'Modelo', 'Capacidade', /* 'Status', */ 'Ações']}
       header={
         <ListContainer.Header
           title="Gerenciando veículos"

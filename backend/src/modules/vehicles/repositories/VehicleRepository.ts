@@ -16,4 +16,23 @@ export default class VehicleRepository {
 
     return vehicle;
   }
+
+  public async update(vehicleData: Vehicle): Promise<Vehicle> {
+    const vehicle = this.ormRepository.create(vehicleData);
+    await this.ormRepository.save(vehicle);
+
+    return vehicle;
+  }
+
+  public async delete(id: number): Promise<void> {
+    await this.ormRepository.delete(id);
+  }
+
+  public async list(): Promise<Vehicle[]> {
+    return this.ormRepository.find({ order: { model: 'ASC' } });
+  }
+
+  public async findById(id: number): Promise<Vehicle | null> {
+    return this.ormRepository.findOne({ where: { id } });
+  }
 }

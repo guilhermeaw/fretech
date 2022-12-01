@@ -8,7 +8,7 @@ import {
   ManyToMany,
 } from 'typeorm';
 
-import Order from 'modules/orders/entities/Order';
+import Order from '../../orders/entities/Order';
 import User from '../../users/entities/User';
 import Vehicle from '../../vehicles/entities/Vehicle';
 

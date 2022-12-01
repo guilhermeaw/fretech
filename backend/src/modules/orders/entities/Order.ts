@@ -1,5 +1,4 @@
 import { Exclude, Expose } from 'class-transformer';
-import Delivery from 'modules/deliveries/entities/Delivery';
 import {
   CreateDateColumn,
   Entity,
@@ -8,6 +7,8 @@ import {
   ManyToMany,
   JoinTable,
 } from 'typeorm';
+// eslint-disable-next-line import/no-cycle
+import Delivery from '../../deliveries/entities/Delivery';
 
 export enum OrderStatus {
   PENDING = 'PENDING',

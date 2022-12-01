@@ -4,12 +4,12 @@ import OrderController from '../controllers/OrderController';
 
 const ordersRouter = Router();
 
-const ordersController = new OrderController();
+const orderController = new OrderController();
 
-ordersRouter.post('/', ordersController.create);
-ordersRouter.put('/:id', ordersController.update);
-ordersRouter.delete('/:id', ordersController.delete);
-ordersRouter.get('/:id', ordersController.findById);
-ordersRouter.get('/', ordersController.index);
+ordersRouter.post('/', orderController.create);
+ordersRouter.put('/:id', orderController.update);
+ordersRouter.delete('/:id', orderController.delete);
+ordersRouter.get('/:id', orderController.findById);
+ordersRouter.get('/', orderController.index);
 
 export default ordersRouter;

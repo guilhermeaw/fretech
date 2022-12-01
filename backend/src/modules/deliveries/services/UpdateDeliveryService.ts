@@ -1,5 +1,5 @@
 import AppError from '@shared/errors/AppError';
-import OrderRepository from 'modules/orders/repositories/OrderRepository';
+import OrderRepository from '../../orders/repositories/OrderRepository';
 import { IUpdateDeliveryDTO } from '../dtos/IUpdateDeliveryDTO';
 import Delivery from '../entities/Delivery';
 import DeliveryRepository from '../repositories/DeliveryRepository';

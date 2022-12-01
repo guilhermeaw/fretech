@@ -1,4 +1,4 @@
-import OrderRepository from 'modules/orders/repositories/OrderRepository';
+import OrderRepository from '../../orders/repositories/OrderRepository';
 import { ICreateDeliveryDTO } from '../dtos/ICreateDeliveryDTO';
 import Delivery from '../entities/Delivery';
 import DeliveryRepository from '../repositories/DeliveryRepository';

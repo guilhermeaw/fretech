@@ -60,6 +60,10 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     window.location.href = '/';
   }, [removeCookie]);
 
+  window.addEventListener('onUnauthorized', () => {
+    signOut();
+  });
+
   const value = useMemo(
     () => ({
       user: data.user,

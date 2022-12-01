@@ -10,6 +10,11 @@ api.interceptors.response.use(
   },
   error => {
     console.error(error);
+
+    if (error.response.status === 401) {
+      window.dispatchEvent(new CustomEvent('onUnauthorized'));
+    }
+
     return Promise.reject(error.response.data);
   },
 );

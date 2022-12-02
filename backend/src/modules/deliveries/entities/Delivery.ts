@@ -8,6 +8,7 @@ import {
   ManyToMany,
 } from 'typeorm';
 
+// eslint-disable-next-line import/no-cycle
 import Order from '../../orders/entities/Order';
 import User from '../../users/entities/User';
 import Vehicle from '../../vehicles/entities/Vehicle';

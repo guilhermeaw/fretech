@@ -18,19 +18,6 @@ export const useCreateDelivery = ({ afterSuccess }: Props) => {
   const toast = useToast();
   const queryClient = useQueryClient();
 
-  const updateDeliveriesQueryIfExistsOnCache = (newDelivery: Delivery) => {
-    const cachedDeliveries = queryClient.getQueryData<Delivery[]>([
-      'deliveries',
-    ]);
-
-    if (cachedDeliveries) {
-      queryClient.setQueryData<Delivery[]>(
-        ['deliveries'],
-        [...cachedDeliveries, newDelivery],
-      );
-    }
-  };
-
   return useMutation(
     ({ deliveryman_id, orders_ids, vehicle_id }: CreateDelivery) =>
       api
@@ -48,13 +35,14 @@ export const useCreateDelivery = ({ afterSuccess }: Props) => {
           status: 'error',
         });
       },
-      onSuccess: (data: Delivery) => {
+      onSuccess: () => {
         toast({
           title: 'Entrega cadastrada com sucesso',
           description: 'A entrega foi cadastrada com sucesso',
           status: 'success',
         });
-        updateDeliveriesQueryIfExistsOnCache(data);
+
+        queryClient.invalidateQueries(['deliveries']);
         afterSuccess?.();
       },
     },

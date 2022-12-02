@@ -5,6 +5,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "NODE_ENV=dev ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --no-notify --ignore-watch node_modules src/shared/server.ts",
+    "seed": "ts-node ./node_modules/typeorm-extension/dist/cli/index.js seed -d ./src/shared/database/ormconfig.ts",
     "start": "node dist/shared/server.js",
     "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files"
   },
@@ -43,6 +44,8 @@
     "express-async-errors": "^3.1.1",
     "jsonwebtoken": "^8.5.1",
     "pg": "^8.8.0",
-    "typeorm": "^0.3.10"
+    "typeorm": "^0.3.10",
+    "typeorm-extension": "^2.3.0",
+    "typeorm-seeding": "^1.6.1"
   }
 }

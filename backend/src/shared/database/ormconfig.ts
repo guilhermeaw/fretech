@@ -1,21 +1,26 @@
-import { DataSource } from 'typeorm';
+import { DataSource, DataSourceOptions } from 'typeorm';
+import { SeederOptions } from 'typeorm-extension';
 
 const entitiesDir =
   process.env.NODE_ENV === 'dev'
     ? 'src/modules/**/entities/*.ts'
     : 'dist/modules/**/entities/*.js';
 
-const AppDataSource = new DataSource({
+    
+const options: DataSourceOptions & SeederOptions = {
   name: 'default',
   type: 'postgres',
   host: process.env.POSTGRES_HOST,
   port: Number(process.env.POSTGRES_PORT),
-  username: process.env.POSTGRES_USER,
-  password: process.env.POSTGRES_PASS,
+  username: "postgres",
+  password: "postgres",
   database: process.env.POSTGRES_DB,
   entities: [entitiesDir],
   synchronize: true,
-});
+  seeds: ["src/modules/**/seeders/*.ts"],
+}
+
+const AppDataSource = new DataSource(options);
 
 export const initializeDataSource = () => {
   AppDataSource.initialize()

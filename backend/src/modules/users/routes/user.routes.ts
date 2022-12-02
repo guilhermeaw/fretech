@@ -11,6 +11,7 @@ usersRouter.use(ensureAuthenticated);
 
 usersRouter.post('/', usersController.create);
 usersRouter.put('/:id', usersController.update);
+usersRouter.put('/password/:id', usersController.changePassword);
 usersRouter.delete('/:id', usersController.delete);
 usersRouter.get('/', usersController.listDeliverymans);
 usersRouter.get('/:id', usersController.findById);

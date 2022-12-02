@@ -27,7 +27,9 @@ import VehiclesList from '../pages/vehicles/List';
 import AddDelivery from '../pages/deliveries/Add';
 import EditDelivery from '../pages/deliveries/Edit';
 import DeliveriesList from '../pages/deliveries/List';
-import { ManageDelivery } from '../pages/deliveries/Manage';
+import ManageDelivery from '../pages/deliveries/Manage';
+
+import ChangePassword from '../pages/users/ChangePassword';
 
 const AppRoutes = () => (
   <>
@@ -35,6 +37,8 @@ const AppRoutes = () => (
     <ContentContainer>
       <DOMRoutes>
         <Route path="/" element={<HomePage />} />
+
+        <Route path="usuario/trocar-senha" element={<ChangePassword />} />
 
         <Route path="entregadores" element={<DeliverymansList />} />
         <Route path="entregadores/novo" element={<AddDeliveryman />} />

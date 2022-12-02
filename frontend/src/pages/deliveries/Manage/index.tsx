@@ -6,7 +6,7 @@ import { DeliveryStatusButtons } from './DeliveryStatusButtons';
 import { ListContainer } from '../../../templates/ListContainer';
 import { OrdersListItem } from '../../orders/components/OrderListItem';
 
-export const ManageDelivery = () => {
+const ManageDelivery = () => {
   const { id } = useParams();
   const deliveryId = Number(id);
 
@@ -54,3 +54,5 @@ export const ManageDelivery = () => {
     </ListContainer>
   );
 };
+
+export default ManageDelivery;

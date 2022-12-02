@@ -7,6 +7,7 @@ import UpdateUserService from '../services/UpdateUserService';
 import ListDeliverymansService from '../services/ListDeliverymansService';
 import FindUserService from '../services/FindUserService';
 import DeleteUserService from '../services/DeleteUserService';
+import ChangePasswordService from '../services/ChangePasswordService';
 
 export default class UsersController {
   public async create(request: Request, response: Response): Promise<Response> {
@@ -41,6 +42,24 @@ export default class UsersController {
       role,
       password,
       phone,
+      id: idAsNumber,
+    });
+
+    return response.json(instanceToPlain(user));
+  }
+
+  public async changePassword(
+    request: Request,
+    response: Response,
+  ): Promise<Response> {
+    const { oldPassword, newPassword } = request.body;
+    const { id } = request.params;
+
+    const idAsNumber = Number(id);
+
+    const user = await new ChangePasswordService().execute({
+      newPassword,
+      oldPassword,
       id: idAsNumber,
     });
 

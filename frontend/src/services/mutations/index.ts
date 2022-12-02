@@ -13,4 +13,5 @@ export * from './useUpdateDelivery';
 export * from './useUpdateDeliveryman';
 export * from './useUpdateOccurrence';
 export * from './useUpdateOrder';
+export * from './useUpdatePassword';
 export * from './useUpdateVehicle';

@@ -8,19 +8,23 @@ import {
   DrawerContent,
   HStack,
   IconButton,
-  Text,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
   useDisclosure,
   useMediaQuery,
 } from '@chakra-ui/react';
-import { FiMenu } from 'react-icons/fi';
+
+import { FiKey, FiMenu, FiUser } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
-import { useAuth } from '../../store/Auth';
 
 import { Navbar } from './Navbar';
 import { navitems } from './navitems';
+import { useAuth } from '../../store/Auth';
 
 export const Header = () => {
-  const { signOut, user } = useAuth();
+  const { signOut } = useAuth();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [isLargerThan1024] = useMediaQuery(['(min-width: 1024px)']);
 
@@ -76,11 +80,19 @@ export const Header = () => {
       </HStack>
 
       <HStack>
-        {isLargerThan1024 && (
-          <Text as="strong" noOfLines={1}>
-            {user.name}
-          </Text>
-        )}
+        <Menu>
+          <MenuButton
+            as={IconButton}
+            aria-label="Menu do usuário"
+            icon={<FiUser />}
+            variant="ghost"
+          />
+          <MenuList>
+            <MenuItem icon={<FiKey />} as={Link} to="/usuario/trocar-senha">
+              Trocar senha
+            </MenuItem>
+          </MenuList>
+        </Menu>
 
         <Button variant="ghost" colorScheme="red" onClick={handleLogout}>
           Sair

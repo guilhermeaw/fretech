@@ -3,9 +3,10 @@ import {
   createBottomTabNavigator,
   BottomTabNavigationProp,
 } from '@react-navigation/bottom-tabs';
-import { Home } from '@screens/Home';
 import { Profile } from '@screens/Profile';
 import { useTheme } from 'native-base';
+
+import { HomeStack } from './HomeStack';
 
 type AppRoutesType = {
   home: undefined;
@@ -14,7 +15,7 @@ type AppRoutesType = {
 
 export type AppNavigatorRoutesProps = BottomTabNavigationProp<AppRoutesType>;
 
-const { Navigator, Screen } = createBottomTabNavigator<AppRoutesType>();
+const Tab = createBottomTabNavigator<AppRoutesType>();
 
 export function AppRoutes() {
   const { sizes, colors } = useTheme();
@@ -22,16 +23,16 @@ export function AppRoutes() {
   const iconSize = sizes[6];
 
   return (
-    <Navigator
+    <Tab.Navigator
       screenOptions={{
         headerShown: false,
         tabBarActiveTintColor: colors.gray[500],
         tabBarInactiveTintColor: colors.gray[200],
       }}
     >
-      <Screen
+      <Tab.Screen
         name="home"
-        component={Home}
+        component={HomeStack}
         options={{
           tabBarLabel: 'Pedidos',
           tabBarIcon: ({ color }) => (
@@ -40,7 +41,7 @@ export function AppRoutes() {
         }}
       />
 
-      <Screen
+      <Tab.Screen
         name="profile"
         component={Profile}
         options={{
@@ -50,6 +51,6 @@ export function AppRoutes() {
           ),
         }}
       />
-    </Navigator>
+    </Tab.Navigator>
   );
 }

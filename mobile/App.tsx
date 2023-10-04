@@ -1,3 +1,4 @@
+import 'react-native-gesture-handler';
 import { Loading } from '@components/Loading';
 import {
   useFonts,

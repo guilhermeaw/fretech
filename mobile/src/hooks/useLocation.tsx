@@ -38,7 +38,7 @@ export const useLocation = ({ mapRef }: Props) => {
         distanceInterval: 1,
       },
       response => {
-        console.log({ response });
+        // console.log({ response });
         setLocation(response);
         mapRef?.current?.animateCamera({
           center: {

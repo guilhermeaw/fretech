@@ -18,6 +18,12 @@
       ],
       "@hooks/*": [
         "./src/hooks/*"
+      ],
+      "@models/*": [
+        "./src/models/*"
+      ],
+      "@store/*": [
+        "./src/store/*"
       ]
     }
   }

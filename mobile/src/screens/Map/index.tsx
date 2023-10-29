@@ -1,15 +1,19 @@
 import { Loading } from '@components/Loading';
 import { useLocation } from '@hooks/useLocation';
-import { VStack } from 'native-base';
+import { useActiveOrderStore } from '@store/useActiveOrderStore';
+import { VStack, useDisclose } from 'native-base';
 import { useRef } from 'react';
 import MapView, { Marker } from 'react-native-maps';
 import MapViewDirections from 'react-native-maps-directions';
 
+import { OccurrenceModal } from './OccurrenceModal';
 import { OrderCollapse } from './OrderCollapse';
 
 export function Map() {
   const mapRef = useRef<MapView>(null);
+  const { activeOrder } = useActiveOrderStore();
   const { location, hasLocationPermission } = useLocation({ mapRef });
+  const { isOpen, onClose, onToggle } = useDisclose();
 
   const origin = {
     latitude: location?.coords.latitude || 0,
@@ -25,7 +29,8 @@ export function Map() {
 
   return (
     <VStack flex={1}>
-      <OrderCollapse />
+      {activeOrder && <OrderCollapse onCancel={onToggle} />}
+      <OccurrenceModal isOpen={isOpen} onClose={onClose} />
 
       <MapView
         initialRegion={{

@@ -3,24 +3,30 @@ import { create } from 'zustand';
 
 // TODO: Remover temporary order
 const temporaryOrder = {
-  id: 1,
+  id: 444,
   status: OrderStatus.IN_PROGRESS,
   address: {
-    cep: '00000-000',
-    city: 'Cidade',
+    cep: '95914-500',
+    city: 'Lajeado',
     number: 123,
-    state: 'UF',
-    street: 'Rua',
+    state: 'RS',
+    street: 'Rua Central',
   },
   receiver: {
     cpf: '000.000.000-00',
-    name: 'Nome',
+    name: 'Murilo Fank',
     phone: '(00) 00000-0000',
   },
 } as Order;
 
-export const useActiveOrderStore = create(set => ({
+type ActiveOrderStore = {
+  activeOrder: Order | null;
+  resetActiveOrder: () => void;
+  setActiveOrder: (order: Order) => void;
+};
+
+export const useActiveOrderStore = create<ActiveOrderStore>(set => ({
   activeOrder: temporaryOrder,
-  setActiveOrder: (order: Order) => set({ activeOrder: order }),
   resetActiveOrder: () => set({ activeOrder: null }),
+  setActiveOrder: (order: Order) => set({ activeOrder: order }),
 }));

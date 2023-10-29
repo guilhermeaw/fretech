@@ -1,29 +1,16 @@
-import { Button, HStack, VStack } from 'native-base';
-
-import { CollapseActionProps } from '.';
+import { ActionButtons, ActionProps } from '@components/ActionButtons';
+import { VStack } from 'native-base';
 
 type Props = {
   children: React.ReactNode;
-  actions: CollapseActionProps;
+  actions?: ActionProps;
 };
 
 export const Footer = ({ children, actions }: Props) => {
-  const { cancelButtonLabel, confirmButtonLabel, onCancel, onConfirm } =
-    actions;
-
   return (
     <VStack space={4}>
       {children}
-
-      <HStack space={1} w="100%">
-        <Button onPress={onCancel} size="xs" flex={1} variant="subtle">
-          {cancelButtonLabel}
-        </Button>
-
-        <Button onPress={onConfirm} size="xs" flex={1}>
-          {confirmButtonLabel}
-        </Button>
-      </HStack>
+      {actions && <ActionButtons {...actions} />}
     </VStack>
   );
 };

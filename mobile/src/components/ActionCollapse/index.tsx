@@ -1,16 +1,10 @@
+import { ActionProps } from '@components/ActionButtons';
 import { Collapse, CollapseProps } from '@components/Collapse';
 
 import { Footer } from './Footer';
 
-export type CollapseActionProps = {
-  confirmButtonLabel: string;
-  cancelButtonLabel: string;
-  onConfirm: () => void;
-  onCancel: () => void;
-};
-
 type ActionCollapseProps = {
-  actions: CollapseActionProps;
+  actions?: ActionProps;
   collapseProps: CollapseProps;
 };
 

@@ -20,7 +20,7 @@ export const Collapse = ({ header, content }: CollapseProps) => {
 
   return (
     <VStack w="100%" justifyContent="center" alignItems="center" p="4">
-      <Card bg="white" w="80%">
+      <Card bg="white" w="100%">
         <Header onCollapse={handleCollapse} collapseIcon={collapseIcon}>
           {header}
         </Header>

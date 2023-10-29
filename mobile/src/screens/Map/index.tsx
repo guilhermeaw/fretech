@@ -1,12 +1,19 @@
+import { Loading } from '@components/Loading';
 import { useLocation } from '@hooks/useLocation';
-import { Text, VStack } from 'native-base';
+import { useActiveOrderStore } from '@store/useActiveOrderStore';
+import { VStack, useDisclose } from 'native-base';
 import { useRef } from 'react';
 import MapView, { Marker } from 'react-native-maps';
 import MapViewDirections from 'react-native-maps-directions';
 
+import { OccurrenceModal } from './OccurrenceModal';
+import { OrderCollapse } from './OrderCollapse';
+
 export function Map() {
   const mapRef = useRef<MapView>(null);
+  const { activeOrder } = useActiveOrderStore();
   const { location, hasLocationPermission } = useLocation({ mapRef });
+  const { isOpen, onClose, onToggle } = useDisclose();
 
   const origin = {
     latitude: location?.coords.latitude || 0,
@@ -18,15 +25,13 @@ export function Map() {
     longitude: -52.03217359386774,
   };
 
-  if (!location)
-    return (
-      <VStack flex={1} justifyContent="center" alignItems="center">
-        <Text>Carregando...</Text>
-      </VStack>
-    );
+  if (!location) return <Loading />;
 
   return (
     <VStack flex={1}>
+      {activeOrder && <OrderCollapse onCancel={onToggle} />}
+      <OccurrenceModal isOpen={isOpen} onClose={onClose} />
+
       <MapView
         initialRegion={{
           ...origin,
@@ -38,7 +43,7 @@ export function Map() {
       >
         <Marker coordinate={destination} />
 
-        {hasLocationPermission && (
+        {/* {hasLocationPermission && (
           <MapViewDirections
             origin={origin}
             destination={destination}
@@ -46,7 +51,7 @@ export function Map() {
             strokeColor="blue"
             apikey=""
           />
-        )}
+        )} */}
       </MapView>
     </VStack>
   );

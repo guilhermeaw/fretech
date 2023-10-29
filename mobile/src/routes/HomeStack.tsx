@@ -2,10 +2,12 @@ import {
   StackNavigationProp,
   createStackNavigator,
 } from '@react-navigation/stack';
+import { CompleteOrderCamera } from '@screens/CompleteOrderCamera';
 import { Map } from '@screens/Map';
 import { Orders } from '@screens/Orders';
 
 type AppRoutesType = {
+  completeOrderCamera: undefined;
   orders: undefined;
   map: undefined;
 };
@@ -27,6 +29,12 @@ export function HomeStack() {
         name="map"
         component={Map}
         options={{ headerTitle: 'Rota de entrega' }}
+      />
+
+      <Stack.Screen
+        name="completeOrderCamera"
+        component={CompleteOrderCamera}
+        options={{ headerTitle: 'Assinatura do destinatário' }}
       />
     </Stack.Navigator>
   );

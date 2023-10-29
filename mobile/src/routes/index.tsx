@@ -1,6 +1,7 @@
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { useTheme, Box } from 'native-base';
 
+import { HomeStack } from './HomeStack';
 import { AppRoutes } from './app.routes';
 
 export function Routes() {
@@ -12,7 +13,8 @@ export function Routes() {
   return (
     <Box flex={1} bg="primary.100" safeArea>
       <NavigationContainer theme={theme}>
-        <AppRoutes />
+        {/* <AppRoutes /> */}
+        <HomeStack />
       </NavigationContainer>
     </Box>
   );

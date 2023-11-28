@@ -38,9 +38,6 @@ services:
     networks:
       - app-connect
 
-volumes:
-  postgres-data:
-
 networks:
   app-connect:
       driver: bridge

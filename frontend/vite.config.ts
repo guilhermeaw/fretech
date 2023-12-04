@@ -25,7 +25,13 @@ export default defineConfig(({ mode }) => {
     test: {
       setupFiles: 'src/setupTests.ts',
       globals: true,
-      environment: 'jsdom'
-    }
+      environment: 'jsdom',
+      exclude: [
+        '**/node_modules/**',
+        '**/dist/**',
+        '**/public',
+        '**/prettier.config.js',
+      ],
+    },
   };
 });

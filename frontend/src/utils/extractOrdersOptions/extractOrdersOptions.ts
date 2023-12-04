@@ -1,5 +1,5 @@
-import { Order } from '../models/Order';
-import { FormSelectOption } from '../components/Form/Select';
+import { Order } from '../../models/Order';
+import { FormSelectOption } from '../../components/Form/Select';
 
 export const extractOrdersOptions = (
   orders: Order[] | undefined,

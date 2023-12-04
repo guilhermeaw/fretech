@@ -1,5 +1,5 @@
-import { Vehicle } from '../models/Vehicle';
-import { FormSelectOption } from '../components/Form/Select';
+import { Vehicle } from '../../models';
+import { FormSelectOption } from '../../components/Form/Select';
 
 export const extractVehiclesOptions = (
   vehicles: Vehicle[] | undefined,

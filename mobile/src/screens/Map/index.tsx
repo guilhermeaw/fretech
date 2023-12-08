@@ -49,7 +49,7 @@ export function Map() {
             destination={destination}
             strokeWidth={3}
             strokeColor="blue"
-            apikey=""
+            apikey="AIzaSyCarHuu8xLYKh7GdGH1P1eEttmOYGAjI68"
           />
         )} */}
       </MapView>

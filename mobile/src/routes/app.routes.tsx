@@ -12,8 +12,7 @@ export function AppRoutes() {
   const theme = DefaultTheme;
   theme.colors.background = colors.primary[100];
 
-  // const isLogged = !!user;
-  const isLogged = false;
+  const isLogged = !!user;
 
   return (
     <Box flex={1} bg="primary.100" safeArea>

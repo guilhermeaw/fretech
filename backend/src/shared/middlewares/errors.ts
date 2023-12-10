@@ -1,13 +1,15 @@
 import { NextFunction, Request, Response } from 'express';
-
+import ErrorController from '@shared/errors/controllers/errorsController';
 import AppError from '@shared/errors/AppError';
 
-export default function errors(
+const errorController = new ErrorController();
+
+export default async function errors(
   err: Error,
   request: Request,
   response: Response,
   _: NextFunction,
-): Response<any, Record<string, any>> {
+): Promise<Response<unknown, Record<string, unknown>>> {
   if (err instanceof AppError) {
     return response.status(err.statusCode).json({
       status: 'error',
@@ -15,10 +17,8 @@ export default function errors(
     });
   }
 
-  console.error(err);
+  const errorMessage = err instanceof Error ? err.message : 'Erro desconhecido';
+  const stackTrace = err instanceof Error ? err.stack : '';
 
-  return response.status(500).json({
-    status: 'error',
-    message: 'Internal server error',
-  });
+  return errorController.create(`${errorMessage}\n${stackTrace}`, response);
 }

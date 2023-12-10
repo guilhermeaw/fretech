@@ -6,6 +6,7 @@ import {
   JoinColumn,
   Column,
   ManyToMany,
+  UpdateDateColumn,
 } from 'typeorm';
 
 // eslint-disable-next-line import/no-cycle
@@ -40,4 +41,10 @@ export default class Delivery {
 
   @CreateDateColumn({ nullable: true })
   end_date?: Date;
+
+  @CreateDateColumn()
+  createdAt: Date;
+
+  @UpdateDateColumn()
+  updatedAt: Date;
 }

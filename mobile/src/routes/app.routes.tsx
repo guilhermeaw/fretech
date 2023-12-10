@@ -1,56 +1,24 @@
-import Icon from '@expo/vector-icons/Feather';
-import {
-  createBottomTabNavigator,
-  BottomTabNavigationProp,
-} from '@react-navigation/bottom-tabs';
-import { Profile } from '@screens/Profile';
-import { useTheme } from 'native-base';
+import { useAuth } from '@hooks/useAuth';
+import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
+import { Login } from '@screens/Login';
+import { useTheme, Box } from 'native-base';
 
 import { HomeStack } from './HomeStack';
 
-type AppRoutesType = {
-  home: undefined;
-  profile: undefined;
-};
-
-export type AppNavigatorRoutesProps = BottomTabNavigationProp<AppRoutesType>;
-
-const Tab = createBottomTabNavigator<AppRoutesType>();
-
 export function AppRoutes() {
-  const { sizes, colors } = useTheme();
+  const { colors } = useTheme();
+  const { user } = useAuth();
 
-  const iconSize = sizes[6];
+  const theme = DefaultTheme;
+  theme.colors.background = colors.primary[100];
+
+  const isLogged = !!user;
 
   return (
-    <Tab.Navigator
-      screenOptions={{
-        headerShown: false,
-        tabBarActiveTintColor: colors.gray[500],
-        tabBarInactiveTintColor: colors.gray[200],
-      }}
-    >
-      <Tab.Screen
-        name="home"
-        component={HomeStack}
-        options={{
-          tabBarLabel: 'Pedidos',
-          tabBarIcon: ({ color }) => (
-            <Icon name="package" size={iconSize} color={color} />
-          ),
-        }}
-      />
-
-      <Tab.Screen
-        name="profile"
-        component={Profile}
-        options={{
-          tabBarLabel: 'Perfil',
-          tabBarIcon: ({ color }) => (
-            <Icon name="user" size={iconSize} color={color} />
-          ),
-        }}
-      />
-    </Tab.Navigator>
+    <Box flex={1} bg="primary.100" safeArea>
+      <NavigationContainer theme={theme}>
+        {isLogged ? <HomeStack /> : <Login />}
+      </NavigationContainer>
+    </Box>
   );
 }

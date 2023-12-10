@@ -6,7 +6,8 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "test": "vitest"
+    "test": "vitest",
+    "coverage": "vitest run --coverage"
   },
   "dependencies": {
     "@chakra-ui/react": "2.2.9",
@@ -29,7 +30,7 @@
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^13.4.0",
+    "@testing-library/react": "^14.1.2",
     "@testing-library/user-event": "^14.4.3",
     "@types/babel__core": "^7.1.19",
     "@types/node": "^18.7.13",
@@ -38,7 +39,8 @@
     "@types/react-input-mask": "^3.0.1",
     "@typescript-eslint/eslint-plugin": "^5.32.0",
     "@typescript-eslint/parser": "^5.32.0",
-    "@vitejs/plugin-react": "^2.0.0",
+    "@vitejs/plugin-react": "^4.2.0",
+    "@vitest/coverage-v8": "^1.0.0",
     "eslint": "^7.32.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^8.5.0",
@@ -51,8 +53,8 @@
     "jsdom": "^20.0.3",
     "prettier": "^2.7.1",
     "typescript": "^4.6.4",
-    "vite": "^3.0.0",
-    "vitest": "^0.25.3"
+    "vite": "^5.0.5",
+    "vitest": "^1.0.0"
   },
   "msw": {
     "workerDirectory": "public"

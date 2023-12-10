@@ -12,6 +12,7 @@ dist
 dist-ssr
 *.local
 TODOS.md
+coverage
 
 # Editor directories and files
 .vscode/*

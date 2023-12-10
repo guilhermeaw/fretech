@@ -1,5 +1,5 @@
-import { User } from '../models/User';
-import { FormSelectOption } from '../components/Form/Select';
+import { User } from '../../models';
+import { FormSelectOption } from '../../components/Form/Select';
 
 export const extractDeliverymansOptions = (
   deliverymans: User[] | undefined,

@@ -31,6 +31,8 @@ import ManageDelivery from '../pages/deliveries/Manage';
 
 import ChangePassword from '../pages/users/ChangePassword';
 
+import AnalyticsPage from '../pages/analytics';
+
 const AppRoutes = () => (
   <>
     <Header />
@@ -61,6 +63,8 @@ const AppRoutes = () => (
         <Route path="entregas/nova" element={<AddDelivery />} />
         <Route path="entregas/editar/:id" element={<EditDelivery />} />
         <Route path="entregas/controlar/:id" element={<ManageDelivery />} />
+
+        <Route path="analytics" element={<AnalyticsPage />} />
       </DOMRoutes>
     </ContentContainer>
   </>

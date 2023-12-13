@@ -14,5 +14,6 @@ ordersRouter.put('/:id', orderController.update);
 ordersRouter.delete('/:id', orderController.delete);
 ordersRouter.get('/:id', orderController.findById);
 ordersRouter.get('/', orderController.index);
+// ordersRouter.get('/:deliverymanId', orderController.listByDeliveryman);
 
 export default ordersRouter;

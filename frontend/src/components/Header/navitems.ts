@@ -24,4 +24,8 @@ export const navitems = [
     title: 'Veículos',
     to: '/veiculos',
   },
+  {
+    title: 'Analytics',
+    to: '/analytics',
+  },
 ] as NavitemProp[];

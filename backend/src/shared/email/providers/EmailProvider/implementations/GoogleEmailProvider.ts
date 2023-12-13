@@ -11,18 +11,10 @@ export default class GoogleEmailProvider {
   constructor() {
     this.client = nodemailer.createTransport({
       service: 'gmail',
-      port: 465,
-      secure: true,
-      logger: true,
-      debug: true,
-      secureConection: false,
       auth: {
         user: process.env.GMAIL_EMAIL,
         pass: process.env.GMAIL_PASS,
       },
-      tls: {
-        rejectUnauthorized: true,
-      }
     });
 
     this.mailTemplateProvider = new HandlebarsMailTemplateProvider();
@@ -37,7 +29,7 @@ export default class GoogleEmailProvider {
     this.client.sendMail({
       from: {
         name: from?.name || 'Fretech Team',
-        address: process.env.GMAIL_EMAIL,
+        address: process.env.GMAIL_EMAIL || 'fretechteam@gmail.com',
       },
       to: {
         name: to.name,

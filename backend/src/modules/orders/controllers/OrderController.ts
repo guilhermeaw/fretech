@@ -1,17 +1,13 @@
 import { instanceToPlain } from 'class-transformer';
 import { Request, Response } from 'express';
 
-import EmailController from '@shared/email/controllers/EmailController';
 import CreateOrderService from '../services/CreateOrderService';
 import DeleteOrderService from '../services/DeleteOrderService';
 import FindOrderService from '../services/FindOrderService';
 import ListOrdersService from '../services/ListOrdersService';
 import UpdateOrderService from '../services/UpdateOrderService';
-import ListOrdersByDeliverymanService from '../services/ListOrdersByDeliverymanService';
 
 export default class OrderController {
-  private emailController: EmailController;
-
   public async create(request: Request, response: Response): Promise<Response> {
     const { address, status, entry_date, exit_date, receiver } = request.body;
 
@@ -29,8 +25,6 @@ export default class OrderController {
   }
 
   public async update(request: Request, response: Response): Promise<Response> {
-    console.log('request.body');
-    console.log(request.body);
     const { address, status, entry_date, exit_date, receiver } = request.body;
 
     const { id } = request.params;
@@ -46,19 +40,6 @@ export default class OrderController {
       cpf_receiver: receiver.cpf,
       phone_receiver: receiver.phone,
     });
-
-    if (status === 'IN_PROGRESS') {
-      try {
-        this.emailController = new EmailController();
-        await this.emailController.sendEmail(
-          'lucaspereiravargas@gmail.com',
-          'Seu pedido está a caminho!',
-          `Seu pedido de ID ${order.id} está em andamento. O produto saiu para entrega.`,
-        );
-      } catch (error) {
-        throw new Error('Erro ao enviar e-mail: ' + error);
-      }
-    }
 
     return response.json(instanceToPlain(order));
   }

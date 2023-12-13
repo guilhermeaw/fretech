@@ -39,6 +39,7 @@ export default class OrderController {
       name_receiver: receiver.name,
       cpf_receiver: receiver.cpf,
       phone_receiver: receiver.phone,
+      email_receiver: receiver.email,
     });
 
     return response.json(instanceToPlain(order));

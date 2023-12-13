@@ -54,6 +54,13 @@ export const OrderForm = ({ onSubmit, defaultValues }: OrderFormProps) => {
           errorMessage={errors?.receiver?.cpf?.message}
           {...register('receiver.cpf')}
         />
+
+        <FormInput
+          type="email"
+          label="E-mail"
+          errorMessage={errors?.receiver?.email?.message}
+          {...register('receiver.email')}
+        />
       </Box>
 
       <Divider />

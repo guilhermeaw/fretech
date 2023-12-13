@@ -18,7 +18,7 @@ export default class UpdateOrderService {
 
       await this.emailService.sendEmail({
         name: orderToUpdate.name_receiver,
-        email: 'guilhermeaw9@gmail.com',
+        email: orderToUpdate.email_receiver || 'guilhermeaw9@gmail.com',
       });
     }
 

@@ -18,6 +18,11 @@ export const orderValidationSchema = zod.object({
           ),
         { message: 'Informe um CPF válido' },
       ),
+    email: zod
+      .string()
+      .refine(val => /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(val), {
+        message: 'Informe um e-mail válido',
+      }),
   }),
   address: zod.object({
     cep: zod.string().min(8, 'Informe um CEP válido'),

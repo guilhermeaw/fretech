@@ -31,6 +31,7 @@ interface Receiver {
   name: string;
   cpf: string;
   phone: string;
+  email: string;
 }
 
 @Entity('orders')
@@ -86,6 +87,10 @@ export default class Order {
   @Column()
   phone_receiver: string;
 
+  @Exclude()
+  @Column({ default: 'guilherme.w@universo.univates.br' })
+  email_receiver: string;
+
   @ManyToMany(() => Delivery, delivery => delivery.orders)
   @JoinTable()
   deliveries: Delivery[];
@@ -108,6 +113,7 @@ export default class Order {
       name: this.name_receiver,
       cpf: this.cpf_receiver,
       phone: this.phone_receiver,
+      email: this.email_receiver,
     };
   }
 }

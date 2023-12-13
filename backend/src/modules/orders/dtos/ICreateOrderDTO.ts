@@ -12,4 +12,5 @@ export type ICreateOrderDTO = {
   name_receiver: string;
   cpf_receiver: string;
   phone_receiver: string;
+  email_receiver: string;
 };

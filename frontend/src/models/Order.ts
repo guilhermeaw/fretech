@@ -11,6 +11,7 @@ interface OrderReceiver {
   name: string;
   phone: string;
   cpf: string;
+  email: string;
 }
 
 export enum OrderStatus {

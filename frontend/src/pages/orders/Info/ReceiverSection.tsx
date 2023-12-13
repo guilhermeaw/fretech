@@ -29,6 +29,10 @@ export const ReceiverSection = ({ receiver }: ReceiverSectionProps) => (
           <Text fontWeight="bold">CPF</Text>
           <Text>{receiver.cpf}</Text>
         </GridItem>
+        <GridItem w="100%">
+          <Text fontWeight="bold">E-mail</Text>
+          <Text>{receiver.email}</Text>
+        </GridItem>
       </Grid>
     </AccordionPanel>
   </AccordionItem>

@@ -13,14 +13,26 @@ export default class UpdateOrderService {
   }
 
   public async execute(orderToUpdate: IUpdateOrderDTO): Promise<Order> {
-    if (orderToUpdate.status === OrderStatus.IN_PROGRESS) {
-      this.emailService = new SendOutForDeliveryEmailService();
+    const previousOrder = this.orderRepository.findById(orderToUpdate.id);
 
-      await this.emailService.sendEmail({
-        name: orderToUpdate.name_receiver,
-        email: orderToUpdate.email_receiver || 'guilhermeaw9@gmail.com',
+    previousOrder
+      .then(previousOrderAux => {
+        if (
+          previousOrderAux !== null &&
+          previousOrderAux.status !== OrderStatus.IN_PROGRESS &&
+          orderToUpdate.status === OrderStatus.IN_PROGRESS
+        ) {
+          this.emailService = new SendOutForDeliveryEmailService();
+
+          return this.emailService.sendEmail({
+            name: orderToUpdate.name_receiver,
+            email: orderToUpdate.email_receiver || 'guilhermeaw9@gmail.com',
+          });
+        }
+      })
+      .catch(error => {
+        console.error(error);
       });
-    }
 
     return this.orderRepository.update(orderToUpdate);
   }
